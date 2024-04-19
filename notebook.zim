@@ -1,6 +1,6 @@
 [Notebook]
 version=0.4
-name=Notes 2
+name=Notes
 interwiki=
 home=Home
 icon=
@@ -12,4 +12,7 @@ disable_trash=False
 default_file_format=zim-wiki
 default_file_extension=.txt
 notebook_layout=files
+
+[SpellPlugin]
+language=
 
