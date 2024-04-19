@@ -25,31 +25,25 @@ info "generate html docs"
 /usr/bin/zim --export -r --output=./docs --format=html --index index "../$name"
 info "git add html docs"
 git add docs
-if [ -e readme.txt ]
+
+info "clean out old md files"
+/bin/find . -name '*.md' -exec /bin/rm {} \;
+info "clean out markdown folder"
+[ -d markdown ] && /bin/rm -rf markdown
+info "export to md"
+/usr/bin/zim --export -r --output=markdown --format=markdown --index index "../$name"
+info "move md files"
+cd markdown || exit 1
+/bin/find . -name '*.md' -exec /bin/mv {} ../{} \;
+cd ..
+[ -d markdown ] && /bin/rm -rf markdown
+if [ -e readme.md ]
 then
-    info "generate readme.md single file from readme.txt"
-    /usr/bin/zim --export --output=./readme.md --overwrite --format=markdown "../$name" readme
-    git add readme.md
+    echo >> readme.md
+    /bin/cat index.md >> readme.md
+    /bin/rm index.md
 else
-    info "clean out old md files"
-    /bin/find . -name '*.md' -exec /bin/rm {} \;
-    info "clean out markdown folder"
-    [ -d markdown ] && /bin/rm -rf markdown
-    info "export to md"
-    /usr/bin/zim --export -r --output=markdown --format=markdown --index index "../$name"
-    info "move md files"
-    cd markdown || exit 1
-    /bin/find . -name '*.md' -exec /bin/mv {} ../{} \;
-    cd ..
-    [ -d markdown ] && /bin/rm -rf markdown
-    if [ -e readme.md ]
-    then
-        echo >> readme.md
-        /bin/cat index.md >> readme.md
-        /bin/rm index.md
-    else
-        .bin/mv index.md readme.md
-    fi
-    git add '*.md'
+    .bin/mv index.md readme.md
 fi
+git add '*.md'
 
