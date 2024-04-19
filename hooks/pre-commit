@@ -17,39 +17,52 @@ info()
 
 name="$(/bin/basename "$(pwd)")"
 
-[ -d docs ] && /bin/rm -rf docs
-info "cleaning html $?"
+if [ -d docs ]
+then
+    info "docs folder exists, generating html in docs filder ..."
+    /bin/rm -rf docs
+    info "cleaning html $?"
 
-/usr/bin/zim --export -r --output=./docs --format=html --index index "../$name"
-info "generate html docs $?"
+    /usr/bin/zim --export -r --output=./docs --format=html --index index "../$name"
+    info "generate html docs $?"
 
-git add docs
-info "git add html docs $?"
+    git add docs
+    info "git add html docs $?"
+fi
 
-/bin/find . -name '*.md' -exec /bin/rm {} \;
-info "clean out old md files $?"
+if [ -e "notebook.zim" ]
+then
+    info "notebook.zim exists. Assuming this is a zim notebook"
 
-[ -d markdown ] && /bin/rm -rf markdown
-info "clean out markdown folder $?"
+    /bin/find . -name '*.md' -exec /bin/rm {} \;
+    info "clean out old md files $?"
 
-/usr/bin/zim --export -r --output=markdown --format=markdown --index index "../$name"
-info "export to md $?"
+    [ -d markdown ] && /bin/rm -rf markdown
+    info "clean out markdown folder $?"
 
-cd markdown && /bin/find . -name '*.md' -exec /bin/mv {} ../{} \; && cd ..
-info "move md files $?"
+    /usr/bin/zim --export -r --output=markdown --format=markdown --index index "../$name"
+    info "export to md $?"
 
-[ -d markdown ] && /bin/rm -rf markdown
-info "clean out markdown folder $?"
+    cd markdown && /bin/find . -name '*.md' -exec /bin/mv {} ../{} \; && cd ..
+    info "move md files $?"
 
-if [ -e readme.md ]
+    [ -d markdown ] && /bin/rm -rf markdown
+    info "clean out markdown folder $?"
+fi
+
+if [ -e readme.md -a -e index.md ]
 then
     echo >> readme.md
     /bin/cat index.md >> readme.md
     /bin/rm index.md
     info "generate readme.md from index.md $?"
-else
+
+elif [ -e index.md ]
+then
     /bin/mv index.md readme.md
     info "rename index.md to readme.md $?"
+else
+    info "no index.md found"
 fi
 
 git add '*.md'
