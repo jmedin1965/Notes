@@ -21,3 +21,8 @@ mkdir [[/boot/efi/EFI/BOOT]]
 cp /boot/efi/EFI/debian/grubx64.efi [[/boot/efi/EFI/BOOT/BOOTX64.EFI]]
 
 otherwise you will be driven crazy with not being able to boot
+
+
+a test
+
+another test
