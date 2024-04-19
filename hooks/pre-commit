@@ -18,7 +18,6 @@ info()
 name="$(/bin/basename "$(pwd)")"
 
 info "cleaning html"
-[ -d html ] && /bin/rm -rf html
 [ -d docs ] && /bin/rm -rf docs
 #echo /usr/bin/zim --export --output=./html --format=html --index index "../$name"
 #echo /usr/bin/zim --export --output=./html --format=html --index index "../$name" >> out.log
@@ -28,8 +27,13 @@ info "add html"
 git add docs
 if [ -e readme.txt ]
 then
-    info "generate readme.md"
+    info "generate readme.md single file from readme.txt"
     /usr/bin/zim --export --output=./readme.md --overwrite --format=markdown "../$name" readme
+    git add readme.md
+else
+    [ -d markdown ] && /bin/rm -rf markdown
+    info "generate readme.md from Notebook"
+    /usr/bin/zim --export --output=./markdown --format=markdown --index readme "../$name"
     git add readme.md
 fi
 
