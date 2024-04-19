@@ -9,5 +9,3 @@ Documentation is here [docs](https://jmedin1965.github.io/Notes/index.html)
 
 Github code is here [code](https://github.com/jmedin1965/Notes)
 
-a test
-

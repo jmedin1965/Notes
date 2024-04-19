@@ -26,4 +26,10 @@ info "generate html docs"
 /usr/bin/zim --export --output=./docs --format=html --index index "../$name"
 info "add html"
 git add docs
+if [ -e readme.txt ]
+then
+    info "generate readme.md"
+    /usr/bin/zim --export --output=./readme.md --overwrite --format=markdown "../$name" readme
+    git add readme.md
+fi
 

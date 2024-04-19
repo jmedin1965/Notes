@@ -12,3 +12,5 @@ Documentation is published using zim to html using a git hook.
 Documentation is here [[https://jmedin1965.github.io/Notes/index.html|docs]]
 
 Github code is here [[https://github.com/jmedin1965/Notes|code]]
+
+a test
