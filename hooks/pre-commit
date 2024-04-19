@@ -23,7 +23,7 @@ info "cleaning html"
 #echo /usr/bin/zim --export --output=./html --format=html --index index "../$name" >> out.log
 info "generate html docs"
 /usr/bin/zim --export -r --output=./docs --format=html --index index "../$name"
-info "add html"
+info "git add html docs"
 git add docs
 if [ -e readme.txt ]
 then
@@ -33,8 +33,23 @@ then
 else
     info "clean out old md files"
     /bin/find . -name '*.md' -exec /bin/rm {} \;
-    info "generate readme.md from Notebook"
-    /usr/bin/zim --export --output=. --format=markdown --index index "../$name"
-    git add readme.md
+    info "clean out markdown folder"
+    [ -d markdown ] && /bin/rm -rf markdown
+    info "export to md"
+    /usr/bin/zim --export -r --output=markdown --format=markdown --index index "../$name"
+    info "move md files"
+    cd markdown || exit 1
+    /bin/find . -name '*.md' -exec /bin/mv {} ../{} \;
+    cd ..
+    [ -d markdown ] && /bin/rm -rf markdown
+    if [ -e readme.md ]
+    then
+        echo >> readme.md
+        /bin/cat index.md >> readme.md
+        /bin/rm index.md
+    else
+        .bin/mv index.md readme.md
+    fi
+    git add '*.md'
 fi
 
