@@ -10,14 +10,20 @@
 # Redirect output to stderr.
 exec 1>&2
 
+info()
+{
+    echo "pre-commit:" "$@"
+}
+
 name="$(/bin/basename "$(pwd)")"
 
-echo "pre-commit: cleaning html"
+info "cleaning html"
 [ -d html ] && /bin/rm -rf html
+[ -d docs ] && /bin/rm -rf docs
 #echo /usr/bin/zim --export --output=./html --format=html --index index "../$name"
 #echo /usr/bin/zim --export --output=./html --format=html --index index "../$name" >> out.log
-echo "pre-commit: generate html"
-/usr/bin/zim --export --output=./html --format=html --index index "../$name"
-echo "pre-commit: add html"
-git add html
+info "generate html docs"
+/usr/bin/zim --export --output=./docs --format=html --index index "../$name"
+info "add html"
+git add docs
 
