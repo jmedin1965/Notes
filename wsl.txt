@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-09-21T17:21:12+10:00
+
+====== wsl ======
+Created Thursday 21 September 2023
+
+===== exec from cmd in the background =====
+
+C:\Windows\System32\wsl.exe --shell-type login /bin/bash -i -c "/usr/bin/zim&"

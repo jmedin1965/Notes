@@ -1,0 +1,38 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-10-11T22:38:00+11:00
+
+====== HAProxy keep alive for ssh ======
+Created Wednesday 11 October 2023
+
+-  timeout client 50000ms
+-  timeout server 50000ms
+-  retries 50
++  timeout client 3000ms
++  timeout server 3000ms
++  retries 1
+
+After rolling it back it started to work perfectly again, but we still weren’t 100% sure why. Using the shorter timeout, the channel was reconnecting every 3 seconds and some requests failed to receive the response, but why it wasn’t the case for the 50 seconds timeout?
+
+Cause
+In order to keep the WebSocket connection alive, Phoenix Socket library sends a heartbeat message which happens every 30 seconds by default. With 50 seconds timeout for the client/server everything worked fine, reducing the timeout to merely 3 seconds made WebSocket connection to timeout, so that when request took any longer, the frontend was unable to receive the response on time.
+
+Solution
+Obvious one was to reduce the heartbeat interval to something less than 3 seconds to make sure we keep the connection alive even with the migration config, but it wasn’t really appealing to spam the server such often.
+
+After some googling we figured out there was another HAProxy timeout setting which is responsible for a tunnel connections:
+
+The tunnel timeout applies when a bidirectional connection is established
+between a client and a server, and the connection remains inactive in both
+directions
+https://cbonte.github.io/haproxy-dconv/1.7/configuration.html#4-timeout%20tunnel
+
+When connection becomes a tunnel (as it happens for WebSockets) this timeout setting supersedes both the client and server timeouts.
+
+Here’s how it looks in the config:
+
+timeout client 3000ms
+timeout server 3000ms
+timeout tunnel 50000ms
+
+REF: https://lucjan.medium.com/investigating-websocket-haproxy-reconnecting-and-timeouts-6d19cc0002a1

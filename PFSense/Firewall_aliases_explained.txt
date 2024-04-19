@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-10-11T22:40:08+11:00
+
+====== Firewall aliases explained ======
+Created Wednesday 11 October 2023
+
+This YouTube explains how to use Aliases
+
+REF: https://www.youtube.com/watch?v=xlx2REV3-wo
