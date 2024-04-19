@@ -7,7 +7,7 @@ Created Friday 19 April 2024
 
 Created using [[https://zim-wiki.org/|Zim.]]
 
-Documentation is published using zim to html using a git hook.
+Documentation is published using zim export to html and markdown using a git hook.
 
 HTML published documentation is here [[https://jmedin1965.github.io/Notes/index.html|html.]]
 

@@ -3,7 +3,7 @@ Created Friday 19 April 2024
 
 Created using [Zim.](https://zim-wiki.org/)
 
-Documentation is published using zim to html using a git hook.
+Documentation is published using zim export to html and markdown using a git hook.
 
 HTML published documentation is here [html.](https://jmedin1965.github.io/Notes/index.html)
 
