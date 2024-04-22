@@ -1,18 +1,18 @@
 # Dogtag - internal off-line CA
 Created Friday 01 December 2023
 
-I tried to install this using debian, but just too difficult. No point re-inventing the wheel, so I'm
+I tried to install this using Debian, but just too difficult. No point re-inventing the wheel, so I'm
 installing on a CentOS 8 system with 8G disk space and an encrypted root disk.
 
-I did find an excelent doc on how to install an off-line CA on centOS, but it's for centOS 7. I will follow
-it and see if it works with centOS 8;
+I did find an excellent doc on how to install an off-line CA on CentOS, but it's for CentOS 7. I will follow
+it and see if it works with CentOS 8;
 
 REF <https://github.com/rharmonson/richtech/wiki/OSVDC-Series:-Root-Certificate-Authority-(PKI)-with-Dogtag-10.3-on-CentOS-7.3.1611>
 
 install apache and php - NOT REQUIRED!
 --------------------------------------
 
-centOS 8 uses tomcat. If these are installed, dogtag instalation fails
+CentOS 8 uses tomcat. If these are installed, dogtag installation fails
 
 Configure firewall
 ------------------
@@ -123,10 +123,10 @@ PKI instances will be enabled upon system boot
 looks like I've somehow got it working to this point
 ----------------------------------------------------
 
-This is a youtube tutorial
+This is a YouTube tutorial
 
 <https://www.youtube.com/watch?v=-Fak3EdUiOE>
 
-The instructions ara a little dated, but they can be followed. I generated the signing request using openssl
+The instructions are a little dated, but they can be followed. I generated the signing request using openssl
 then got dogtag to sign it.
 

@@ -9,7 +9,7 @@ REF: https://forum.proxmox.com/threads/virtual-pendrive-on-vm.114143/
 
 Format drive as FAT32: https://www.codenicer.com/content/formatting-usb-drive-fat32-using-freebsd
 
-gpart worked to get it formated
+gpart worked to get it formatted
 
 Mount USB Pen Drive: https://docs.netgate.com/pfsense/en/latest/recipes/usb-drive-copy.html
 

@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-04-22T14:54:47+10:00
+
+====== Tteck repo helper scripts ======
+Created Monday 22 April 2024
+
+A repo with Proxmox helper scripts that Greg sent.
+
+https://tteck.github.io/Proxmox/
