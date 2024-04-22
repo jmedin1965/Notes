@@ -3,11 +3,11 @@ Created Friday 19 April 2024
 
 Created using [Zim.](https://zim-wiki.org/)
 
-Documentation is published using zim export to html and markdown using a git hook.
+Documentation is published using Zim export to HTML and markdown using a git hook.
 
-HTML published documentation is here [html.](https://jmedin1965.github.io/Notes/index.html)
+HTML published documentation is [here](https://jmedin1965.github.io/Notes/index.html).
 
-Github code is here [code.](https://github.com/jmedin1965/Notes)
+GitHub code is [here](https://github.com/jmedin1965/Notes).
 
 
 # Index of Notes
