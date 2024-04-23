@@ -27,7 +27,7 @@ then
     # html export
     if [ -d docs ]
     then
-        info "docs folder exists, generating html in docs filder ..."
+        info "docs folder exists, generating html in docs folder ..."
         /bin/rm -rf docs
         info "cleaning html $?"
 
@@ -36,6 +36,8 @@ then
 
         git add docs
         info "git add html docs $?"
+    else
+        info "docs folder does not exists, not generating html."
     fi
 
     # markdown export
