@@ -7,7 +7,8 @@ Documentation is published using Zim export to HTML and markdown using a git hoo
 
 HTML published documentation is [here](https://jmedin1965.github.io/Notes/index.html).
 
-GitHub code is [here](https://github.com/jmedin1965/Notes).
+GitHub code is
+ [here](https://github.com/jmedin1965/Notes).
 
 
 # Index of Notes
