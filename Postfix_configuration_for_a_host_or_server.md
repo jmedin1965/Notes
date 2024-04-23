@@ -98,10 +98,10 @@ Add Scanned Notice on incomming mail, Priority 60
 to do
 =====
 
-ansible
-=======
 
-add the above settings to ansible
+* ☐ Add the above settings to to Ansible
+
+
 
 make sure we exclude the proxmox mail gateway and make different settings for our intermal mail receiver
 

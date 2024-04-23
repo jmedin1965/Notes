@@ -16,3 +16,13 @@ notebook_layout=files
 [SpellPlugin]
 language=
 
+[TaskListPlugin]
+all_checkboxes=True
+labels=FIXME, TODO
+integrate_with_journal=start
+included_subtrees=
+excluded_subtrees=
+nonactionable_tags=
+tag_by_page=False
+use_workweek=False
+
