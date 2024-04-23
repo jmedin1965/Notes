@@ -13,6 +13,7 @@ exec 1>&2
 info()
 {
     echo "pre-commit:" "$@"
+    echo "pre-commit:" "$@" >> /tmp/pre-commit.log
 }
 
 name="$(/bin/basename "$(pwd)")"
