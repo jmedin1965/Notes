@@ -52,6 +52,7 @@ then
     info /usr/bin/zim --export -r --output=markdown --format=markdown --index index "../$name"
     /usr/bin/zim --export -r --output=markdown --format=markdown --index index "../$name"
     info "export to md $?"
+exit 0
 
     if cd markdown
     then
