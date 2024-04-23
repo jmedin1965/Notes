@@ -1,7 +1,7 @@
 # Postfix configuration for a host/server
 Created Friday 01 December 2023
 
-I'm using postfix to send out emails from all the vm's that need to send emails out. It's pre-installed most of the time. If not just do an
+I'm using Postfix to send out emails from all the vm's that need to send emails out. It's pre-installed most of the time. If not just do an
 
 apt install postfix
 
@@ -30,22 +30,22 @@ mynetworks = space separated list of local networks
 
 
 
-Install and a standars CT template in proxmox. No need for a valid external domain, can just use fake internal domain.
+Install as a standard CT template in Proxmox. No need for a valid external domain, can just use fake internal domain.
 
 Configure
 ---------
 
 ### Relaying
 
-Configuration>>Mail Poxy>> Ports
-Default Relay: forenam.jmsh-home.dtdns.net - ip or name of host to receive mail from external
+Configuration>>Mail Proxy>> Ports
+Default Relay: foreman.jmsh-home.dtdns.net - ip or name of host to receive mail from external
 Relay Port: 25 - port of above host
 Disable MX lookup (SMTP): yes - we don't want to look up MX records, just use these settings instead
 Smarthost: smtp.dodo.com.au:25 - our external relay
 
 REF: <https://electrictoolbox.com/configure-postfix-external-connections/>
 
-to get forenam.jmsh-home.dtdns.net to accept email requites;
+to get foreman.jmsh-home.dtdns.net to accept email requites;
 
 inet_interfaces = all
 or
@@ -62,15 +62,15 @@ smtp inet n - - - - smtpd
 
 ### Relay Domains
 
-Configuration>>Mail Poxy>> Ports
+Configuration>>Mail Proxy>> Ports
 
-A list of all domains tha we will receive and forward from external. Everithing else will be rejected.
+A list of all domains tha we will receive and forward from external. Everything else will be rejected.
 
 ### Ports
 
 I ended up swapping input and output ports. By default, port 25 is the external port, and 26 is the internal. Since I'm forwarding from the firewall, I created a rule to forward external port 25 to port 26 on the GW.
 
-Configuration>>Mail Poxy>> Ports
+Configuration>>Mail Proxy>> Ports
 External SMTP Port 26
 External SMTP Port 25
 
@@ -85,7 +85,7 @@ A list of networks that are considered local. We will relal from everyone on thi
 Just adds a message to outgoing mail. More as a test and to make sure incoming mail gets tagged.
 
 This e-mail has been processed and 
-scanned by ProxMox Mail Gateway
+scanned by Proxmox Mail Gateway
 
 #### created filter - Add Disclaimer
 
@@ -99,7 +99,7 @@ to do
 =====
 
 
-* ☐ Add postfix settings to Ansible, make sure we exclude the proxmox mail gateway and make different settings for our internal mail receiver
+* ☐ Add Postfix settings to Ansible, make sure we exclude the Proxmox mail gateway and make different settings for our internal mail receiver
 
 
 
