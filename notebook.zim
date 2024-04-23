@@ -2,7 +2,7 @@
 version=0.4
 name=Notes
 interwiki=
-home=Home
+home=readme
 icon=
 document_root=
 short_links=False

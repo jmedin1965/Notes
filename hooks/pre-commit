@@ -31,6 +31,7 @@ then
         /bin/rm -rf docs
         info "cleaning html $?"
 
+        info /usr/bin/zim --export -r --output=./docs --format=html --template $template --index index "../$name"
         /usr/bin/zim --export -r --output=./docs --format=html --template $template --index index "../$name"
         info "generate html docs $?"
 
@@ -47,6 +48,7 @@ then
     [ -d markdown ] && /bin/rm -rf markdown
     info "clean out markdown folder $?"
 
+    info /usr/bin/zim --export -r --output=markdown --format=markdown --index index "../$name"
     /usr/bin/zim --export -r --output=markdown --format=markdown --index index "../$name"
     info "export to md $?"
 
