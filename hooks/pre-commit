@@ -50,8 +50,17 @@ then
     /usr/bin/zim --export -r --output=markdown --format=markdown --index index "../$name"
     info "export to md $?"
 
-    cd markdown && /bin/find . -name '*.md' -exec /bin/mv {} ../{} \; && cd ..
-    info "move md files $?"
+    if cd markdown
+    then
+        info "cd to markdown export dir $?"
+
+        /bin/find . -name '*.md' -exec /bin/mv {} ../{} \;
+        info "find and move md files $?"
+
+        cd ..
+        info "cd back up $?"
+    fi
+    info "move exported md files $?"
 
     [ -d markdown ] && /bin/rm -rf markdown
     info "clean out markdown folder $?"
@@ -73,6 +82,6 @@ then
     fi
 fi
 
-git add '*.md'
+#git add '*.md'
 info "git add all md files $?"
 

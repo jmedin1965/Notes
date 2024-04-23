@@ -1,0 +1,31 @@
+# Format disk drive as MSDosFS
+Created Thursday 12 October 2023
+
+/bin/dd if=/dev/zero of="$1" count=10
+
+(
+echo n
+echo y
+		
+# sysID 11 is MSDos
+echo 11
+		
+echo
+echo
+echo n
+echo y
+echo n
+echo n
+echo n
+echo n
+echo y
+
+) | /sbin/fdisk -u "$1"
+
+/sbin/fdisk "$1"
+
+#F16 is Fat16, can use F32 but on small disk it doesn't work
+/sbin/newfs_msdos -F16 "${1}s1"
+
+/sbin/mount -t msdosfs "${1}s1" $mount
+
