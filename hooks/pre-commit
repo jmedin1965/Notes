@@ -68,12 +68,14 @@ then
     info "clean out markdown folder $?"
 
     # process readme file
-    if [ -e readme.md -a -e index.md ]
+    readme="readme.md"
+    [ -e "README.md" ] && readme="README.md" 
+    if [ -e "$readme" -a -e index.md ]
     then
-        echo >> readme.md
-        /bin/cat index.md >> readme.md
+        echo >> "$readme"
+        /bin/cat index.md >> "$readme"
         /bin/rm index.md
-        info "generate readme.md from index.md $?"
+        info "generate $readme from index.md $?"
 
     elif [ -e index.md ]
     then
@@ -84,6 +86,6 @@ then
     fi
 fi
 
-#git add '*.md'
+git add '*.md'
 info "git add all md files $?"
 
