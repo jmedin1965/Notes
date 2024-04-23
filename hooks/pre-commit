@@ -63,9 +63,9 @@ then
         cd ..
         info "cd back up $?"
     fi
-    info "move exported md files $?"
+    info "move exported md files $? $(pwd)"
 
-    [ -d markdown ] && /bin/rm -rf markdown
+    [ -d markdown ] && echo /bin/rm -rf markdown
     info "clean out markdown folder $?"
 
     # process readme file
@@ -87,6 +87,6 @@ then
     fi
 fi
 
-git add '*.md'
+#git add '*.md'
 info "git add all md files $?"
 
