@@ -99,7 +99,7 @@ to do
 =====
 
 
-* ☐ Add the above settings to to Ansible
+* ☐ Add postfix settings to to Ansible
 
 
 

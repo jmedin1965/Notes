@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>debian boot fix BIOS EFI</title>
+	<title>Firewall aliases explained</title>
 	<meta name='Generator' content='Zim 0.74.3'>
 	<style type='text/css'>
 		a          { text-decoration: none      }
@@ -51,26 +51,36 @@
 
 <!-- Header -->
 <div class='header'>
-	[ <span class='insen'>Prev</span> ]
+	[ <a href='../PFSense.html'>Prev</a> ]
 
-	[ <a href='./index.html'>Index</a> ]
+	[ <a href='../index.html'>Index</a> ]
 
-	[ <a href='./Dogtag_-_internal_off-line_CA.html'>Next</a> ]
+	[ <a href='./Format_disk_drive_as_MSDosFS.html'>Next</a> ]
 </div>
 
 <hr />
 
 <div class="menu">
 <ul>
-<li><b>debian boot fix BIOS EFI</b></li>
-<li><a href="./Dogtag_-_internal_off-line_CA.html" title="Dogtag - internal off-line CA" class="page">Dogtag - internal off-line CA</a></li>
-<li><a href="./FreeIPA_with_off-line_CA.html" title="FreeIPA with off-line CA" class="page">FreeIPA with off-line CA</a></li>
-<li><a href="./Ipfire_firewall_and_router.html" title="Ipfire firewall and router" class="page">Ipfire firewall and router</a></li>
-<li><a href="./PFSense.html" title="PFSense" class="page">PFSense</a></li>
-<li><a href="./Postfix_configuration_for_a_host_or_server.html" title="Postfix configuration for a host or server" class="page">Postfix configuration for a host or server</a></li>
-<li><a href="./ProxMox.html" title="ProxMox" class="page">ProxMox</a></li>
+<li><a href="../debian_boot_fix_BIOS_EFI.html" title="debian boot fix BIOS EFI" class="page">debian boot fix BIOS EFI</a></li>
+<li><a href="../Dogtag_-_internal_off-line_CA.html" title="Dogtag - internal off-line CA" class="page">Dogtag - internal off-line CA</a></li>
+<li><a href="../FreeIPA_with_off-line_CA.html" title="FreeIPA with off-line CA" class="page">FreeIPA with off-line CA</a></li>
+<li><a href="../Ipfire_firewall_and_router.html" title="Ipfire firewall and router" class="page">Ipfire firewall and router</a></li>
+<li><a href="../PFSense.html" title="PFSense" class="page">PFSense</a>
+<ul>
+<li><b>Firewall aliases explained</b></li>
+<li><a href="./Format_disk_drive_as_MSDosFS.html" title="Format disk drive as MSDosFS" class="page">Format disk drive as MSDosFS</a></li>
+<li><a href="./HAProxy_keep_alive_for_ssh.html" title="HAProxy keep alive for ssh" class="page">HAProxy keep alive for ssh</a></li>
+<li><a href="./install_and_use_bind_instead_of_Unbound.html" title="install and use bind instead of Unbound" class="page">install and use bind instead of Unbound</a></li>
+<li><a href="./Install_qemu-guest-agent.html" title="Install qemu-guest-agent" class="page">Install qemu-guest-agent</a></li>
 <li><a href="./readme.html" title="readme" class="page">readme</a></li>
-<li><a href="./wsl.html" title="wsl" class="page">wsl</a></li>
+<li><a href="./USB_Pendrive_on_ProxMox_VM.html" title="USB Pendrive on ProxMox VM" class="page">USB Pendrive on ProxMox VM</a></li>
+</ul>
+</li>
+<li><a href="../Postfix_configuration_for_a_host_or_server.html" title="Postfix configuration for a host or server" class="page">Postfix configuration for a host or server</a></li>
+<li><a href="../ProxMox.html" title="ProxMox" class="page">ProxMox</a></li>
+<li><a href="../readme.html" title="readme" class="page">readme</a></li>
+<li><a href="../wsl.html" title="wsl" class="page">wsl</a></li>
 </ul>
 
 </div>
@@ -79,49 +89,21 @@
 
 <div class='pages'>
 	<div class='heading'>
-	<h1>debian boot fix BIOS EFI <a name='debian boot fix BIOS EFI'></a></h1>
+	<h1>Firewall aliases explained <a name='PFSense:Firewall aliases explained'></a></h1>
 	</div>
 
 	<div class='content'>
 	<p>
-Created Friday 20 October 2023
-</p>
-
-<h2>EFI Shell Cheat Sheet<a id="efi-shell-cheat-sheet" class="h_anchor"></a></h2>
-
-
-<hr>
-
-<br>
-
-<p>
-<a href="https://mricher.fr/post/boot-from-an-efi-shell/" title="https://mricher.fr/post/boot-from-an-efi-shell/" class="https">https://mricher.fr/post/boot-from-an-efi-shell/</a>
-</p>
-
-<h2>Debian swap BIOS to EFI boot how to<a id="debian-swap-bios-to-efi-boot-how-to" class="h_anchor"></a></h2>
-
-
-<hr>
-
-<br>
-
-<p>
-<a href="https://blog.getreu.net/projects/legacy-to-uefi-boot/" title="https://blog.getreu.net/projects/legacy-to-uefi-boot/" class="https">https://blog.getreu.net/projects/legacy-to-uefi-boot/</a>
+Created Wednesday 11 October 2023
 </p>
 
 <p>
-don't forget to do the following;
+This YouTube explains how to use Aliases
 </p>
 
 <p>
-mkdir <a href="file:///boot/efi/EFI/BOOT" title="/boot/efi/EFI/BOOT" class="file">/boot/efi/EFI/BOOT</a><br>
-cp /boot/efi/EFI/debian/grubx64.efi <a href="file:///boot/efi/EFI/BOOT/BOOTX64.EFI" title="/boot/efi/EFI/BOOT/BOOTX64.EFI" class="file">/boot/efi/EFI/BOOT/BOOTX64.EFI</a>
+REF: <a href="https://www.youtube.com/watch?v=xlx2REV3-wo" title="https://www.youtube.com/watch?v=xlx2REV3-wo" class="https">https://www.youtube.com/watch?v=xlx2REV3-wo</a>
 </p>
-
-<p>
-otherwise you will be driven crazy with not being able to boot
-</p>
-
 
 	</div>
 
