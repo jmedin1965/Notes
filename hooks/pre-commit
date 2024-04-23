@@ -13,7 +13,7 @@ exec 1>&2
 info()
 {
     echo "pre-commit:" "$@"
-    echo "pre-commit:" "$@" >> /tmp/pre-commit.log
+    #echo "pre-commit:" "$@" >> /tmp/pre-commit.log
 }
 
 name="$(/bin/basename "$(pwd)")"
@@ -46,27 +46,26 @@ then
     /bin/find . -name '*.md' -exec /bin/rm {} \;
     info "clean out old md files $?"
 
-    [ -d markdown ] && /bin/rm -rf markdown
+    [ -d .git/markdown ] && /bin/rm -rf .git/markdown
     info "clean out markdown folder $?"
 
-    info /usr/bin/zim --export -r --output=markdown --format=markdown --index index "../$name"
-    /usr/bin/zim --export -r --output=markdown --format=markdown --index index "../$name"
+    info /usr/bin/zim --export -r --output=.git/markdown --format=markdown --index index "../$name"
+    /usr/bin/zim --export -r --output=.git/markdown --format=markdown --index index "../$name"
     info "export to md $?"
-exit 0
 
-    if cd markdown
+    if cd .git/markdown
     then
         info "cd to markdown export dir $?"
 
-        /bin/find . -name '*.md' -exec /bin/mv {} ../{} \;
+        /bin/find . -name '*.md' -exec /bin/mv {} ../../{} \;
         info "find and move md files $?"
 
-        cd ..
+        cd ../..
         info "cd back up $?"
     fi
     info "move exported md files $? $(pwd)"
 
-    [ -d markdown ] && echo /bin/rm -rf markdown
+    [ -d .git/markdown ] && echo /bin/rm -rf .git/markdown
     info "clean out markdown folder $?"
 
     # process readme file
@@ -88,6 +87,6 @@ exit 0
     fi
 fi
 
-#git add '*.md'
+git add '*.md'
 info "git add all md files $?"
 
