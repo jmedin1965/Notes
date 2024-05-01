@@ -145,7 +145,7 @@ Switch raid controller to hba
 ### The boot disk to do the conversion
 I used ubuntu-22.04.1-desktop-amd64.iso on a ventoy boot USB. I have the iso boot a persistent.
 
-REF <https://www.ventoy.net/en/plugin_persistence.html#:~:text=Many distros (like Ubuntu%2FMX,time you boot to it>.
+REF <https://www.ventoy.net/en/plugin_persistence.html#:~:text=Many%20distros%20(like%20Ubuntu%2FMX,time%20you%20boot%20to%20it>.
 
 There is a trick to creating the persistent dat/bin file though so read the instructions from the
 
@@ -184,6 +184,13 @@ REF: <https://forums.unraid.net/topic/82007-solved-unraid-with-hp-p420i-raid-car
 * [./hpssacli](./Proxmox_on_DL360p_Gen8/hpssacli)
 * ![](./Proxmox_on_DL360p_Gen8/pasted_image001.png)
 
+
+### Switch controller to IT Mode
+
+<https://forums.unraid.net/topic/82007-solved-unraid-with-hp-p420i-raid-card-in-hp-proliant-dl380p-g8/>
+
+ctrl slot=0 delete
+ctrl slot=0 modify hbamode=on
 
 Installation
 ------------

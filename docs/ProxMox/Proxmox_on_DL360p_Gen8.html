@@ -62,6 +62,7 @@
 
 <div class="menu">
 <ul>
+<li><a href="../CISCO_stuff.html" title="CISCO stuff" class="page">CISCO stuff</a></li>
 <li><a href="../debian_boot_fix_BIOS_EFI.html" title="debian boot fix BIOS EFI" class="page">debian boot fix BIOS EFI</a></li>
 <li><a href="../Dogtag_-_internal_off-line_CA.html" title="Dogtag - internal off-line CA" class="page">Dogtag - internal off-line CA</a></li>
 <li><a href="../FreeIPA_with_off-line_CA.html" title="FreeIPA with off-line CA" class="page">FreeIPA with off-line CA</a></li>
@@ -77,6 +78,8 @@
 </ul>
 </li>
 <li><a href="../readme.html" title="readme" class="page">readme</a></li>
+<li><a href="../Setting_up_Samba_as_an_Active_Directory_Domain_Controller.html" title="Setting up Samba as an Active Directory Domain Controller" class="page">Setting up Samba as an Active Directory Domain Controller</a></li>
+<li><a href="../VM_Benchmark_using_Phoronix_Test_Suite.html" title="VM Benchmark using Phoronix Test Suite" class="page">VM Benchmark using Phoronix Test Suite</a></li>
 <li><a href="../wsl.html" title="wsl" class="page">wsl</a></li>
 </ul>
 
@@ -343,7 +346,7 @@ I used ubuntu-22.04.1-desktop-amd64.iso on a ventoy boot USB. I have the iso boo
 </p>
 
 <p>
-REF <a href="https://www.ventoy.net/en/plugin_persistence.html#:~:text=Many distros (like Ubuntu%2FMX,time you boot to it" title="https://www.ventoy.net/en/plugin_persistence.html#:~:text=Many distros (like Ubuntu%2FMX,time you boot to it" class="https">https://www.ventoy.net/en/plugin_persistence.html#:~:text=Many distros (like Ubuntu%2FMX,time you boot to it</a>.
+REF <a href="https://www.ventoy.net/en/plugin_persistence.html#:~:text=Many%20distros%20(like%20Ubuntu%2FMX,time%20you%20boot%20to%20it" title="https://www.ventoy.net/en/plugin_persistence.html#:~:text=Many%20distros%20(like%20Ubuntu%2FMX,time%20you%20boot%20to%20it" class="https">https://www.ventoy.net/en/plugin_persistence.html#:~:text=Many%20distros%20(like%20Ubuntu%2FMX,time%20you%20boot%20to%20it</a>.
 </p>
 
 <p>
@@ -416,6 +419,19 @@ REF: <a href="https://forums.unraid.net/topic/82007-solved-unraid-with-hp-p420i-
 <li><a href="./Proxmox_on_DL360p_Gen8/hpssacli" title="./hpssacli" class="file">./hpssacli</a></li>
 <li><img src="./Proxmox_on_DL360p_Gen8/pasted_image001.png"></li>
 </ul>
+</p>
+
+<h3>Switch controller to IT Mode<a id="switch-controller-to-it-mode" class="h_anchor"></a></h3>
+
+<br>
+
+<p>
+<a href="https://forums.unraid.net/topic/82007-solved-unraid-with-hp-p420i-raid-card-in-hp-proliant-dl380p-g8/" title="https://forums.unraid.net/topic/82007-solved-unraid-with-hp-p420i-raid-card-in-hp-proliant-dl380p-g8/" class="https">https://forums.unraid.net/topic/82007-solved-unraid-with-hp-p420i-raid-card-in-hp-proliant-dl380p-g8/</a>
+</p>
+
+<p>
+ctrl slot=0 delete<br>
+ctrl slot=0 modify hbamode=on
 </p>
 
 <h2>Installation<a id="installation" class="h_anchor"></a></h2>

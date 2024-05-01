@@ -1,0 +1,46 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-05-01T12:30:50+10:00
+
+====== VM Benchmark using Phoronix Test Suite ======
+Created Wednesday 01 May 2024
+
+==== How to benchmark Linux virtual machine performance ====
+Last updated on July 6, 2020 by Dan Nanni
+When you are comparing various hypervisors, you will want to compare the performance of virtual machines (VMs) running on different hypervisors. If you are comparing various IaaS cloud providers, you will also want to benchmark VMs, in this case, from different providers. Whatever the reason may be, it is important to know how to properly benchmark the performance of your VMs.
+However, difficulty in any kind of benchmark tests is the fact that benchmark numbers are highly dependent on the type of workloads or applications used to derive the numbers. To properly assess the relative performance of any computer system, people come up with different types of benchmark tests, such as real program benchmark, synthetic benchmark, microbenchmark, etc.
+In Linux, there are several benchmark software available, and Phoronix Test Suite is one such tool. Phoronix Test Suite is an open-source benchmarking tool that supports multiple operating systems (Linux, Windows, Apple OS X, etc). It provides an extensible list of test profiles and test suites. These test profiles and suites can measure different kinds of performance characteristics of an underlying system (e.g., CPU, disk I/O, RAM, networking). Phoronix Test Suite also allows you to upload your benchmark result along with system specification to openbenchmarking.org, so that you can compare your result with others.
+The following is the guide on how to benchmark the performance of a Linux VM with Phoronix Test Suite.
+First, download phoronix-test-suite, and install it (along with its dependent packages). From the official website, you can download either a .deb package or a generic package.
+Install Phoronix Test Suite on Linux VM
+For Ubuntu or Debian:
+
+==== To install phoronix-test-suite on Ubuntu or Debian: ====
+$ sudo apt-get install php5-cli curl php5-gd$ sudo dpkg -i phoronix-test-suite_4.6.1_all.deb
+
+==== For CentOS, RHEL or Fedora: ====
+To install phoronix-test-suite on CentOS, RHEL or Fedora:
+$ sudo yum install php-cli php-gd curl$ sudo tar xvfvz phoronix-test-suite-4.6.1.tar.gz$ cd phoronix-test-suite$ sudo [[./install-sh]]
+
+==== Benchmark VM Performance with Phoronix Test Suite ====
+Phoronix Test Suite automatically downloads (over network) test profiles and test suites that you choose, and (optionally) uploads benchmark results to openbenchmarking.org. Thus, you need Internet access for one-time download of any needed test profiles/suites, and if your VM is behind a proxy, you need to do initial proxy configuration by entering:
+$ phoronix-test-suite network-setup
+To see a list of available tests, run:
+$ phoronix-test-suite list-tests
+Phoronix Test Suite v4.6.1Available Tests
+pts/aio-stress                 - AIO-Stress                          Diskpts/apache                     - Apache Benchmark                    Systempts/apitrace                   - APITrace                            Graphicspts/battery-power-usage        - Battery Power Usage                 Systempts/blake2                     - BLAKE2                              Processorpts/blogbench                  - BlogBench                           Diskpts/bork                       - Bork File Encrypter                 Processorpts/botan                      - Botan                               Processor
+As shown above, each test invokes specific application workload which is designed to stress a particular type of VM resources (e.g., CPU processor, disk, graphics, overall system).
+While a given "test" launches a particular application defined in its test profile, a "test suite" is a collection of multiple test profiles with a predefined set of test options. To see a list of available test suites, run:
+$ phoronix-test-suite list-suites
+Phoronix Test Suite v4.6.1Available Suites
+pts/audio-encoding               - Audio Encoding                   System  pts/chess                        - Chess Test Suite                 Processor  pts/compilation                  - Timed Code Compilation           Processor  pts/compiler                     - Compiler                         Processor  pts/compression                  - Timed File Compression           Processor  pts/computational                - Computational Test Suite         System
+If you choose a specific test or a test suite (e.g., aio-stress) from the lists, you can run phoronix-test-suites as follows.
+$ phoronix-test-suites run aio-stress
+If you run a given test for the first time, phoronix-test-suites may ask you to install necessary packages for the test.
+Once the requested test is completed successfully, the result will be saved locally, and optionally uploaded to openbenchmarking.org. In order to see the list of all saved benchmark results:
+$ phoronix-test-suite list-results
+
+From <https://www.xmodulo.com/how-to-benchmark-virtual-machines.html> 
+
+
+

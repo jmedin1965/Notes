@@ -14,6 +14,8 @@ GitHub code is
 
 # Index of Notes
 
+* [CISCO stuff](./CISCO_stuff.md)
+	* [Archive command to backup config changes](./CISCO_stuff/Archive_command_to_backup_config_changes.md)
 * [debian boot fix BIOS EFI](./debian_boot_fix_BIOS_EFI.md)
 * [Dogtag - internal off-line CA](./Dogtag_-_internal_off-line_CA.md)
 * [FreeIPA with off-line CA](./FreeIPA_with_off-line_CA.md)
@@ -33,6 +35,8 @@ GitHub code is
 	* [readme](./ProxMox/readme.md)
 	* [Tteck repo helper scripts](./ProxMox/Tteck_repo_helper_scripts.md)
 * [readme](./readme.md)
+* [Setting up Samba as an Active Directory Domain Controller](./Setting_up_Samba_as_an_Active_Directory_Domain_Controller.md)
+* [VM Benchmark using Phoronix Test Suite](./VM_Benchmark_using_Phoronix_Test_Suite.md)
 * [wsl](./wsl.md)
 
 
