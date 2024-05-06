@@ -1,0 +1,27 @@
+# ZFS Replication
+Created Monday 06 May 2024
+
+Sanoid Syncoid
+--------------
+
+REF: <https://github.com/jimsalterjrs/sanoid>
+
+This is great but snapshot format can't be changed
+
+
+
+ZnapZend
+--------
+
+REF: <https://github.com/oetiker/znapzend/tree/master>
+REF: <https://www.znapzend.org/>
+
+Sounds promising but does not have a config file instead it saves config in the volume itself. This has advantages and disadvantages.
+
+The snapshot format is configurable and the snapshot can be renamed and it will still retain the configuration and snap history.
+
+List of alternatives
+--------------------
+
+REF: <https://anarc.at/software/zfs/>
+

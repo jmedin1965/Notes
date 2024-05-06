@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-05-06T09:21:42+10:00
+
+====== ZFS ======
+Created Monday 06 May 2024
+

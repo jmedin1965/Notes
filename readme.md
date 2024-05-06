@@ -38,5 +38,7 @@ GitHub code is
 * [Setting up Samba as an Active Directory Domain Controller](./Setting_up_Samba_as_an_Active_Directory_Domain_Controller.md)
 * [VM Benchmark using Phoronix Test Suite](./VM_Benchmark_using_Phoronix_Test_Suite.md)
 * [wsl](./wsl.md)
+* [ZFS](./ZFS.md)
+	* [ZFS Replication](./ZFS/ZFS_Replication.md)
 
 
