@@ -25,3 +25,10 @@ The snapshot format is configurable and the snapshot can be renamed and it will 
 ===== List of alternatives =====
 
 REF: https://anarc.at/software/zfs/
+
+
+===== Suite Open Source CV4 - opensource proxmox tools =====
+
+This is a suit of opensource tools that I stumbled on to by an Italian mob. Of interest is a tool to schedule automatic snapshots.
+
+REF: https://corsinvest.it/suite-cv4-pve-opensource-proxmox-ve-ceph/
