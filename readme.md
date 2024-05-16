@@ -26,6 +26,8 @@ GitHub code is
 	* [HAProxy keep alive for ssh](./PFSense/HAProxy_keep_alive_for_ssh.md)
 	* [install and use bind instead of Unbound](./PFSense/install_and_use_bind_instead_of_Unbound.md)
 	* [Install qemu-guest-agent](./PFSense/Install_qemu-guest-agent.md)
+	* [Log rotation vi newsyslog.conf](./PFSense/Log_rotation_vi_newsyslog.conf.md)
+	* [PFSense shutdown scripts](./PFSense/PFSense_shutdown_scripts.md)
 	* [readme](./PFSense/readme.md)
 	* [USB Pendrive on ProxMox VM](./PFSense/USB_Pendrive_on_ProxMox_VM.md)
 * [Postfix configuration for a host or server](./Postfix_configuration_for_a_host_or_server.md)
