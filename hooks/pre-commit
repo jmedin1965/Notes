@@ -8,11 +8,15 @@
 # To enable this hook, rename this file to "pre-commit".
 
 # Redirect output to stderr.
+
 exec 1>&2
 
+info_str=""
 info()
 {
     echo "pre-commit:" "$@"
+    info_str="${info_str}pre-commit: $@
+"
     #echo "pre-commit:" "$@" >> /tmp/pre-commit.log
 }
 
@@ -90,3 +94,8 @@ fi
 git add '*.md'
 info "git add all md files $?"
 
+if [ -n "$DISPLAY" -a -x /usr/bin/xmessage ] 
+then
+    info "sending info to xmessage"
+    echo "$info_str" | /usr/bin/xmessage -file - &
+fi

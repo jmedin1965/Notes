@@ -5,4 +5,4 @@ Creation-Date: 2024-05-16T10:27:03+10:00
 ====== PFSense shutdown scripts ======
 Created Thursday 16 May 2024
 
-Looks like you can create shutdown scripts. They are run from /etc/pfSense-rc.shutdown[[.]] At the end, this script runs all executable scripts at [[/usr/local/etc/rc.d/shutdown.*.sh.]] I have created a script on pfs03, which is a physical server. This script signals the condoling sonoff to turn off afetr 30 seconds.
+Looks like you can create shutdown scripts. They are run from /etc/pfSense-rc.shutdown[[.]] At the end, this script runs all executable scripts at [[/usr/local/etc/rc.d/shutdown.*.sh.]] I have created a script on pfs03, which is a physical server. This script signals the condoling sonoff to turn off after 30 seconds.
