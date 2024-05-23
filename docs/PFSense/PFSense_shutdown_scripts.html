@@ -78,6 +78,7 @@
 <li><b>PFSense shutdown scripts</b></li>
 <li><a href="./readme.html" title="readme" class="page">readme</a></li>
 <li><a href="./USB_Pendrive_on_ProxMox_VM.html" title="USB Pendrive on ProxMox VM" class="page">USB Pendrive on ProxMox VM</a></li>
+<li><a href="./Using_Software_from_FreeBSD.html" title="Using Software from FreeBSD" class="page">Using Software from FreeBSD</a></li>
 </ul>
 </li>
 <li><a href="../Postfix_configuration_for_a_host_or_server.html" title="Postfix configuration for a host or server" class="page">Postfix configuration for a host or server</a></li>
@@ -105,6 +106,18 @@ Created Thursday 16 May 2024
 
 <p>
 Looks like you can create shutdown scripts. They are run from /etc/pfSense-rc.shutdown<a href="" title="." class="page">.</a> At the end, this script runs all executable scripts at <a href="file:///usr/local/etc/rc.d/shutdown.%2A.sh." title="/usr/local/etc/rc.d/shutdown.*.sh." class="file">/usr/local/etc/rc.d/shutdown.*.sh.</a> I have created a script on pfs03, which is a physical server. This script signals the condoling sonoff to turn off after 30 seconds.<b>d</b>
+</p>
+
+<p>
+Looks like this script is also run on startup, so be carefull. It is run with first argument as start.
+</p>
+
+<p>
+Also, any script in <a href="file:///usr/local/etc/rc.d" title="/usr/local/etc/rc.d/" class="file">/usr/local/etc/rc.d/</a> that ends in .sh and is executable is also run. Check first arg as this script is run as an rc script, so star|stop|restart
+</p>
+
+<p>
+REF: <a href="https://docs.netgate.com/pfsense/en/latest/development/boot-commands.html" title="https://docs.netgate.com/pfsense/en/latest/development/boot-commands.html" class="https">https://docs.netgate.com/pfsense/en/latest/development/boot-commands.html</a>
 </p>
 
 	</div>

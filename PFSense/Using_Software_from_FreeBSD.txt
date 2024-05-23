@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-05-21T20:15:36+10:00
+
+====== Using Software from FreeBSD ======
+Created Tuesday 21 May 2024
+
+REF: https://docs.netgate.com/pfsense/en/latest/recipes/freebsd-pkg-repo.html
+
