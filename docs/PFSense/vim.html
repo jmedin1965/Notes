@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>USB Pendrive on ProxMox VM</title>
+	<title>vim</title>
 	<meta name='Generator' content='Zim 0.74.3'>
 	<style type='text/css'>
 		a          { text-decoration: none      }
@@ -51,11 +51,11 @@
 
 <!-- Header -->
 <div class='header'>
-	[ <a href='./readme.html'>Prev</a> ]
+	[ <a href='./Using_Software_from_FreeBSD.html'>Prev</a> ]
 
 	[ <a href='../index.html'>Index</a> ]
 
-	[ <a href='./Using_Software_from_FreeBSD.html'>Next</a> ]
+	[ <a href='../Postfix_configuration_for_a_host_or_server.html'>Next</a> ]
 </div>
 
 <hr />
@@ -78,9 +78,9 @@
 <li><a href="./ls.html" title="ls" class="page">ls</a></li>
 <li><a href="./PFSense_shutdown_scripts.html" title="PFSense shutdown scripts" class="page">PFSense shutdown scripts</a></li>
 <li><a href="./readme.html" title="readme" class="page">readme</a></li>
-<li><b>USB Pendrive on ProxMox VM</b></li>
+<li><a href="./USB_Pendrive_on_ProxMox_VM.html" title="USB Pendrive on ProxMox VM" class="page">USB Pendrive on ProxMox VM</a></li>
 <li><a href="./Using_Software_from_FreeBSD.html" title="Using Software from FreeBSD" class="page">Using Software from FreeBSD</a></li>
-<li><a href="./vim.html" title="vim" class="page">vim</a></li>
+<li><b>vim</b></li>
 </ul>
 </li>
 <li><a href="../Postfix_configuration_for_a_host_or_server.html" title="Postfix configuration for a host or server" class="page">Postfix configuration for a host or server</a></li>
@@ -98,39 +98,56 @@
 
 <div class='pages'>
 	<div class='heading'>
-	<h1>USB Pendrive on ProxMox VM <a name='PFSense:USB Pendrive on ProxMox VM'></a></h1>
+	<h1>vim <a name='PFSense:vim'></a></h1>
 	</div>
 
 	<div class='content'>
 	<p>
-Created Wednesday 11 October 2023
+Created Thursday 23 May 2024
 </p>
 
 <p>
-REF: <a href="https://forum.proxmox.com/threads/virtual-pendrive-on-vm.114143/" title="https://forum.proxmox.com/threads/virtual-pendrive-on-vm.114143/" class="https">https://forum.proxmox.com/threads/virtual-pendrive-on-vm.114143/</a>
+by default vim is not installed. to install
 </p>
 
 <p>
-Format drive as FAT32: <a href="https://www.codenicer.com/content/formatting-usb-drive-fat32-using-freebsd" title="https://www.codenicer.com/content/formatting-usb-drive-fat32-using-freebsd" class="https">https://www.codenicer.com/content/formatting-usb-drive-fat32-using-freebsd</a>
+<div style='padding-left: 30pt'>
+pkg install vim
+</div>
 </p>
 
 <p>
-gpart worked to get it formatted
+Once installed there is no alias for vi to launch vim. Need an alias vi=vim
 </p>
 
 <p>
-Mount USB Pen Drive: <a href="https://docs.netgate.com/pfsense/en/latest/recipes/usb-drive-copy.html" title="https://docs.netgate.com/pfsense/en/latest/recipes/usb-drive-copy.html" class="https">https://docs.netgate.com/pfsense/en/latest/recipes/usb-drive-copy.html</a>
+Then, the vim rc files are stuffed. I'm going to copy the ubuntu vimrc files. I've had several goes at trying to fix, but it's too hard. debian.vim is located in $VIMRUNTIME. to get VIMRUNTIME, run the following
 </p>
 
 <p>
-in the the vm's monitor screen;
+<div style='padding-left: 30pt'>
+<tt>vim -e -T dumb --cmd 'exe "set t_cm=\&lt;C-M&gt;"|echo $VIMRUNTIME|quit' | tr -d '\015</tt>'
+</div>
+</p>
+
+<pre>
+on ubuntu = /usr/share/vim/vim82
+on pfSense = /usr/local/share/vim/vim90
+</pre>
+
+<br>
+
+<p>
+using filer addon to create this file on pfsense. Also copy <a href="file:///etc/vim/vimrc" title="/etc/vim/vimrc" class="file">/etc/vim/vimrc</a> from ubuntu to <a href="file:///usr/local/etc/vim/vimrc" title="/usr/local/etc/vim/vimrc" class="file">/usr/local/etc/vim/vimrc</a> but added the below to the bottom of this file. This is so I cal also have a vimrc.local.
 </p>
 
 <p>
-drive_add 0 file=/dev/dpool03/data/vm-118-disk-1,if=none,id=drive-usb0,format=raw,cache=none<br>
-device_add usb-storage,id=drive-usb0,drive=drive-usb0,removable=on<br>
-device_del drive-usb0
+<tt>if filereadable("/usr/local/etc/vim/vimrc.local")</tt><br>
+<tt>    source /usr/local/etc/vim/vimrc.local</tt><br>
+<tt>endif</tt>
 </p>
+
+<br>
 
 
 	</div>

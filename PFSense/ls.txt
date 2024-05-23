@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-05-23T14:36:00+10:00
+
+====== ls ======
+Created Thursday 23 May 2024
+
+ls on freeBSD assumes an ls -a for root user. Had to create an alias
+
+''alias'' ls="/bin/ls -I --color=always"

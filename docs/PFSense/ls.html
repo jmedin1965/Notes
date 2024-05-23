@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>USB Pendrive on ProxMox VM</title>
+	<title>ls</title>
 	<meta name='Generator' content='Zim 0.74.3'>
 	<style type='text/css'>
 		a          { text-decoration: none      }
@@ -51,11 +51,11 @@
 
 <!-- Header -->
 <div class='header'>
-	[ <a href='./readme.html'>Prev</a> ]
+	[ <a href='./Log_rotation_vi_newsyslog.conf.html'>Prev</a> ]
 
 	[ <a href='../index.html'>Index</a> ]
 
-	[ <a href='./Using_Software_from_FreeBSD.html'>Next</a> ]
+	[ <a href='./PFSense_shutdown_scripts.html'>Next</a> ]
 </div>
 
 <hr />
@@ -75,10 +75,10 @@
 <li><a href="./install_and_use_bind_instead_of_Unbound.html" title="install and use bind instead of Unbound" class="page">install and use bind instead of Unbound</a></li>
 <li><a href="./Install_qemu-guest-agent.html" title="Install qemu-guest-agent" class="page">Install qemu-guest-agent</a></li>
 <li><a href="./Log_rotation_vi_newsyslog.conf.html" title="Log rotation vi newsyslog.conf" class="page">Log rotation vi newsyslog.conf</a></li>
-<li><a href="./ls.html" title="ls" class="page">ls</a></li>
+<li><b>ls</b></li>
 <li><a href="./PFSense_shutdown_scripts.html" title="PFSense shutdown scripts" class="page">PFSense shutdown scripts</a></li>
 <li><a href="./readme.html" title="readme" class="page">readme</a></li>
-<li><b>USB Pendrive on ProxMox VM</b></li>
+<li><a href="./USB_Pendrive_on_ProxMox_VM.html" title="USB Pendrive on ProxMox VM" class="page">USB Pendrive on ProxMox VM</a></li>
 <li><a href="./Using_Software_from_FreeBSD.html" title="Using Software from FreeBSD" class="page">Using Software from FreeBSD</a></li>
 <li><a href="./vim.html" title="vim" class="page">vim</a></li>
 </ul>
@@ -98,40 +98,21 @@
 
 <div class='pages'>
 	<div class='heading'>
-	<h1>USB Pendrive on ProxMox VM <a name='PFSense:USB Pendrive on ProxMox VM'></a></h1>
+	<h1>ls <a name='PFSense:ls'></a></h1>
 	</div>
 
 	<div class='content'>
 	<p>
-Created Wednesday 11 October 2023
+Created Thursday 23 May 2024
 </p>
 
 <p>
-REF: <a href="https://forum.proxmox.com/threads/virtual-pendrive-on-vm.114143/" title="https://forum.proxmox.com/threads/virtual-pendrive-on-vm.114143/" class="https">https://forum.proxmox.com/threads/virtual-pendrive-on-vm.114143/</a>
+ls on freeBSD assumes an ls -a for root user. Had to create an alias
 </p>
 
 <p>
-Format drive as FAT32: <a href="https://www.codenicer.com/content/formatting-usb-drive-fat32-using-freebsd" title="https://www.codenicer.com/content/formatting-usb-drive-fat32-using-freebsd" class="https">https://www.codenicer.com/content/formatting-usb-drive-fat32-using-freebsd</a>
+<tt>alias</tt> ls="/bin/ls -I --color=always"
 </p>
-
-<p>
-gpart worked to get it formatted
-</p>
-
-<p>
-Mount USB Pen Drive: <a href="https://docs.netgate.com/pfsense/en/latest/recipes/usb-drive-copy.html" title="https://docs.netgate.com/pfsense/en/latest/recipes/usb-drive-copy.html" class="https">https://docs.netgate.com/pfsense/en/latest/recipes/usb-drive-copy.html</a>
-</p>
-
-<p>
-in the the vm's monitor screen;
-</p>
-
-<p>
-drive_add 0 file=/dev/dpool03/data/vm-118-disk-1,if=none,id=drive-usb0,format=raw,cache=none<br>
-device_add usb-storage,id=drive-usb0,drive=drive-usb0,removable=on<br>
-device_del drive-usb0
-</p>
-
 
 	</div>
 
