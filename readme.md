@@ -21,6 +21,7 @@ GitHub code is
 * [FreeIPA with off-line CA](./FreeIPA_with_off-line_CA.md)
 * [Ipfire firewall and router](./Ipfire_firewall_and_router.md)
 * [PFSense](./PFSense.md)
+	* [command line mail](./PFSense/command_line_mail.md)
 	* [Firewall aliases explained](./PFSense/Firewall_aliases_explained.md)
 	* [Format disk drive as MSDosFS](./PFSense/Format_disk_drive_as_MSDosFS.md)
 	* [HAProxy keep alive for ssh](./PFSense/HAProxy_keep_alive_for_ssh.md)
