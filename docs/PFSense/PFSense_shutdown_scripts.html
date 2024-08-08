@@ -108,7 +108,7 @@ Created Thursday 16 May 2024
 </p>
 
 <p>
-Looks like you can create shutdown scripts. They are run from /etc/pfSense-rc.shutdown<a href="" title="." class="page">.</a> At the end, this script runs all executable scripts at <a href="file:///usr/local/etc/rc.d/shutdown.%2A.sh." title="/usr/local/etc/rc.d/shutdown.*.sh." class="file">/usr/local/etc/rc.d/shutdown.*.sh.</a> I have created a script on pfs03, which is a physical server. This script signals the condoling sonoff to turn off after 30 seconds.<b>d</b>
+Looks like you can create shutdown scripts. They are run from /etc/pfSense-rc.shutdown<a href="" title="." class="page">.</a> At the end, this script runs all executable scripts at <a href="file:///usr/local/etc/rc.d/shutdown.%2A.sh." title="/usr/local/etc/rc.d/shutdown.*.sh." class="file">/usr/local/etc/rc.d/shutdown.*.sh.</a> I have created a script on pfs03, which is a physical server. This script signals the controlling sonoff to turn off after 30 seconds.
 </p>
 
 <p>
@@ -116,7 +116,7 @@ Looks like this script is also run on startup, so be carefull. It is run with fi
 </p>
 
 <p>
-Also, any script in <a href="file:///usr/local/etc/rc.d" title="/usr/local/etc/rc.d/" class="file">/usr/local/etc/rc.d/</a> that ends in .sh and is executable is also run. Check first arg as this script is run as an rc script, so star|stop|restart
+Also, any script in <a href="file:///usr/local/etc/rc.d" title="/usr/local/etc/rc.d/" class="file">/usr/local/etc/rc.d/</a> that ends in .sh than is executable is also run. Check first arg as this script is run as an rc script, so star|stop|restart
 </p>
 
 <p>
