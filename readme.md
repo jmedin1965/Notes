@@ -19,6 +19,7 @@ GitHub code is
 * [debian boot fix BIOS EFI](./debian_boot_fix_BIOS_EFI.md)
 * [Dogtag - internal off-line CA](./Dogtag_-_internal_off-line_CA.md)
 * [FreeIPA with off-line CA](./FreeIPA_with_off-line_CA.md)
+* [Home Assistant](./Home_Assistant.md)
 * [Ipfire firewall and router](./Ipfire_firewall_and_router.md)
 * [PFSense](./PFSense.md)
 	* [command line mail](./PFSense/command_line_mail.md)
