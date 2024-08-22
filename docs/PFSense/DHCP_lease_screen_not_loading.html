@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Using Software from FreeBSD</title>
+	<title>DHCP lease screen not loading</title>
 	<meta name='Generator' content='Zim 0.74.3'>
 	<style type='text/css'>
 		a          { text-decoration: none      }
@@ -51,11 +51,11 @@
 
 <!-- Header -->
 <div class='header'>
-	[ <a href='./USB_Pendrive_on_ProxMox_VM.html'>Prev</a> ]
+	[ <a href='./command_line_mail.html'>Prev</a> ]
 
 	[ <a href='../index.html'>Index</a> ]
 
-	[ <a href='./vim.html'>Next</a> ]
+	[ <a href='./Firewall_aliases_explained.html'>Next</a> ]
 </div>
 
 <hr />
@@ -72,7 +72,7 @@
 <li><a href="../PFSense.html" title="PFSense" class="page">PFSense</a>
 <ul>
 <li><a href="./command_line_mail.html" title="command line mail" class="page">command line mail</a></li>
-<li><a href="./DHCP_lease_screen_not_loading.html" title="DHCP lease screen not loading" class="page">DHCP lease screen not loading</a></li>
+<li><b>DHCP lease screen not loading</b></li>
 <li><a href="./Firewall_aliases_explained.html" title="Firewall aliases explained" class="page">Firewall aliases explained</a></li>
 <li><a href="./Format_disk_drive_as_MSDosFS.html" title="Format disk drive as MSDosFS" class="page">Format disk drive as MSDosFS</a></li>
 <li><a href="./HAProxy_keep_alive_for_ssh.html" title="HAProxy keep alive for ssh" class="page">HAProxy keep alive for ssh</a></li>
@@ -83,7 +83,7 @@
 <li><a href="./PFSense_shutdown_scripts.html" title="PFSense shutdown scripts" class="page">PFSense shutdown scripts</a></li>
 <li><a href="./readme.html" title="readme" class="page">readme</a></li>
 <li><a href="./USB_Pendrive_on_ProxMox_VM.html" title="USB Pendrive on ProxMox VM" class="page">USB Pendrive on ProxMox VM</a></li>
-<li><b>Using Software from FreeBSD</b></li>
+<li><a href="./Using_Software_from_FreeBSD.html" title="Using Software from FreeBSD" class="page">Using Software from FreeBSD</a></li>
 <li><a href="./vim.html" title="vim" class="page">vim</a></li>
 </ul>
 </li>
@@ -102,18 +102,46 @@
 
 <div class='pages'>
 	<div class='heading'>
-	<h1>Using Software from FreeBSD <a name='PFSense:Using Software from FreeBSD'></a></h1>
+	<h1>DHCP lease screen not loading <a name='PFSense:DHCP lease screen not loading'></a></h1>
 	</div>
 
 	<div class='content'>
 	<p>
-Created Tuesday 21 May 2024
+Created Thursday 22 August 2024
 </p>
 
 <p>
-REF: <a href="https://docs.netgate.com/pfsense/en/latest/recipes/freebsd-pkg-repo.html" title="https://docs.netgate.com/pfsense/en/latest/recipes/freebsd-pkg-repo.html" class="https">https://docs.netgate.com/pfsense/en/latest/recipes/freebsd-pkg-repo.html</a>
+<a href="https://forum.netgate.com/topic/189755/a-fix-if-you-want-to-use-system_patches-package?_=1724291002308" title="https://forum.netgate.com/topic/189755/a-fix-if-you-want-to-use-system_patches-package?_=1724291002308" class="https">https://forum.netgate.com/topic/189755/a-fix-if-you-want-to-use-system_patches-package?_=1724291002308</a>
 </p>
 
+<p>
+Looks like at some stage, the DHCP server started adding entries to ./var/dhcpd/var/db/dhcpd.leases file for each DHCP address, weather it's being issued or not. Or else it's been like that always. The php code in /src/etc/inc/system.inc does a hostname lookup for each of these IP addresses. Either way, if you do have a number of leases in this file, the lookup takes forever, so the GUI times out. If you would like that lookup disabled and for the patch to survive an update, just do the following:
+</p>
+
+<p>
+<ol type="1" start="1">
+<li>install the "System_Patches" package</li>
+<li>navigate to System&gt;&gt;Patches</li>
+<li>click "Add New Patch"
+<ol type="a" start="1">
+<li>Description: status DHCP hangs</li>
+<li>URL/Commit ID: leave blank</li>
+<li>Patch Contents: see attached file dhcp_status.patch</li>
+<li>Leave other fields as default</li>
+<li>possibly tick "Auto Apply" if you want or just apply it manually. Your choice here.</li>
+</ol>
+</li>
+<li>Now navigate to "Status&gt;&gt;DHCP Leases" and it loads quick, be it without the results of a dns lookup for each entry.</li>
+</ol>
+</p>
+
+<p>
+The other alternative is to manually add a DNS entry for each unassigned IP address in the DHCP ranges.
+</p>
+
+<p>
+Hope this helps others.
+</p>
 
 	</div>
 
