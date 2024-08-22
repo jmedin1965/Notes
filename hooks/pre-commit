@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # An example hook script to verify what is about to be committed.
 # Called by "git commit" with no arguments.  The hook should
@@ -21,6 +21,15 @@ info()
 }
 
 name="$(/bin/basename "$(pwd)")"
+user="$(/bin/whoami)"
+if [ "$user" = root ]
+then
+    if [ -x /mnt/c/Windows/system32/cmd.exe ]
+    then
+        user="$(/mnt/c/Windows/system32/cmd.exe /c whoami 2>/dev/null)"
+        user=${user##*\\}
+    fi
+fi
 
 if [ -e "notebook.zim" ]
 then

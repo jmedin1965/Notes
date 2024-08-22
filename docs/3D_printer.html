@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Home Assistant</title>
+	<title>3D printer</title>
 	<meta name='Generator' content='Zim 0.74.3'>
 	<style type='text/css'>
 		a          { text-decoration: none      }
@@ -51,23 +51,23 @@
 
 <!-- Header -->
 <div class='header'>
-	[ <a href='./FreeIPA_with_off-line_CA.html'>Prev</a> ]
+	[ <span class='insen'>Prev</span> ]
 
 	[ <a href='./index.html'>Index</a> ]
 
-	[ <a href='./Ipfire_firewall_and_router.html'>Next</a> ]
+	[ <a href='./CISCO_stuff.html'>Next</a> ]
 </div>
 
 <hr />
 
 <div class="menu">
 <ul>
-<li><a href="./3D_printer.html" title="3D printer" class="page">3D printer</a></li>
+<li><b>3D printer</b></li>
 <li><a href="./CISCO_stuff.html" title="CISCO stuff" class="page">CISCO stuff</a></li>
 <li><a href="./debian_boot_fix_BIOS_EFI.html" title="debian boot fix BIOS EFI" class="page">debian boot fix BIOS EFI</a></li>
 <li><a href="./Dogtag_-_internal_off-line_CA.html" title="Dogtag - internal off-line CA" class="page">Dogtag - internal off-line CA</a></li>
 <li><a href="./FreeIPA_with_off-line_CA.html" title="FreeIPA with off-line CA" class="page">FreeIPA with off-line CA</a></li>
-<li><b>Home Assistant</b></li>
+<li><a href="./Home_Assistant.html" title="Home Assistant" class="page">Home Assistant</a></li>
 <li><a href="./Ipfire_firewall_and_router.html" title="Ipfire firewall and router" class="page">Ipfire firewall and router</a></li>
 <li><a href="./PFSense.html" title="PFSense" class="page">PFSense</a></li>
 <li><a href="./Postfix_configuration_for_a_host_or_server.html" title="Postfix configuration for a host or server" class="page">Postfix configuration for a host or server</a></li>
@@ -85,43 +85,65 @@
 
 <div class='pages'>
 	<div class='heading'>
-	<h1>Home Assistant <a name='Home Assistant'></a></h1>
+	<h1>3D printer <a name='3D printer'></a></h1>
 	</div>
 
 	<div class='content'>
 	<p>
-Created Tuesday 20 August 2024
+Created Thursday 22 August 2024
 </p>
 
-<h2>Change Reolink IP camera IP address<a id="change-reolink-ip-camera-ip-address" class="h_anchor"></a></h2>
+<p>
+creality ke 3d printer.  <br>
+You can hack it and change the software etc and it's wifi. 
+</p>
+
+<p>
+Just printing stuff for a project. <br>
+Good so far 
+</p>
+
+<p>
+$480 there is a cheaper one but it doesn't have WiFi or touch screen or wire empty sensor etc.<br>
+I had an old Microsoft usb camera and plugged that into the 3d printer and it did this:<br>
+<a href="https://support.th3dstudio.com/helpcenter/setting-up-3rd-party-webcam-support-for-mainsail-or-fluidd-on-creality-k1-k1-max-or-ender-3-v3-ke/" title="https://support.th3dstudio.com/helpcenter/setting-up-3rd-party-webcam-support-for-mainsail-or-fluidd-on-creality-k1-k1-max-or-ender-3-v3-ke/" class="https">https://support.th3dstudio.com/helpcenter/setting-up-3rd-party-webcam-support-for-mainsail-or-fluidd-on-creality-k1-k1-max-or-ender-3-v3-ke/</a><br>
+and it worked! And that is with the stock firmware.
+</p>
+
+<p>
+This runs some sort of Linux and they even give you a menu option to enable root access!
+</p>
+
+<p>
+Check this:<br>
+<a href="https://www.youtube.com/watch?v=L92A5V6V4Lo" title="https://www.youtube.com/watch?v=L92A5V6V4Lo" class="https">https://www.youtube.com/watch?v=L92A5V6V4Lo</a>
+</p>
+
+<p>
+I have made a few circuit board enclosures  and some mounts for weight sensors.<br>
+Going to do this:<br>
+<a href="https://www.youtube.com/watch?v=ofHqZJTxBnE" title="https://www.youtube.com/watch?v=ofHqZJTxBnE" class="https">https://www.youtube.com/watch?v=ofHqZJTxBnE</a><br>
+and then put the results into openHab.
+</p>
 
 <br>
 
 <p>
-Yet again, I have changed the IP address of the Realink IP camera. The IP address needs to be changed in two places on the following file:
+I haven't touched the pfsense at all. Too busy doing other things. I will get around to it one day I will keep all you emails so I can look at it later.<br>
+I want to firstly get the web stuff from the paid domain hosting back to my local servers and then do it.
 </p>
 
 <p>
-<div style='padding-left: 30pt'>
-<a href="file:///root/config/.storage/core.device_registry" title="/root/config/.storage/core.device_registry" class="file">/root/config/.storage/core.device_registry</a><br>
-<a href="file:///root/config/.storage/core.device_registry" title="/root/config/.storage/" class="file">/root/config/.storage/</a>core.device_registry
-</div>
-</p>
-
-<p>
-config is a symbolic link to <a href="file:///homeassistant" title="/homeassistant" class="file">/homeassistant</a>
-</p>
-
-<p>
-you will have to look for the old IP address or the mac address.
-</p>
-
-<p>
-Once changed you need to reload HA from settings&gt;&gt;system, then on this page there is a power icon top right of screen. Click it and choose "Restart Home Assistant"
+Currently suffering from a cold that Alison so graciously gave me, so today is a rest day (like every other day really) 
 </p>
 
 <br>
-<br>
+
+<p>
+I have also just found that it supports mqtt and if you use home assistant there is stuff you can do from there as well:<br>
+<a href="https://github.com/marcolivierarsenault/moonraker-home-assistant" title="https://github.com/marcolivierarsenault/moonraker-home-assistant" class="https">https://github.com/marcolivierarsenault/moonraker-home-assistant</a>
+</p>
+
 <br>
 
 

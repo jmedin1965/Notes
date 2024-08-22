@@ -14,6 +14,7 @@ GitHub code is
 
 # Index of Notes
 
+* [3D printer](./3D_printer.md)
 * [CISCO stuff](./CISCO_stuff.md)
 	* [Archive command to backup config changes](./CISCO_stuff/Archive_command_to_backup_config_changes.md)
 * [debian boot fix BIOS EFI](./debian_boot_fix_BIOS_EFI.md)
