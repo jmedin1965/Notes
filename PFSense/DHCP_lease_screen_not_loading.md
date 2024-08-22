@@ -14,7 +14,7 @@ Looks like at some stage, the DHCP server started adding entries to ./var/dhcpd/
 	3. Patch Contents: see attached file dhcp_status.patch
 	4. Leave other fields as default
 	5. possibly tick "Auto Apply" if you want or just apply it manually. Your choice here.
-4. Now navigate to "Status>>DHCP Leases" and it loads quick, be it without the results of a dns lookup for each entry.
+4. navigate to "Status>>DHCP Leases" and it loads quick, be it without the results of a dns lookup for each entry.
 
 
 The other alternative is to manually add a DNS entry for each unassigned IP address in the DHCP ranges.
