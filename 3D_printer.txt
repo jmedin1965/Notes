@@ -5,7 +5,7 @@ Creation-Date: 2024-08-22T13:36:43+10:00
 ====== 3D printer ======
 Created Thursday 22 August 2024
 
-creality ke 3d printer.  
+updated to the creality K1C, The creality ke 3d printer died.  
 You can hack it and change the software etc and it's wifi. 
 
 Just printing stuff for a project. 
