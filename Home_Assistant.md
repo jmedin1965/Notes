@@ -15,6 +15,10 @@ you will have to look for the old IP address or the mac address.
 
 Once changed you need to reload HA from settings>>system, then on this page there is a power icon top right of screen. Click it and choose "Restart Home Assistant"
 
+Change IP of sonoffs
+--------------------
+
+Looks like this requires no work if you have firewall opened to MQTT server
 
 
 
