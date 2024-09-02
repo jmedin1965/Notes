@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>PFSense shutdown scripts</title>
+	<title>file locations</title>
 	<meta name='Generator' content='Zim 0.74.3'>
 	<style type='text/css'>
 		a          { text-decoration: none      }
@@ -51,11 +51,11 @@
 
 <!-- Header -->
 <div class='header'>
-	[ <a href='./ls.html'>Prev</a> ]
+	[ <a href='./DHCP_lease_screen_not_loading.html'>Prev</a> ]
 
 	[ <a href='../index.html'>Index</a> ]
 
-	[ <a href='./readme.html'>Next</a> ]
+	[ <a href='./Firewall_aliases_explained.html'>Next</a> ]
 </div>
 
 <hr />
@@ -74,7 +74,7 @@
 <ul>
 <li><a href="./command_line_mail.html" title="command line mail" class="page">command line mail</a></li>
 <li><a href="./DHCP_lease_screen_not_loading.html" title="DHCP lease screen not loading" class="page">DHCP lease screen not loading</a></li>
-<li><a href="./file_locations.html" title="file locations" class="page">file locations</a></li>
+<li><b>file locations</b></li>
 <li><a href="./Firewall_aliases_explained.html" title="Firewall aliases explained" class="page">Firewall aliases explained</a></li>
 <li><a href="./Format_disk_drive_as_MSDosFS.html" title="Format disk drive as MSDosFS" class="page">Format disk drive as MSDosFS</a></li>
 <li><a href="./HAProxy_keep_alive_for_ssh.html" title="HAProxy keep alive for ssh" class="page">HAProxy keep alive for ssh</a></li>
@@ -82,7 +82,7 @@
 <li><a href="./Install_qemu-guest-agent.html" title="Install qemu-guest-agent" class="page">Install qemu-guest-agent</a></li>
 <li><a href="./Log_rotation_vi_newsyslog.conf.html" title="Log rotation vi newsyslog.conf" class="page">Log rotation vi newsyslog.conf</a></li>
 <li><a href="./ls.html" title="ls" class="page">ls</a></li>
-<li><b>PFSense shutdown scripts</b></li>
+<li><a href="./PFSense_shutdown_scripts.html" title="PFSense shutdown scripts" class="page">PFSense shutdown scripts</a></li>
 <li><a href="./readme.html" title="readme" class="page">readme</a></li>
 <li><a href="./USB_Pendrive_on_ProxMox_VM.html" title="USB Pendrive on ProxMox VM" class="page">USB Pendrive on ProxMox VM</a></li>
 <li><a href="./Using_Software_from_FreeBSD.html" title="Using Software from FreeBSD" class="page">Using Software from FreeBSD</a></li>
@@ -106,28 +106,39 @@
 
 <div class='pages'>
 	<div class='heading'>
-	<h1>PFSense shutdown scripts <a name='PFSense:PFSense shutdown scripts'></a></h1>
+	<h1>file locations <a name='PFSense:file locations'></a></h1>
 	</div>
 
 	<div class='content'>
 	<p>
-Created Thursday 16 May 2024
+Created Tuesday 27 August 2024
+</p>
+
+<h2>DHCP server<a id="dhcp-server" class="h_anchor"></a></h2>
+
+<br>
+<br>
+
+<h2>BIND DNS<a id="bind-dns" class="h_anchor"></a></h2>
+
+<br>
+
+<p>
+/usr/local/pkg/bind.xml
+</p>
+
+<h2>Services auto source<a id="services-auto-source" class="h_anchor"></a></h2>
+
+<br>
+
+<p>
+Looks like all services as they load source these files or folders
 </p>
 
 <p>
-Looks like you can create shutdown scripts. They are run from /etc/pfSense-rc.shutdown<a href="" title="." class="page">.</a> At the end, this script runs all executable scripts at <a href="file:///usr/local/etc/rc.d/shutdown.%2A.sh." title="/usr/local/etc/rc.d/shutdown.*.sh." class="file">/usr/local/etc/rc.d/shutdown.*.sh.</a> I have created a script on pfs03, which is a physical server. This script signals the controlling sonoff to turn off after 30 seconds.
-</p>
-
-<p>
-Looks like this script is also run on startup, so be carefull. It is run with first argument as start.
-</p>
-
-<p>
-Also, any script in <a href="file:///usr/local/etc/rc.d" title="/usr/local/etc/rc.d/" class="file">/usr/local/etc/rc.d/</a> that ends in .sh than is executable is also run. Check first arg as this script is run as an rc script, so star|stop|restart
-</p>
-
-<p>
-REF: <a href="https://docs.netgate.com/pfsense/en/latest/development/boot-commands.html" title="https://docs.netgate.com/pfsense/en/latest/development/boot-commands.html" class="https">https://docs.netgate.com/pfsense/en/latest/development/boot-commands.html</a>
+<a href="file:///etc/rc.conf" title="/etc/rc.conf" class="file">/etc/rc.conf</a>         ←  yes this one does get sourced contrary to what is in this file, however on an update, it will probably get cleared back to defailt<br>
+<a href="file:///etc/rc.conf.local" title="/etc/rc.conf.local" class="file">/etc/rc.conf.local</a> ← put local changes to all services here<br>
+<a href="file:///usr/local/etc/rc.conf.d/service-name" title="/usr/local/etc/rc.conf.d/service-name" class="file">/usr/local/etc/rc.conf.d/service-name</a> ← This can be a file or a dir. If a dir, all files are sourced in it. this file is sorced by the service only
 </p>
 
 	</div>

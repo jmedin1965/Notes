@@ -26,6 +26,7 @@ GitHub code is
 * [PFSense](./PFSense.md)
 	* [command line mail](./PFSense/command_line_mail.md)
 	* [DHCP lease screen not loading](./PFSense/DHCP_lease_screen_not_loading.md)
+	* [file locations](./PFSense/file_locations.md)
 	* [Firewall aliases explained](./PFSense/Firewall_aliases_explained.md)
 	* [Format disk drive as MSDosFS](./PFSense/Format_disk_drive_as_MSDosFS.md)
 	* [HAProxy keep alive for ssh](./PFSense/HAProxy_keep_alive_for_ssh.md)
