@@ -16,15 +16,15 @@ Full Topic:  %prefix%/%topic%/
 
 192.168.10.40
 
-10.11.3.9	c4:4f:33:87:92:e2	sonoff-host01	host01 sonoff	n/a	n/a	 
- 	10.11.3.8	c4:4f:33:87:85:fa	esxi-disk-shelf01	esxi-disk-shelf01	n/a	n/a	  
- 	10.11.3.7	3c:71:bf:38:9f:10	sonoff-garage-door01	sonoff-garage-door01	n/a	n/a	  
- 	10.11.3.6	c4:4f:33:87:d4:9d	sonoff-esxi-02	sonoff-esxi-02	n/a	n/a	 
- 	10.11.3.5	dc:4f:22:e5:bb:f0	sonnof-laptop-media-room01	sonnof-laptop-media-room01	n/a	n/a	 
- 	10.11.3.4	c4:4f:33:87:a1:87	tasmota-87A187-0391	tasmota-87A187-0391	n/a	n/a	 
- 	10.11.3.3	60:01:94:bb:37:e7	sonoff-6119	sonoff-6119 disk shelf	n/a	n/a	 
- 	10.11.3.2	60:01:94:bb:8d:9a	sonoff-3482jm-sonoff-esxi-02	sonoff-3482 jm-sonoff-esxi-02	n/a	n/a	  
- 	10.11.3.1	5c:cf:7f:7c:bc:46	sonoff-7238jm-exsi-02	sonoff-7238 jm-exsi-02	n/a	n/a	  
+10.11.3.9	 c4:4f:33:87:92:e2	sonoff-host01	host01 sonoff	n/a	n/a	 
+ 	10.11.3.8	 c4:4f:33:87:85:fa	esxi-disk-shelf01	esxi-disk-shelf01	n/a	n/a	  
+ 	10.11.3.7	 3c:71:bf:38:9f:10	sonoff-garage-door01	sonoff-garage-door01	n/a	n/a	  
+ 	10.11.3.6	 c4:4f:33:87:d4:9d	sonoff-esxi-02	sonoff-esxi-02	n/a	n/a	 
+ 	10.11.3.5	 dc:4f:22:e5:bb:f0	sonnof-laptop-media-room01	sonnof-laptop-media-room01	n/a	n/a	 
+ 	10.11.3.4	 c4:4f:33:87:a1:87	tasmota-87A187-0391	tasmota-87A187-0391	n/a	n/a	 
+ 	10.11.3.3	 60:01:94:bb:37:e7	sonoff-6119	sonoff-6119 disk shelf	n/a	n/a	 
+ 	10.11.3.2	 60:01:94:bb:8d:9a	sonoff-3482jm-sonoff-esxi-02	sonoff-3482 jm-sonoff-esxi-02	n/a	n/a	  
+ 	10.11.3.10 5c:cf:7f:7c:bc:46	sonoff-7238jm-exsi-02	sonoff-7238 jm-exsi-02	n/a	n/a	  
 
  	10.11.3.2	60:01:94:bb:8d:9a	sonoff-3482jm-sonoff-esxi-02	sonoff-3482 jm-sonoff-esxi-02	n/a	n/a	  
  	10.11.3.3	60:01:94:bb:37:e7	sonoff-6119	sonoff-6119 disk shelf	n/a	n/a	 
