@@ -21,6 +21,7 @@ GitHub code is
 * [Dogtag - internal off-line CA](./Dogtag_-_internal_off-line_CA.md)
 * [FreeIPA with off-line CA](./FreeIPA_with_off-line_CA.md)
 * [Home Assistant](./Home_Assistant.md)
+	* [HACS Config Template Card](./Home_Assistant/HACS_Config_Template_Card.md)
 	* [Python Scripts](./Home_Assistant/Python_Scripts.md)
 	* [zigbee2mqtt](./Home_Assistant/zigbee2mqtt.md)
 * [Ipfire firewall and router](./Ipfire_firewall_and_router.md)

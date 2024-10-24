@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-10-24T13:43:41+11:00
+
+====== HACS Config Template Card ======
+Created Thursday 24 October 2024
+
