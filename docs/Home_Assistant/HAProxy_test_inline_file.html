@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>HACS Config Template Card</title>
+	<title>HAProxy test inline file</title>
 	<meta name='Generator' content='Zim 0.74.3'>
 	<style type='text/css'>
 		a          { text-decoration: none      }
@@ -51,11 +51,11 @@
 
 <!-- Header -->
 <div class='header'>
-	[ <a href='./General_Info.html'>Prev</a> ]
+	[ <a href='./HACS_Config_Template_Card.html'>Prev</a> ]
 
 	[ <a href='../index.html'>Index</a> ]
 
-	[ <a href='./HAProxy_test_inline_file.html'>Next</a> ]
+	[ <a href='./Python_Scripts.html'>Next</a> ]
 </div>
 
 <hr />
@@ -70,8 +70,8 @@
 <li><a href="../Home_Assistant.html" title="Home Assistant" class="page">Home Assistant</a>
 <ul>
 <li><a href="./General_Info.html" title="General Info" class="page">General Info</a></li>
-<li><b>HACS Config Template Card</b></li>
-<li><a href="./HAProxy_test_inline_file.html" title="HAProxy test inline file" class="page">HAProxy test inline file</a></li>
+<li><a href="./HACS_Config_Template_Card.html" title="HACS Config Template Card" class="page">HACS Config Template Card</a></li>
+<li><b>HAProxy test inline file</b></li>
 <li><a href="./Python_Scripts.html" title="Python Scripts" class="page">Python Scripts</a></li>
 <li><a href="./zigbee2mqtt.html" title="zigbee2mqtt" class="page">zigbee2mqtt</a></li>
 </ul>
@@ -97,14 +97,78 @@
 
 <div class='pages'>
 	<div class='heading'>
-	<h1>HACS Config Template Card <a name='Home Assistant:HACS Config Template Card'></a></h1>
+	<h1>HAProxy test inline file <a name='Home Assistant:HAProxy test inline file'></a></h1>
 	</div>
 
 	<div class='content'>
 	<p>
-Created Thursday 24 October 2024
+Created Monday 11 November 2024
 </p>
 
+<p>
+Just to test which HAProxy you are actuall hitting, you can set up a backend to just dish out a small text file.
+</p>
+
+<p>
+REF: <a href="https://webmasters.stackexchange.com/questions/109942/haproxy-as-web-server" title="https://webmasters.stackexchange.com/questions/109942/haproxy-as-web-server" class="https">https://webmasters.stackexchange.com/questions/109942/haproxy-as-web-server</a>
+</p>
+
+<p>
+The accepted answer of "no, it is not designed to do that" is correct.
+</p>
+
+<p>
+But software being what it is, if you DO still want to do it, there is a hacky workaround.
+</p>
+
+<p>
+You need an ACL pointing the request to a custom backend. For this example lets say you wanted to serve robots.txt
+</p>
+
+<p>
+frontend port80<br>
+<div style='padding-left: 30pt'>
+acl is_robotstxt path /robots.txt<br>
+use_backend robots if is_robotstxt
+</div>
+backend robots<br>
+<div style='padding-left: 30pt'>
+mode http<br>
+errorfile 503 /etc/haproxy/errors/robots.http
+</div>
+Note that there are no servers defined for this backend, so when /robots.txt is requested and haproxy uses it, it serves a 503 error. We specify that 503 errors should serve /etc/haproxy/errors/robots.http, which luckily specifies the full HTTP output headers and all.
+</p>
+
+<p>
+So in that file, we put
+</p>
+
+<p>
+<div style='padding-left: 30pt'>
+HTTP/1.0 200 Found<br>
+Cache-Control: no-cache<br>
+Connection: close<br>
+Content-Type: text/plain
+</div>
+</p>
+
+<p>
+<div style='padding-left: 30pt'>
+Content here
+</div>
+</p>
+
+<p>
+so now what should be a 503 error is actually a 200 Found reply, content and all.
+</p>
+
+<p>
+Note that doing this is not really recommended and comes with many limitations. Most obvious is that you can only serve one file this way per backend. Less obvious is that this file must fit inside haproxy's BUFSIZE, which is usually 8 or 16kB. Haproxy also is not doing any kind of sanitization on the file served this way, so its on you to serve the right headers the right way. If your clients need \r\n instead of just \n, thats on you to handle.
+</p>
+
+<p>
+You're much better off just setting up a copy of your webserver of choice and just having a "static asset backend" haproxy can route to.
+</p>
 
 	</div>
 

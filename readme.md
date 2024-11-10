@@ -23,6 +23,7 @@ GitHub code is
 * [Home Assistant](./Home_Assistant.md)
 	* [General Info](./Home_Assistant/General_Info.md)
 	* [HACS Config Template Card](./Home_Assistant/HACS_Config_Template_Card.md)
+	* [HAProxy test inline file](./Home_Assistant/HAProxy_test_inline_file.md)
 	* [Python Scripts](./Home_Assistant/Python_Scripts.md)
 	* [zigbee2mqtt](./Home_Assistant/zigbee2mqtt.md)
 * [Ipfire firewall and router](./Ipfire_firewall_and_router.md)
