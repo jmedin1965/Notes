@@ -107,10 +107,10 @@ fi
 
 git add '*.md'
 info "git add all md files $?"
-info "all done now. This message will self-destruct in $timeout seconds..."
 
 if [ -n "$DISPLAY" -a -x /usr/bin/xmessage ] 
 then
     info "sending info to xmessage"
+    info "This message will self-destruct in $timeout seconds..."
     echo "$info_str" | /usr/bin/xmessage -file - -timeout $timeout &
 fi
