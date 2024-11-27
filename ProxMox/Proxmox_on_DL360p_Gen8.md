@@ -90,12 +90,19 @@ for me it was the set point (sp) for sensor 11. It was set to 46deg (4600) I slo
 
 fan pid 11 sp 5400
 
-fan pid 11 sp 5900
+OK, so during summer on a really host day the fans went haywire so I tweaked the figures again
+
+fan pid 11 sp 6000
+fan pid 49 sp 6000
+
+
+fan pid 11 sp 6000
 fan pid 42 lo 10000
 fan pid 40 sp 4700
 fan pid 46 sp 4400
 fan pid 50 sp 3800
 fan pid 31 sp 5300
+fan pid 49 sp 6000
 
 The youtube said to disable it, but there was a comment about setting the target temperature.
 
