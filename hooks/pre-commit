@@ -12,6 +12,7 @@
 exec 1>&2
 
 timeout="20"
+temp_f="/tmp/markdown"
 
 info_str=""
 info()
@@ -28,10 +29,12 @@ if [ "$user" = root ]
 then
     if [ -x /mnt/c/Windows/system32/cmd.exe ]
     then
-        user="$(/mnt/c/Windows/system32/cmd.exe /c whoami 2>/dev/null)"
+        user="$(/mnt/c/Windows/system32/cmd.exe /c whoami 2>/dev/null | /usr/bin/tr -d '\015')"
         user=${user##*\\}
     fi
 fi
+
+info running zim as used $user
 
 if [ -e "notebook.zim" ]
 then
@@ -48,7 +51,7 @@ then
         info "cleaning html $?"
 
         info /usr/bin/zim --export -r --output=./docs --format=html --template $template --index index "../$name"
-        /usr/bin/zim --export -r --output=./docs --format=html --template $template --index index "../$name"
+        /usr/bin/sudo -u $user /usr/bin/zim --export -r --output=./docs --format=html --template $template --index index "../$name"
         info "generate html docs $?"
 
         git add docs
@@ -61,29 +64,28 @@ then
     /bin/find . -name '*.md' -exec /bin/rm -f {} \;
     info "clean out old md files $?"
 
-    [ -d .git/markdown ] && /bin/rm -rf .git/markdown
-    info "clean out markdown folder $?"
-
-    [ -d .git/markdown ] && /bin/rm -rf .git/markdown
+    [ -d "$temp_f" ] && /bin/rm -rf "$temp_f"
     info "clean out markdown folder $?"
 
     info /usr/bin/zim --export -r --output=.git/markdown --format=markdown --index index "../$name"
-    /usr/bin/zim --export -r --output=.git/markdown --format=markdown --index index "../$name"
+    /usr/bin/sudo -u $user /usr/bin/zim --export -r "--output=$temp_f" --format=markdown --index index "../$name"
     info "export to md $?"
 
-    if cd .git/markdown
+    pwd="$(pwd)"
+    if cd "$temp_f"
     then
-        info "cd to markdown export dir $?"
-
-        /bin/find . -name '*.md' -exec /bin/mv {} ../../{} \;
+        info "cd to markdown export dir $temp_f: $?"
+read ans
+        /bin/find . -name '*.md' -exec /bin/mv {} $pwd/{} \;
         info "find and move md files $?"
 
-        cd ../..
+        cd "$pwd"
         info "cd back up $?"
     fi
     info "move exported md files $? $(pwd)"
 
-    [ -d .git/markdown ] && /bin/rm -rf .git/markdown
+read ans
+    [ -d "$temp_f" ] && /bin/rm -rf "$temp_f"
     info "clean out markdown folder $?"
 
     # process readme file
@@ -114,3 +116,4 @@ then
     info "This message will self-destruct in $timeout seconds..."
     echo "$info_str" | /usr/bin/xmessage -file - -timeout $timeout &
 fi
+

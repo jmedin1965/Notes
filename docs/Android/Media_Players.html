@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>ProxMox Mail Gateway</title>
+	<title>Media Players</title>
 	<meta name='Generator' content='Zim 0.74.3'>
 	<style type='text/css'>
 		a          { text-decoration: none      }
@@ -51,11 +51,11 @@
 
 <!-- Header -->
 <div class='header'>
-	[ <a href='../ProxMox.html'>Prev</a> ]
+	[ <a href='./BeeTV.html'>Prev</a> ]
 
 	[ <a href='../index.html'>Index</a> ]
 
-	[ <a href='./Proxmox_on_DL360p_Gen8.html'>Next</a> ]
+	[ <a href='../CISCO_stuff.html'>Next</a> ]
 </div>
 
 <hr />
@@ -63,7 +63,13 @@
 <div class="menu">
 <ul>
 <li><a href="../3D_printer.html" title="3D printer" class="page">3D printer</a></li>
-<li><a href="../Android.html" title="Android" class="page">Android</a></li>
+<li><a href="../Android.html" title="Android" class="page">Android</a>
+<ul>
+<li><a href="./AndroidTV.html" title="AndroidTV" class="page">AndroidTV</a></li>
+<li><a href="./BeeTV.html" title="BeeTV" class="page">BeeTV</a></li>
+<li><b>Media Players</b></li>
+</ul>
+</li>
 <li><a href="../CISCO_stuff.html" title="CISCO stuff" class="page">CISCO stuff</a></li>
 <li><a href="../debian_boot_fix_BIOS_EFI.html" title="debian boot fix BIOS EFI" class="page">debian boot fix BIOS EFI</a></li>
 <li><a href="../Dogtag_-_internal_off-line_CA.html" title="Dogtag - internal off-line CA" class="page">Dogtag - internal off-line CA</a></li>
@@ -73,14 +79,7 @@
 <li><a href="../Password_Vault_selfhosting.html" title="Password Vault selfhosting" class="page">Password Vault selfhosting</a></li>
 <li><a href="../PFSense.html" title="PFSense" class="page">PFSense</a></li>
 <li><a href="../Postfix_configuration_for_a_host_or_server.html" title="Postfix configuration for a host or server" class="page">Postfix configuration for a host or server</a></li>
-<li><a href="../ProxMox.html" title="ProxMox" class="page">ProxMox</a>
-<ul>
-<li><b>ProxMox Mail Gateway</b></li>
-<li><a href="./Proxmox_on_DL360p_Gen8.html" title="Proxmox on DL360p Gen8" class="page">Proxmox on DL360p Gen8</a></li>
-<li><a href="./readme.html" title="readme" class="page">readme</a></li>
-<li><a href="./Tteck_repo_helper_scripts.html" title="Tteck repo helper scripts" class="page">Tteck repo helper scripts</a></li>
-</ul>
-</li>
+<li><a href="../ProxMox.html" title="ProxMox" class="page">ProxMox</a></li>
 <li><a href="../Rancher_k3s_cluster.html" title="Rancher k3s cluster" class="page">Rancher k3s cluster</a></li>
 <li><a href="../readme.html" title="readme" class="page">readme</a></li>
 <li><a href="../Setting_up_Samba_as_an_Active_Directory_Domain_Controller.html" title="Setting up Samba as an Active Directory Domain Controller" class="page">Setting up Samba as an Active Directory Domain Controller</a></li>
@@ -97,149 +96,57 @@
 
 <div class='pages'>
 	<div class='heading'>
-	<h1>ProxMox Mail Gateway <a name='ProxMox:ProxMox Mail Gateway'></a></h1>
+	<h1>Media Players <a name='Android:Media Players'></a></h1>
 	</div>
 
 	<div class='content'>
 	<p>
-Created Friday 01 December 2023
+Created Monday 02 December 2024
 </p>
 
-<p>
-Used to relay and receive email in and out. Easy to manage and configure once you get your head around it.
-</p>
-
-<h2>install<a id="install" class="h_anchor"></a></h2>
+<h2>HDO<a id="hdo" class="h_anchor"></a></h2>
 
 <br>
 
 <p>
-Install as a standars CT template in proxmox. If you want to send emails out from it like reports, it will need a valid domain, as the "myorigin" in /etc/postfix/main.cf  can't be changes as far as I can tell.
+Both if not all require side-loading.
 </p>
 
-<h2>Configure<a id="configure" class="h_anchor"></a></h2>
+<p>
+<a href="https://www.reddit.com/r/FireStickHacks/comments/1eyrna6/use_hdo_box_with_mediaon_player_its_great/" title="https://www.reddit.com/r/FireStickHacks/comments/1eyrna6/use_hdo_box_with_mediaon_player_its_great/" class="https">https://www.reddit.com/r/FireStickHacks/comments/1eyrna6/use_hdo_box_with_mediaon_player_its_great/</a><br>
+<a href="https://www.reddit.com/r/FireStickHacks/comments/1b7nr28/drama_player_for_hdobox/" title="https://www.reddit.com/r/FireStickHacks/comments/1b7nr28/drama_player_for_hdobox/" class="https">https://www.reddit.com/r/FireStickHacks/comments/1b7nr28/drama_player_for_hdobox/</a><br>
+<a href="https://play.google.com/store/apps/details?id=com.mediaon.apt&hl=en_AU" title="https://play.google.com/store/apps/details?id=com.mediaon.apt&amp;hl=en_AU" class="https">https://play.google.com/store/apps/details?id=com.mediaon.apt&amp;hl=en_AU</a>
+</p>
 
 <br>
-
-<h3>Relaying<a id="relaying" class="h_anchor"></a></h3>
-
 <br>
 
 <p>
-<div style='padding-left: 30pt'>
-Configuration&gt;&gt;Mail Poxy&gt;&gt; Ports<br>
-Default Relay: forenam.jmsh-home.dtdns.net - ip or name of host to receive mail from external<br>
-Relay Port: 25 - port of above host<br>
-Disable MX lookup (SMTP): yes - we don't want to look up MX records, just use these settings instead<br>
-Smarthost: smtp.dodo.com.au:25 - our external relay
-</div>
-</p>
-
-<p>
-REF: <a href="https://electrictoolbox.com/configure-postfix-external-connections/" title="https://electrictoolbox.com/configure-postfix-external-connections/" class="https">https://electrictoolbox.com/configure-postfix-external-connections/</a>
-</p>
-
-<p>
-to get forenam.jmsh-home.dtdns.net to accept email requites;
-</p>
-
-<p>
-<div style='padding-left: 30pt'>
-inet_interfaces = all<br>
-or<br>
-inet_interfaces = locahost ip_address
-</div>
-</p>
-
-<p>
-in /etc/postfix/main.cf
-</p>
-
-<p>
-but this did not work. I also had to change /etc/postfix/master.cf
-</p>
-
-<p>
-<div style='padding-left: 30pt'>
-127.0.0.1:smtp inet n - - - - smtpd<br>
-to<br>
-smtp inet n - - - - smtpd
-</div>
+<ol type="1" start="1">
+<li>install Downloader by AFTVnews.com first</li>
+<li>Enable unknown sources install on <a href="./AndroidTV.html" title="AndroidTV" class="page">AndroidTV</a>
+<ol type="a" start="1">
+<li>settings&gt;&gt;System&gt;&gt;About&gt;&gt;</li>
+<li>Then click on "Android TV OS build" 7 times untill debug mode is enabled</li>
+</ol>
+</li>
+<li>enter hdo.all.tv</li>
+<li>alow downloaded app install permissions</li>
+<li>Once you start HDO up, it will ask to install a player. You need to let it  and you need to give HDO all install permissions, then remove th epermissions
+<ol type="a" start="1">
+<li>I haven't worked out how to remove permissions after the fact. So when it installns, don't click open. Just cluck done and then back and remove permissions there.</li>
+</ol></li>
+</ol>
 </p>
 
 <br>
 
-<h3>Relay Domains<a id="relay-domains" class="h_anchor"></a></h3>
+<h2>BeeTV<a id="beetv" class="h_anchor"></a></h2>
 
 <br>
 
 <p>
-<div style='padding-left: 30pt'>
-Configuration&gt;&gt;Mail Poxy&gt;&gt; Ports
-</div>
-</p>
-
-<p>
-A list of all domains tha we will receive and forward from external. Everithing else will be rejected.
-</p>
-
-<h3>Ports<a id="ports" class="h_anchor"></a></h3>
-
-<br>
-
-<p>
-I ended up swapping input and output ports. By default, port 25 is the external port, and 26 is the internal. Since I'm forwarding from the firewall, I created a rule to forward external port 25 to port 26 on the GW.
-</p>
-
-<p>
-<div style='padding-left: 30pt'>
-Configuration&gt;&gt;Mail Poxy&gt;&gt; Ports<br>
-External SMTP Port 26<br>
-External SMTP Port 25
-</div>
-</p>
-
-<h3>Networks<a id="networks" class="h_anchor"></a></h3>
-
-<br>
-
-<p>
-A list of networks that are considered local. We will relal from everyone on this list
-</p>
-
-<h3>Mail Filter<a id="mail-filter" class="h_anchor"></a></h3>
-
-<br>
-
-<h4>Added Action - Has Been Scanned Notice<a id="added-action---has-been-scanned-notice" class="h_anchor"></a></h4>
-
-<br>
-
-<p>
-Just adds a message to outgoing mail. More as a test and to make sure incoming mail gets tagged.
-</p>
-
-<p>
-<div style='padding-left: 30pt'>
-This e-mail has been processed and <br>
-scanned by ProxMox Mail Gateway
-</div>
-</p>
-
-<h4>created filter - Add Disclaimer<a id="created-filter---add-disclaimer" class="h_anchor"></a></h4>
-
-<br>
-
-<p>
-Enabled disclaimer on outgoing mail Priority 60
-</p>
-
-<h4>created filter - Add Scanned Notice<a id="created-filter---add-scanned-notice" class="h_anchor"></a></h4>
-
-<br>
-
-<p>
-Add Scanned Notice on incomming mail, Priority 60
+<a href="./BeeTV.html" title="BeeTV" class="page">BeeTV</a> is the same as above except in downloaded type beetvapk.org. I'm sure beetvapk.org is the official site, but can't be 100% sure.
 </p>
 
 	</div>
