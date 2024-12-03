@@ -9,10 +9,17 @@
 
 # Redirect output to stderr.
 
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
 exec 1>&2
 
 timeout="20"
-temp_f="/tmp/markdown"
+pwd="$(pwd)"
+name="$(/bin/basename "$(pwd)")"
+temp_f="/tmp/$name"
+user="$(/bin/whoami)"
+template="Default"
+template="Default_with_index"
 
 info_str=""
 info()
@@ -23,32 +30,41 @@ info()
     #echo "pre-commit:" "$@" >> /tmp/pre-commit.log
 }
 
-name="$(/bin/basename "$(pwd)")"
-user="$(/bin/whoami)"
+info "name=$name"
+info "pwd=$pwd"
+info "script=$0"
+
+[ ! -d hooks -a -d .git ] && mkdir hooks
+cp "$0" hooks
+
 if [ "$user" = root ]
 then
     if [ -x /mnt/c/Windows/system32/cmd.exe ]
     then
         user="$(/mnt/c/Windows/system32/cmd.exe /c whoami 2>/dev/null | /usr/bin/tr -d '\015')"
         user=${user##*\\}
+    else
+        user="zim"
+        if ! getent passwd $user
+        then
+            adduser --system --no-create-home --disabled-password --disabled-login $user
+        fi
     fi
 fi
 
-info running zim as used $user
+info running zim as used \"$user\"
 
 if [ -e "notebook.zim" ]
 then
     info "notebook.zim exists. Assuming this is a zim notebook"
 
-    template="Default"
-    template="Default_with_index"
 
     # html export
     if [ -d docs ]
     then
         info "docs folder exists, generating html in docs folder ..."
         /bin/rm -rf docs
-        info "cleaning html $?"
+        info "cleaning old html files: $?"
 
         info /usr/bin/zim --export -r --output=./docs --format=html --template $template --index index "../$name"
         /usr/bin/sudo -u $user /usr/bin/zim --export -r --output=./docs --format=html --template $template --index index "../$name"
@@ -64,27 +80,71 @@ then
     /bin/find . -name '*.md' -exec /bin/rm -f {} \;
     info "clean out old md files $?"
 
-    [ -d "$temp_f" ] && /bin/rm -rf "$temp_f"
+    [ -d "$temp_f" ] && /bin/rm -rf "$temp_f" 
     info "clean out markdown folder $?"
+    mkdir -p "$temp_f"
 
-    info /usr/bin/zim --export -r --output=.git/markdown --format=markdown --index index "../$name"
-    /usr/bin/sudo -u $user /usr/bin/zim --export -r "--output=$temp_f" --format=markdown --index index "../$name"
+    for d in bin sbin
+    do
+        if [ -e "$d/readme.txt" ]
+        then
+            info "processing $d for missing descriptions."
+            for f in "$d"/*
+            do
+                if [ ! -d "$f" ]
+                then
+                    if [ "$(fgrep -c "$f" "$d/readme.txt")" == 0 ]
+                    then
+                        info "  adding $f"
+                        echo "
+===== $f =====
+Need to add description" >> $d/readme.txt
+                    fi
+                fi
+            done
+
+            info "processing $d/readme.txt for deleted files"
+            while read line
+            do
+                f="${line#===== }"
+                f="${f% =====}"
+                if [ ! -e "$f" ]
+                then
+                    info " check $line - $f - missing"
+                    perl -pi -e "s,^$line,$line is missing,g" "$d/readme.txt"
+                fi
+            done <<< "$(grep -e '^===== .* =====$'  "$d/readme.txt")"
+
+        fi
+        git add "$d/readme.txt"
+        info "git add $d/readme.txt $?"
+    done
+
+    info rsync -amv --include-from=- "./" "$temp_f/$name/"
+    rsync -amv --include-from=- "./" "$temp_f/$name/" << END
++ /notebook.zim
++ *.txt
++ */
+- *
+END
+    mkdir "$temp_f/export"
+    chown -R "$user" "$temp_f"
+    cd "$temp_f/$name"
+
+    info /usr/bin/sudo -u $user /usr/bin/zim --export -r "--output=$temp_f/export" --format=markdown --index index "$temp_f/$name"
+    /usr/bin/sudo -u $user /usr/bin/zim --export -r "--output=$temp_f/export" --format=markdown --index index "$temp_f/$name"
     info "export to md $?"
 
-    pwd="$(pwd)"
-    if cd "$temp_f"
+    if cd "$temp_f/export"
     then
-        info "cd to markdown export dir $temp_f: $?"
-read ans
-        /bin/find . -name '*.md' -exec /bin/mv {} $pwd/{} \;
-        info "find and move md files $?"
-
-        cd "$pwd"
-        info "cd back up $?"
+        info "cd to markdown export dir $temp_f/export: $?"
+        /bin/find . -name '*.md' -exec /bin/cp -v {} $pwd/{} \;
+        info "find and copy md files $?"
     fi
-    info "move exported md files $? $(pwd)"
 
-read ans
+    cd "$pwd"
+    info "cd back up $?"
+
     [ -d "$temp_f" ] && /bin/rm -rf "$temp_f"
     info "clean out markdown folder $?"
 
