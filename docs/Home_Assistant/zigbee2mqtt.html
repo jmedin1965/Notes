@@ -119,6 +119,32 @@ Just plugged it in and it worked!<br>
 <a href="https://smlight.tech/manual/slzb-06/" title="https://smlight.tech/manual/slzb-06/" class="https">https://smlight.tech/manual/slzb-06/</a>
 </p>
 
+<br>
+
+<h2>How to restart zigbee2MQTT after a Home Assistant Restart<a id="how-to-restart-zigbee2mqtt-after-a-home-assistant-restart" class="h_anchor"></a></h2>
+
+<br>
+
+<p>
+REF: <a href="https://community.home-assistant.io/t/how-to-restart-zigbee2mqtt-after-a-home-assistant-restart/695922" title="https://community.home-assistant.io/t/how-to-restart-zigbee2mqtt-after-a-home-assistant-restart/695922" class="https">https://community.home-assistant.io/t/how-to-restart-zigbee2mqtt-after-a-home-assistant-restart/695922</a>
+</p>
+
+<p>
+Something like this:
+</p>
+
+<pre>
+- id: '1565194745362'
+  alias: Status starting HA
+  trigger:
+  - event: start
+	platform: homeassistant
+  action:
+  - service: hassio.addon_restart
+	data:
+	  addon: 45df7312_zigbee2mqtt
+</pre>
+
 	</div>
 
 	<br />
