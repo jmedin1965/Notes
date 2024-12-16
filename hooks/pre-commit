@@ -80,9 +80,13 @@ then
     /bin/find . -name '*.md' -exec /bin/rm -f {} \;
     info "clean out old md files $?"
 
-    [ -d "$temp_f" ] && /bin/rm -rf "$temp_f" 
-    info "clean out markdown folder $?"
+    if [ -d "$temp_f" ]
+    then
+        /bin/rm -rf "$temp_f" 
+        info "clean out markdown folder $?"
+    fi
     mkdir -p "$temp_f"
+    info "$temp_f: cleate temp md export folder $?"
 
     for d in bin sbin
     do
@@ -115,9 +119,9 @@ Need to add description" >> $d/readme.txt
                 fi
             done <<< "$(grep -e '^===== .* =====$'  "$d/readme.txt")"
 
+            git add "$d/readme.txt"
+            info "git add $d/readme.txt $?"
         fi
-        git add "$d/readme.txt"
-        info "git add $d/readme.txt $?"
     done
 
     info rsync -amv --include-from=- "./" "$temp_f/$name/"
@@ -167,7 +171,7 @@ END
     fi
 fi
 
-git add '*.md'
+git add '*.md' '*.html'
 info "git add all md files $?"
 
 if [ -n "$DISPLAY" -a -x /usr/bin/xmessage ] 

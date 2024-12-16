@@ -1,0 +1,19 @@
+# Archive command to backup config changes
+Created Wednesday 01 May 2024
+
+Greg sent this too which I think is much better
+-----------------------------------------------
+
+Do you auto backup your config to tftp?
+ 
+<https://learningnetwork.cisco.com/s/blogs/a0D3i000002SKKbEAO/understanding-cisco-auto-archive-feature-to-backup-configuration-file>
+
+
+How to configure http/https CISCO ios copy
+------------------------------------------
+
+<https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ifs/configuration/15-s/ifs-15-s-book/ifs-file-trans-http.pdf>
+
+[Network Automation: Schedule Cisco config backups with kron and archive](https://www.youtube.com/watch?v=-y-HUJOI8i4)
+
+
