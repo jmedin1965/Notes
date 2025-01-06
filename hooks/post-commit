@@ -1,0 +1,85 @@
+#!/bin/bash
+#
+# An example hook script to verify what is about to be committed.
+# Called by "git commit" with no arguments.  The hook should
+# exit with non-zero status after issuing an appropriate message if
+# it wants to stop the commit.
+#
+# To enable this hook, rename this file to "pre-commit".
+
+# Redirect output to stderr.
+
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+exec 1>&2
+
+
+prog="$(basename "$0")"
+pwd="$(pwd)"
+timeout="20"
+name="$(/bin/basename "$(pwd)")"
+temp_f="/tmp/$name"
+user="$(/bin/whoami)"
+template="Default"
+template="Default_with_index"
+log_f=".git/logs/${prog}.log"
+log_n="10"
+info_str=""
+
+info()
+{
+    echo "${prog}:" "$@"
+    info_str="${info_str}${prog}: $@
+"
+    #echo "${prog}:" "$@" >> "$log_f"
+}
+
+log_rotate()
+{
+    local file="$1"
+    local num="$2"
+    local i
+
+    [ -z "$file" ] && return
+    [ -z "$num" ] && num="3"
+    [ -d "$(dirname "$file")" ] || mkdir -p "$(dirname "$file")"
+
+    [ -e "${file}.${num}" ] && rm -f "${file}.${num}"
+    for (( i = num - 1 ; i > 0; i-- ))
+    do
+        [ -e "${file}.${i}" ] && mv "${file}.${i}" "${file}.$((i + 1))"
+        echo for $i
+    done
+    [ -e "${file}" ] && mv "${file}" "${file}.1"
+}
+
+log_rotate "$log_f" "$log_n"
+
+(
+    info "starting: $(date)"
+    info "name=$name"
+    info "pwd=$pwd"
+    info "script=$0"
+
+    [ ! -d hooks -a -d .git ] && mkdir hooks
+    cp "$0" hooks
+
+	# REF https://stackoverflow.com/questions/7925850/how-can-i-automatically-push-after-committing-in-git
+
+	branch_name=$(git symbolic-ref --short HEAD)
+	retcode=$?
+	non_push_suffix="_local"
+
+	# Only push if branch_name was found (my be empty if in detached head state)
+	if [ $retcode -eq 0 ] ; then
+		#Only push if branch_name does not end with the non-push suffix
+		if [[ $branch_name != *$non_push_suffix ]] ; then
+			echo
+			echo "**** Pushing current branch $branch_name to origin [i4h post-commit hook]"
+			echo
+			git push origin $branch_name;
+		fi
+	fi
+
+) | tee -a "$log_f"
+
