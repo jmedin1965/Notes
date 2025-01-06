@@ -49,7 +49,7 @@ host01	192.168.21.36	c4:4f:33:87:92:e2	sonoff-host01	host01 sonoff	n/a	n/a
 
 
 
-192.168.21.186	[dc:4f:22:e5:bb:f0](./dc/4f/22/e5/bb/f0.md)
+192.168.21.186	dc:4f:22:e5:bb:f0
 
 
 host01
