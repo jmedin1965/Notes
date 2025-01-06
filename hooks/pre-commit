@@ -185,8 +185,10 @@ END
         if cd "$temp_f/export"
         then
             info "cd to markdown export dir $temp_f/export: $?"
+            pwd
             /usr/bin/sudo -u $user /bin/find . -name '*.md' -exec /bin/cp -v {} $pwd/{} \;
             info "find and copy md files $?"
+            info "/usr/bin/sudo -u $user /bin/find . -name '*.md' -exec /bin/cp -v {} $pwd/{} \;"
         fi
 
         cd "$pwd"
