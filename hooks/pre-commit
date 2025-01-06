@@ -143,6 +143,7 @@ log_rotate "$log_f" "$log_n"
                     then
                         info " check $line - $f - missing"
                         perl -pi -e "s,^$line,$line is missing,g" "$d/readme.txt"
+                        chown "$user" "$d/readme.txt"
                     fi
                 done <<< "$(grep -e '^===== .* =====$'  "$d/readme.txt")"
 
@@ -169,7 +170,7 @@ END
         if cd "$temp_f/export"
         then
             info "cd to markdown export dir $temp_f/export: $?"
-            /bin/find . -name '*.md' -exec /bin/cp -v {} $pwd/{} \;
+            /usr/bin/sudo -u $user /bin/find . -name '*.md' -exec /bin/cp -v {} $pwd/{} \;
             info "find and copy md files $?"
         fi
 
