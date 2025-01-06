@@ -78,8 +78,16 @@ log_rotate "$log_f" "$log_n"
 			echo "**** Pushing current branch $branch_name to origin [i4h post-commit hook]"
 			echo
 			git push origin $branch_name;
+            info "git push $branch_name, ev=$?"
 		fi
 	fi
+
+    if [ -n "$DISPLAY" -a -x /usr/bin/xmessage ] 
+    then
+        info "sending info to xmessage"
+        info "This message will self-destruct in $timeout seconds..."
+        echo "$info_str" | /usr/bin/xmessage -file - -timeout $timeout &
+    fi
 
 ) | tee -a "$log_f"
 
