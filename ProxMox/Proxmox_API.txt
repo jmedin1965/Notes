@@ -16,3 +16,5 @@ list config for vm 100 for snapshot test
 
 	pvesh get nodes/host01/qemu/100/snapshot/test/config --output-format json-pretty
 
+
+find all snapshots REF: https://forum.proxmox.com/threads/finding-all-snapshots-in-cluster.117478/
