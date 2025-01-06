@@ -186,7 +186,7 @@ END
         then
             info "cd to markdown export dir $temp_f/export: $?"
             pwd
-            /bin/find . -name '*.md' -exec /bin/cp -av \"{}\" \"$pwd/{}\" \;
+            /bin/find . -name '*.md' -exec /bin/cp -av \'{}\' \'$pwd/{}\' \;
             info "find and copy md files $?"
             info "/bin/find . -name '*.md' -exec /bin/cp -av {} $pwd/{} \;"
         fi
