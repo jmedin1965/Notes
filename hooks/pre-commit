@@ -11,7 +11,6 @@
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
-exec 1>&2
 
 prog="$(basename "$0")"
 pwd="$(pwd)"
@@ -53,6 +52,8 @@ log_rotate()
 }
 
 log_rotate "$log_f" "$log_n"
+
+exec 1>&2 | tee -a "$log_f"
 
 info "starting: $(date)"
 info "name=$name"
