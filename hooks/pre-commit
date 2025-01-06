@@ -79,6 +79,11 @@ log_rotate "$log_f" "$log_n"
         fi
     fi
 
+    if [ "$user" != root ]
+    then
+        chown "$user" "$log_f"
+    fi
+
     info running zim as used \"$user\"
 
     if [ -e "notebook.zim" ]
