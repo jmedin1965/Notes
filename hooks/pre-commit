@@ -54,6 +54,7 @@ log_rotate()
 
 log_rotate "$log_f" "$log_n"
 
+info "starting: $(date)"
 info "name=$name"
 info "pwd=$pwd"
 info "script=$0"
