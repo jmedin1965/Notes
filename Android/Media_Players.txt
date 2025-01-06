@@ -16,7 +16,7 @@ https://play.google.com/store/apps/details?id=com.mediaon.apt&hl=en_AU
 
 
 1. install Downloader by AFTVnews.com first
-2. Enable unknown sources install on [[AndroidTV]]
+2. Enable unknown sources install on AndroidTV
 	a. settings>>System>>About>>
 	b. Then click on "Android TV OS build" 7 times untill debug mode is enabled
 3. enter hdo.app/tv or 795281
@@ -29,7 +29,7 @@ hdo.app/tv
 
 ===== BeeTV =====
 
-[[BeeTV]] is the same as above except in downloaded type beetvapk.org. I'm sure beetvapk.org is the official site, but can't be 100% sure.
+BeeTV is the same as above except in downloaded type beetvapk.org. I'm sure beetvapk.org is the official site, but can't be 100% sure.
 beetvapk.org
 
 can also use 

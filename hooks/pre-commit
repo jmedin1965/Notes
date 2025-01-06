@@ -13,22 +13,46 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 exec 1>&2
 
-timeout="20"
+prog="$(basename "$0")"
 pwd="$(pwd)"
+timeout="20"
 name="$(/bin/basename "$(pwd)")"
 temp_f="/tmp/$name"
 user="$(/bin/whoami)"
 template="Default"
 template="Default_with_index"
-
+log_f=".git/logs/${prog}.log"
+log_n="10"
 info_str=""
+
 info()
 {
-    echo "pre-commit:" "$@"
-    info_str="${info_str}pre-commit: $@
+    echo "${prog}:" "$@"
+    info_str="${info_str}${prog}: $@
 "
-    #echo "pre-commit:" "$@" >> /tmp/pre-commit.log
+    echo "${prog}:" "$@" >> "$log_f"
 }
+
+log_rotate()
+{
+    local file="$1"
+    local num="$2"
+    local i
+
+    [ -z "$file" ] && return
+    [ -z "$num" ] && num="3"
+    [ -d "$(dirname "$file")" ] || mkdir -p "$(dirname "$file")"
+
+    [ -e "${file}.${num}" ] && rm -f "${file}.${num}"
+    for (( i = num - 1 ; i > 0; i-- ))
+    do
+        [ -e "${file}.${i}" ] && mv "${file}.${i}" "${file}.$((i + 1))"
+        echo for $i
+    done
+    [ -e "${file}" ] && mv "${file}" "${file}.1"
+}
+
+log_rotate "$log_f" "$log_n"
 
 info "name=$name"
 info "pwd=$pwd"
