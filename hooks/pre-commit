@@ -31,7 +31,7 @@ info()
     echo "${prog}:" "$@"
     info_str="${info_str}${prog}: $@
 "
-    echo "${prog}:" "$@" >> "$log_f"
+    #echo "${prog}:" "$@" >> "$log_f"
 }
 
 log_rotate()
@@ -153,11 +153,11 @@ log_rotate "$log_f" "$log_n"
 
         info rsync -amv --include-from=- "./" "$temp_f/$name/"
         rsync -amv --include-from=- "./" "$temp_f/$name/" << END
-    + /notebook.zim
-    + *.txt
-    + */
-    - *
-    END
++ /notebook.zim
++ *.txt
++ */
+- *
+END
         mkdir "$temp_f/export"
         chown -R "$user" "$temp_f"
         cd "$temp_f/$name"
