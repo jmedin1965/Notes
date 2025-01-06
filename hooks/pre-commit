@@ -118,7 +118,7 @@ log_rotate "$log_f" "$log_n"
             info "clean out markdown folder $?"
         fi
         mkdir -p "$temp_f"
-        info "$temp_f: cleate temp md export folder $?"
+        info "$temp_f: create temp md export folder $?"
 
         for d in bin sbin
         do
@@ -165,11 +165,21 @@ log_rotate "$log_f" "$log_n"
 - *
 END
         mkdir "$temp_f/export"
+        info "mkdir $temp_f/export ev=$?" 
+
         chown -R "$user" "$temp_f"
+        info "chown -R $user $temp_f ev=$?" 
+
         cd "$temp_f/$name"
+        info "cd $temp_f/$name ev=$?" 
 
         info /usr/bin/sudo -u $user /usr/bin/zim --export -r "--output=$temp_f/export" --format=markdown --index index "$temp_f/$name"
-        /usr/bin/sudo -u $user /usr/bin/zim --export -r "--output=$temp_f/export" --format=markdown --index index "$temp_f/$name"
+        if [ "$user" == root ]
+        then
+            /usr/bin/sudo -u $user /usr/bin/zim --export -r "--output=$temp_f/export" --format=markdown --index index "$temp_f/$name"
+        else
+            /usr/bin/zim --export -r "--output=$temp_f/export" --format=markdown --index index "$temp_f/$name"
+        fi
         info "export to md $?"
 
         if cd "$temp_f/export"
