@@ -191,16 +191,14 @@ END
                 info "  process $line to $pwd"
                 mv -v "$line" "$pwd"
             done
-            #/bin/find . -name '*.md' -exec mv -v \'{}\' \'$pwd/{}\' \;
             info "find and move md files $?"
-            info "/bin/find . -name '*.md' -exec mv -v {} $pwd/{} \;"
         fi
 
         cd "$pwd"
         info "cd back up $?"
 
-        #[ -d "$temp_f" ] && /bin/rm -rf "$temp_f"
-        #info "clean out markdown folder $?"
+        [ -d "$temp_f" ] && /bin/rm -rf "$temp_f"
+        info "clean out markdown folder $?"
 
         # process readme file
         readme="readme.md"
