@@ -186,9 +186,9 @@ END
         then
             info "cd to markdown export dir $temp_f/export: $?"
             pwd
-            /bin/find . -name '*.md' -exec mv \'{}\' \'$pwd/{}\' \;
+            /bin/find . -name '*.md' -exec mv -v \'{}\' \'$pwd/{}\' \;
             info "find and move md files $?"
-            info "/bin/find . -name '*.md' -exec mv {} $pwd/{} \;"
+            info "/bin/find . -name '*.md' -exec mv -v {} $pwd/{} \;"
         fi
 
         cd "$pwd"
