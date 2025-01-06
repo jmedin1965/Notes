@@ -192,8 +192,8 @@ END
         cd "$pwd"
         info "cd back up $?"
 
-        [ -d "$temp_f" ] && /bin/rm -rf "$temp_f"
-        info "clean out markdown folder $?"
+        #[ -d "$temp_f" ] && /bin/rm -rf "$temp_f"
+        #info "clean out markdown folder $?"
 
         # process readme file
         readme="readme.md"
