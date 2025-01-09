@@ -28,6 +28,7 @@ GitHub code is
 	* [HAProxy test inline file](./Home_Assistant/HAProxy_test_inline_file.md)
 	* [Python Scripts](./Home_Assistant/Python_Scripts.md)
 	* [zigbee2mqtt](./Home_Assistant/zigbee2mqtt.md)
+* [Immich picture and video server](./Immich_picture_and_video_server.md)
 * [Ipfire firewall and router](./Ipfire_firewall_and_router.md)
 * [Password Vault selfhosting](./Password_Vault_selfhosting.md)
 * [PFSense](./PFSense.md)
