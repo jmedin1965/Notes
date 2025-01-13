@@ -1,7 +1,7 @@
 # HAProxy test inline file
 Created Monday 11 November 2024
 
-Just to test which HAProxy you are actuall hitting, you can set up a backend to just dish out a small text file.
+Just to test which HAProxy you are actually hitting, you can set up a backend to just dish out a small text file.
 
 REF: <https://webmasters.stackexchange.com/questions/109942/haproxy-as-web-server>
 
