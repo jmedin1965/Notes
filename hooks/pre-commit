@@ -188,8 +188,9 @@ END
             pwd
             /bin/find . -name '*.md' | while read line
             do
-                info "  process $line to $pwd"
-                mv -v "$line" "$pwd"
+                d="$(dirname "$line")"
+                info "  process $line to $pwd/$d"
+                mv -v "$line" "$pwd/$d"
             done
             info "find and move md files $?"
         fi
