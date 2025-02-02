@@ -31,6 +31,7 @@ GitHub code is
 	* [zigbee2mqtt](./Home_Assistant/zigbee2mqtt.md)
 * [Immich picture and video server](./Immich_picture_and_video_server.md)
 * [Ipfire firewall and router](./Ipfire_firewall_and_router.md)
+* [jmedin1965](./jmedin1965.md)
 * [Password Vault selfhosting](./Password_Vault_selfhosting.md)
 * [PFSense](./PFSense.md)
 	* [Available Packages not showing any packages](./PFSense/Available_Packages_not_showing_any_packages.md)
