@@ -6,14 +6,12 @@ EFI Shell Cheat Sheet
 
 *****
 
-
 <https://mricher.fr/post/boot-from-an-efi-shell/>
 
 Debian swap BIOS to EFI boot how to
 -----------------------------------
 
 *****
-
 
 <https://blog.getreu.net/projects/legacy-to-uefi-boot/>
 

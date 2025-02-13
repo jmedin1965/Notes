@@ -3,24 +3,23 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Setting up Samba as an Active Directory Domain Controller</title>
-	<meta name='Generator' content='Zim 0.74.3'>
+	<meta name='Generator' content='Zim 0.75.2'>
 	<style type='text/css'>
-		a          { text-decoration: none      }
+		a          { text-decoration: none }
 		a:hover    { text-decoration: underline }
 		a:active   { text-decoration: underline }
-		strike     { color: grey                }
-		u          { text-decoration: none;
-					 background-color: yellow   }
-		tt         { color: #2e3436;            }
-		pre        { color: #2e3436;
-					 margin-left: 20px          }
-		h1         { text-decoration: underline;
-					 color: #4e9a06; margin-bottom: 0 }
-		h2         { color: #4e9a06; margin-bottom: 0 }
-		h3         { color: #4e9a06; margin-bottom: 0 }
-		h4         { color: #4e9a06; margin-bottom: 0 }
-		h5         { color: #4e9a06; margin-bottom: 0 }
-		p          { margin-top: 0              }
+		strike     { color: grey }
+		u          { text-decoration: none; background-color: yellow }
+		tt         { color: #2e3436; }
+		pre        { color: #2e3436; margin-left: 20px; margin-top: 0; margin-bottom: 0 }
+		h1         { text-decoration: underline; color: #4e9a06; margin: 0 }
+		h2         { color: #4e9a06; margin: 0 }
+		h3         { color: #4e9a06; margin: 0 }
+		h4         { color: #4e9a06; margin: 0 }
+		h5         { color: #4e9a06; margin: 0 }
+		p          { margin: 0 }
+		ul         { margin: 0 }
+		ol         { margin: 0 }
 		span.zim-tag {
 			color: #ce5c00;
 		}
@@ -100,22 +99,18 @@
 	<p>
 Created Wednesday 01 May 2024
 </p>
-
+<br>
 <p>
 <a href="https://wiki.samba.org/index.php/Main_Page" title="https://wiki.samba.org/index.php/Main_Page" class="https">https://wiki.samba.org/index.php/Main_Page</a>
 </p>
-
+<br>
 <p>
 <a href="https://wiki.samba.org/index.php/Setting_up_Samba_as_an_Active_Directory_Domain_Controller" title="https://wiki.samba.org/index.php/Setting_up_Samba_as_an_Active_Directory_Domain_Controller" class="https">https://wiki.samba.org/index.php/Setting_up_Samba_as_an_Active_Directory_Domain_Controller</a>
 </p>
-
 <br>
-
+<br>
 <h2>Contents<a id="contents" class="h_anchor"></a></h2>
-
 <br>
-
-<p>
 <ol type="1" start="1">
 <li>Introduction</li>
 <li>Preparing the Installation</li>
@@ -125,8 +120,7 @@ Created Wednesday 01 May 2024
 <li>Parameter Explanation</li>
 <li>Provisioning Samba AD in Interactive Mode</li>
 <li>Provisioning Samba AD in Non-interactive Mode</li>
-</ol>
-</li>
+</ol></li>
 <li>Setting up the AD DNS back end</li>
 <li>Configuring the DNS Resolver</li>
 <li>Create a reverse zone</li>
@@ -136,82 +130,84 @@ Created Wednesday 01 May 2024
 <li>9.1 Verifying the File Server</li>
 <li>9.2 Verifying DNS</li>
 <li>Verifying Kerberos</li>
-</ol>
-</li>
+</ol></li>
 <li>Configuring Time Synchronisation</li>
 <li>Using the Domain Controller as a File Server</li>
 <li>Troubleshooting</li>
 <li>Further Samba-related Documentation</li>
 </ol>
-</p>
-
-<h2>Introduction<a id="introduction" class="h_anchor"></a></h2>
-
 <br>
-
+<h2>Introduction<a id="introduction" class="h_anchor"></a></h2>
+<br>
 <p>
 Starting from version 4.0, Samba is able to run as an Active Directory (AD) domain controller (DC). If you are installing Samba in a production environment, it is recommended to run two or more DCs for failover reasons.<br>
 This documentation describes how to set up Samba as the first DC to build a new AD forest. Additionally, use this documentation if you are migrating a Samba NT4 domain to Samba AD. To join Samba as an additional DC to an existing AD forest, see Joining a Samba DC to an Existing Active Directory.<br>
-Samba as an AD DC only supports:<br>
+Samba as an AD DC only supports:
+</p>
 <ul>
 <li>the integrated LDAP server as AD back end. For details, see the frequently asked question (FAQ) Does Samba AD DCs Support OpenLDAP or Other LDAP Servers as Back End?</li>
 <li>the Heimdal Kerberos Key Distribution Center (KDC).</li>
 </ul>
+<p>
 <div style='padding-left: 30pt'>
 Samba provides experimental support for the MIT Kerberos KDC provided by your operating system if you run Samba 4.7 or later and has been built using the --with-system-mitkrb5 option. In other cases Samba uses the Heimdal KDC included in Samba. For further details about Samba using the MIT KDC, and why it is experimental see Running a Samba AD DC with MIT Kerberos KDC.
 </div>
 </p>
-
-<h3>Preparing the Installation<a id="preparing-the-installation" class="h_anchor"></a></h3>
-
 <br>
-
-<p>
+<h3>Preparing the Installation<a id="preparing-the-installation" class="h_anchor"></a></h3>
+<br>
 <ul>
 <li>Select a host name for your AD DC.</li>
 </ul>
+<p>
 <div style='padding-left: 30pt'>
 Do not use NT4-only terms as host name, such as PDC or BDC. These modes do not exist in an AD and cause confusion.
 </div>
+</p>
 <ul>
 <li>Select a DNS domain for your AD forest. The name will also be used as the AD Kerberos realm.</li>
 </ul>
-</p>
-
+<br>
 <p>
 <b>Make sure that you provision the AD using a DNS domain that will not need to be changed. Samba does not support renaming the AD DNS zone and Kerberos realm. Do not use .local for the TLD, this is used by Avahi.</b><br>
 For additional information, see Active Directory Naming FAQ.
 </p>
-
-<p>
+<br>
 <ul>
 <li>Use a static IP address on the DC.</li>
 <li>Disable tools, such as resolvconf, that automatically update your /etc/resolv.conf DNS resolver configuration file. AD DCs and domain members must use an DNS server that is able to resolve the AD DNS zones.</li>
 <li>Verify that no Samba processes are running:</li>
 </ul>
+<p>
 # ps ax | egrep "samba|smbd|nmbd|winbindd"<br>
 <div style='padding-left: 30pt'>
 If the output lists any samba, smbd, nmbd, or winbindd processes, shut down the processes.
 </div>
+</p>
 <ul>
 <li>Verify that the /etc/hosts file on the DC correctly resolves the fully-qualified domain name (FQDN) and short host name to the LAN IP address of the DC. For example:</li>
 </ul>
+<p>
 127.0.0.1     localhost<br>
 10.99.0.1     DC1.samdom.example.com     DC1<br>
 <div style='padding-left: 30pt'>
 The host name and FQDN must not resolve to the 127.0.0.1 IP address or any other IP address than the one used on the LAN interface of the DC.
 </div>
+</p>
 <ul>
 <li>If you previously ran a Samba installation on this host:
 <ul>
 <li>Remove the existing smb.conf file. To list the path to the file:</li>
 </ul></li>
 </ul>
+<p>
 # smbd -b | grep "CONFIGFILE"<br>
-   CONFIGFILE: /usr/local/samba/etc/samba/smb.conf<br>
+   CONFIGFILE: /usr/local/samba/etc/samba/smb.conf
+</p>
 <ul style='padding-left: 30pt'>
 <li>Remove all Samba database files, such as *.tdb and *.ldb files. To list the folders containing Samba databases:</li>
 </ul>
+<p>
 # smbd -b | egrep "LOCKDIR|STATEDIR|CACHEDIR|PRIVATE_DIR"<br>
   LOCKDIR: /usr/local/samba/var/lock/<br>
   STATEDIR: /usr/local/samba/var/locks/<br>
@@ -220,41 +216,35 @@ The host name and FQDN must not resolve to the 127.0.0.1 IP address or any other
 <div style='padding-left: 30pt'>
 Starting with a clean environment helps to prevent confusion and ensures that no files from any previous Samba installation will be mixed with your new domain DC installation.
 </div>
+</p>
 <ul>
 <li>Remove an existing /etc/krb5.conf file:</li>
 </ul>
+<p>
 # rm /etc/krb5.conf
 </p>
-
 <br>
-
+<br>
 <h3>Installing Samba<a id="installing-samba" class="h_anchor"></a></h3>
-
-<p>
 <ul>
 <li>Operating System Requirements
 <ul>
 <li>Package Dependencies Required to Build Samba</li>
 <li>File System Support</li>
-</ul>
-</li>
+</ul></li>
 <li>Build Samba from Source</li>
 <li>Distribution-specific Package Installation</li>
 </ul>
-</p>
-
 <br>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 Install a maintained Samba version. For details, see Samba Release Planning.
 </div>
 </p>
-
 <br>
-
+<br>
 <h3>Provisioning a Samba Active Directory<a id="provisioning-a-samba-active-directory" class="h_anchor"></a></h3>
-
 <p>
 The Samba AD provisioning process creates the AD databases and adds initial records, such as the domain administrator account and required DNS entries.<br>
 If you are migrating a Samba NT4 domain to AD, skip this step and run the Samba classic upgrade. For details, see Migrating a Samba NT4 Domain to Samba AD (Classic Upgrade).<br>
@@ -262,26 +252,24 @@ If you are migrating a Samba NT4 domain to AD, skip this step and run the Samba 
 The AD provisioning requires root permissions to create files and set permissions.
 </div>
 </p>
-
+<br>
 <p>
 The samba-tool domain provision command provides several parameters to use with the interactive and non-interactive setup. For details, see:<br>
 # samba-tool domain provision --help
 </p>
-
 <br>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 When provisioning a new AD, it is recommended to enable the NIS extensions by passing the --use-rfc2307 parameter to the samba-tool domain provision command. There are no disadvantages to enabling the NIS extensions, but enabling them in an existing domain requires manually extending the AD schema. For further details about Unix attributes in AD, see:
 </div>
+</p>
 <ul style='padding-left: 30pt'>
 <li>Setting up RFC2307 in AD</li>
 <li>idmap config = ad</li>
 </ul>
-</p>
-
+<br>
 <h3>Parameter Explanation<a id="parameter-explanation" class="h_anchor"></a></h3>
-
 <p>
 Set the following parameters during the provisioning:<br>
 Interactive Mode Setting	Non-interactive Mode Parameter	Explanation<br>
@@ -292,14 +280,13 @@ Server Role	--server-role	Installs the domain controller DC role.<br>
 DNS backend	--dns-backend	Sets the DNS back end. The first DC in an AD must be installed using a DNS back end. Note that the BIND9_FLATFILE is not supported and will be removed in a future Samba version.<br>
 DNS forwarder IP address	not available	This setting is only available when using the SAMBA_INTERNAL DNS back end. For details, see Setting up a DNS Forwarder.<br>
 Administrator password	--adminpass	Sets the domain administrator password. If the password does not match the complexity requirements, the provisioning fails. For details, see Microsoft TechNet: Passwords must meet complexity requirements.<br>
-Other parameters frequently used with the samba-tool domain provision command:<br>
+Other parameters frequently used with the samba-tool domain provision command:
+</p>
 <ul>
 <li>--option="interfaces=lo eth0" --option="bind interfaces only=yes": If your server has multiple network interfaces, use these options to bind Samba to the specified interfaces. This enables the samba-tool command to register the correct LAN IP address in the directory during the join.</li>
 </ul>
-</p>
-
 <br>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 do NOT use NONE as the DNS backend, it is not supported and will be removed in a future Samba version.<br>
@@ -307,9 +294,8 @@ If using Bind as the DNS backend, do NOT use BIND9_FLATFILE, it is not supported
 Once you have provisioned the first DC in an AD domain, do not provision any further DCs in the same domain, Join any further DCs.
 </div>
 </p>
-
+<br>
 <h3>Provisioning Samba AD in Interactive Mode<a id="provisioning-samba-ad-in-interactive-mode" class="h_anchor"></a></h3>
-
 <p>
 To provision a Samba AD interactively, run:<br>
 # samba-tool domain provision --use-rfc2307 --interactive<br>
@@ -364,11 +350,11 @@ DOMAIN SID:            S-1-5-21-2614513918-2685075268-614796884<br>
 The interactive provisioning mode supports passing further parameters to the samba-tool domain provision command. This enables you to modify parameters that are not part of the interactive setup.
 </div>
 </p>
-
+<br>
 <h3>Provisioning Samba AD in Non-interactive Mode<a id="provisioning-samba-ad-in-non-interactive-mode" class="h_anchor"></a></h3>
-
 <p>
-For example, to provision a Samba AD non-interactively with the following settings:<br>
+For example, to provision a Samba AD non-interactively with the following settings:
+</p>
 <ul>
 <li>Server role: dc</li>
 <li>NIS extensions enabled</li>
@@ -377,40 +363,37 @@ For example, to provision a Samba AD non-interactively with the following settin
 <li>NetBIOS domain name: SAMDOM</li>
 <li>Domain administrator password: Passw0rd</li>
 </ul>
+<p>
 # samba-tool domain provision --server-role=dc --use-rfc2307 --dns-backend=SAMBA_INTERNAL --realm=SAMDOM.EXAMPLE.COM --domain=SAMDOM --adminpass=Passw0rd
 </p>
-
 <br>
-
+<br>
 <h3>Setting up the AD DNS back end<a id="setting-up-the-ad-dns-back-end" class="h_anchor"></a></h3>
-
 <p>
-Skip this step if you provisioned the DC using the SAMBA_INTERNAL DNS back end.<br>
+Skip this step if you provisioned the DC using the SAMBA_INTERNAL DNS back end.
+</p>
 <ul>
 <li>Set up the BIND DNS server and the BIND9_DLZ module. For details, see Setting up a BIND DNS Server.</li>
 <li>Start the BIND DNS server. For example:</li>
 </ul>
+<p>
 # systemctl start named<br>
 <div style='padding-left: 30pt'>
 For details how to start services, see you distribution's documentation.
 </div>
 </p>
-
 <br>
-
+<br>
 <h3>Configuring the DNS Resolver<a id="configuring-the-dns-resolver" class="h_anchor"></a></h3>
-
 <p>
 Domain members in an AD use DNS to locate services, such as LDAP and Kerberos. For that, they need to use a DNS server that is able to resolve the AD DNS zone.<br>
 On your DC, set the AD DNS domain in the search and the IP of your DC in the nameserver parameter of the /etc/resolv.conf file. For example:<br>
 search samdom.example.com<br>
 nameserver 10.99.0.1
 </p>
-
 <br>
-
+<br>
 <h3>Create a reverse zone<a id="create-a-reverse-zone" class="h_anchor"></a></h3>
-
 <p>
 You can optionally add a reverse lookup zone.<br>
 # samba-tool dns zonecreate &lt;Your-AD-DNS-Server-IP-or-hostname&gt; 0.99.10.in-addr.arpa -U Administrator<br>
@@ -422,11 +405,9 @@ The reverse zone is directly live without restarting Samba or BIND.<br>
 You must start the Samba AD DC before you can add a reverse zone.
 </div>
 </p>
-
 <br>
-
+<br>
 <h3>Configuring Kerberos<a id="configuring-kerberos" class="h_anchor"></a></h3>
-
 <p>
 In an AD, Kerberos is used to authenticate users, machines, and services.<br>
 During the provisioning, Samba created a Kerberos configuration file for your DC. Copy this file to your operating system's Kerberos configuration. For example:<br>
@@ -436,23 +417,20 @@ Do not create a symbolic link to the the generated krb5.conf file. In Samba 4.7 
 </div>
 The pre-created Kerberos configuration uses DNS service (SRV) resource records to locate the KDC.
 </p>
-
 <br>
-
+<br>
 <h3>Testing your Samba AD DC<a id="testing-your-samba-ad-dc" class="h_anchor"></a></h3>
-
 <p>
 To start the samba service manually, enter:<br>
 # samba<br>
-Samba does not provide System V init scripts, systemd, upstart, or other services configuration files.<br>
+Samba does not provide System V init scripts, systemd, upstart, or other services configuration files.
+</p>
 <ul>
 <li>If you installed Samba using packages, use the script or service configuration file included in the package to start Samba.</li>
 <li>If you built Samba, see Managing the Samba AD DC Service.</li>
 </ul>
-</p>
-
+<br>
 <h3>Verifying the File Server<a id="verifying-the-file-server" class="h_anchor"></a></h3>
-
 <p>
 To list all shares provided by the DC:<br>
 Before Samba 4.11.0:<br>
@@ -487,9 +465,8 @@ IPC$            IPC       IPC Service (Samba 4.12.6-Debian)
 </div>
 SMB1 disabled -- no workgroup available
 </p>
-
 <br>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 The netlogon and sysvol shares were auto-created during the provisioning and must exist on a DC.
@@ -503,47 +480,53 @@ Domain=[SAMDOM] OS=[Unix] Server=[Samba x.y.z]<br>
 49386 blocks of size 524288. 42093 blocks available<br>
 If one or more tests fail, see Troubleshooting.
 </p>
-
+<br>
 <h3>Verifying DNS<a id="verifying-dns" class="h_anchor"></a></h3>
-
 <p>
-To verify that your AD DNS configuration works correctly, query some DNS records:<br>
+To verify that your AD DNS configuration works correctly, query some DNS records:
+</p>
 <ul>
 <li>The tcp-based _ldap SRV record in the domain:</li>
 </ul>
+<p>
 $ host -t SRV _ldap._tcp.samdom.example.com.<br>
-_ldap._tcp.samdom.example.com has SRV record 0 100 389 dc1.samdom.example.com.<br>
+_ldap._tcp.samdom.example.com has SRV record 0 100 389 dc1.samdom.example.com.
+</p>
 <ul>
 <li>The udp-based _kerberos SRV resource record in the domain:</li>
 </ul>
+<p>
 $ host -t SRV _kerberos._udp.samdom.example.com.<br>
-_kerberos._udp.samdom.example.com has SRV record 0 100 88 dc1.samdom.example.com.<br>
+_kerberos._udp.samdom.example.com has SRV record 0 100 88 dc1.samdom.example.com.
+</p>
 <ul>
 <li>The A record of the domain controller:</li>
 </ul>
+<p>
 $ host -t A dc1.samdom.example.com.<br>
 dc1.samdom.example.com has address 10.99.0.1<br>
 If one or more tests fail, see Troubleshooting.
 </p>
-
+<br>
 <h3>Verifying Kerberos<a id="verifying-kerberos" class="h_anchor"></a></h3>
-
-<p>
 <ul>
 <li>Request a Kerberos ticket for the domain administrator account:</li>
 </ul>
+<p>
 $ kinit administrator<br>
 Password for <a href="mailto:administrator@SAMDOM.EXAMPLE.COM" title="administrator@SAMDOM.EXAMPLE.COM" class="mailto">administrator@SAMDOM.EXAMPLE.COM</a>:
 </p>
-
+<br>
 <p>
 <div style='padding-left: 60pt'>
 If you do not pass the principal in the user@REALM format to the kinit command, the Kerberos realm is automatically appended.<br>
 Always enter the Kerberos realm in uppercase.
 </div>
+</p>
 <ul>
 <li>List the cached Kerberos tickets:</li>
 </ul>
+<p>
 $ klist<br>
 Ticket cache: FILE:/tmp/krb5cc_0<br>
 Default principal: <a href="mailto:administrator@SAMDOM.EXAMPLE.COM" title="administrator@SAMDOM.EXAMPLE.COM" class="mailto">administrator@SAMDOM.EXAMPLE.COM</a><br>
@@ -554,21 +537,18 @@ renew until 02.11.2016 08:44:59
 </div>
 If one or more tests fail, see Troubleshooting.
 </p>
-
 <br>
-
+<br>
 <h3>Configuring Time Synchronisation<a id="configuring-time-synchronisation" class="h_anchor"></a></h3>
-
 <p>
 Kerberos requires synchronised time on all domain members. For further details and how to set up the ntpd or chrony service, see Time Synchronisation.
 </p>
-
 <br>
-
+<br>
 <h3>Using the Domain Controller as a File Server<a id="using-the-domain-controller-as-a-file-server" class="h_anchor"></a></h3>
-
 <p>
-Whilst the Samba AD DC is able to provide file shares, just like all other installation modes, the Samba team does not recommend using a DC as a file server for the following reasons:<br>
+Whilst the Samba AD DC is able to provide file shares, just like all other installation modes, the Samba team does not recommend using a DC as a file server for the following reasons:
+</p>
 <ul>
 <li>For anything but the smallest organisations, having more than one DC is a really good backup measure, and makes upgrades safer</li>
 <li>It encourages upgrades of the DC to also be upgrades of the host OS every year or two, because there isn't complex data to transition or other services involved.</li>
@@ -576,25 +556,23 @@ Whilst the Samba AD DC is able to provide file shares, just like all other insta
 <li>The DC and file-server have different points at which an organisation would wish to upgrade. The needs for new features on the DC and file server come at different times. Currently the AD DC is evolving rapidly to gain features, whereas the fileserver, after over 20 years, is quite rightly more conservative.</li>
 <li>mandatory smb signing is enforced on the DC.</li>
 </ul>
-</p>
-
+<br>
 <p>
 If you do decide to use the Samba DC as a fileserver, please consider running a VM, on the DC, containing a separate Samba Unix domain member and use this instead.<br>
 If you must use the Samba DC as a fileserver, you should be aware that the auto-enabled acl_xattr virtual file system (VFS) object enables you to only configure shares with Windows access control lists (ACL). Using POSIX ACLs with shares on a Samba DC does not work.<br>
 You should be aware that if wish to use a vfs object on a DC share e.g. recycle, you must not just set vfs objects = recycle in the share. Doing this will turn off the default vfs objects dfs_samba4 and acl_xattr. You must set vfs objects = dfs_samba4 acl_xattr recycle.<br>
-To provide network shares with the full capabilities of Samba, set up a Samba domain member with file shares. For details, see:<br>
+To provide network shares with the full capabilities of Samba, set up a Samba domain member with file shares. For details, see:
+</p>
 <ul>
 <li>Setting up Samba as a Domain Member</li>
 <li>Samba File Serving</li>
 </ul>
-</p>
-
+<br>
 <p>
 If you only have a small domain (small office, home network) and do not want to follow the Samba team's recommendation and use the DC additionally as a file server, configure Winbindd before you start setting up shares. For details, see Configuring Winbindd on a Samba AD DC.
 </p>
-
 <br>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 If you do use an AD DC as a fileserver, you must be aware that it can be problematic and can cause strange errors.<br>
@@ -602,27 +580,22 @@ If you do use an AD DC as a fileserver, do not add any of the 'idmap config' lin
 If you do use an AD DC as a fileserver, You must set the permissions from Windows, do not attempt to use any of the old methods (force user etc) . They will not work correctly and will cause problems.
 </div>
 </p>
-
 <br>
-
+<br>
 <h3>Troubleshooting<a id="troubleshooting" class="h_anchor"></a></h3>
-
 <p>
 For further details, see Samba AD DC Troubleshooting.
 </p>
-
 <br>
-
+<br>
 <h3>Further Samba-related Documentation<a id="further-samba-related-documentation" class="h_anchor"></a></h3>
-
 <p>
 See User Documentation.
 </p>
-
 <br>
 <br>
 <br>
-
+<br>
 <p>
 From &lt;<a href="https://wiki.samba.org/index.php/Setting_up_Samba_as_an_Active_Directory_Domain_Controller>" title="https://wiki.samba.org/index.php/Setting_up_Samba_as_an_Active_Directory_Domain_Controller&gt;" class="https">https://wiki.samba.org/index.php/Setting_up_Samba_as_an_Active_Directory_Domain_Controller&gt;</a> 
 </p>

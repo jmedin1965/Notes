@@ -3,24 +3,23 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Dogtag - internal off-line CA</title>
-	<meta name='Generator' content='Zim 0.74.3'>
+	<meta name='Generator' content='Zim 0.75.2'>
 	<style type='text/css'>
-		a          { text-decoration: none      }
+		a          { text-decoration: none }
 		a:hover    { text-decoration: underline }
 		a:active   { text-decoration: underline }
-		strike     { color: grey                }
-		u          { text-decoration: none;
-					 background-color: yellow   }
-		tt         { color: #2e3436;            }
-		pre        { color: #2e3436;
-					 margin-left: 20px          }
-		h1         { text-decoration: underline;
-					 color: #4e9a06; margin-bottom: 0 }
-		h2         { color: #4e9a06; margin-bottom: 0 }
-		h3         { color: #4e9a06; margin-bottom: 0 }
-		h4         { color: #4e9a06; margin-bottom: 0 }
-		h5         { color: #4e9a06; margin-bottom: 0 }
-		p          { margin-top: 0              }
+		strike     { color: grey }
+		u          { text-decoration: none; background-color: yellow }
+		tt         { color: #2e3436; }
+		pre        { color: #2e3436; margin-left: 20px; margin-top: 0; margin-bottom: 0 }
+		h1         { text-decoration: underline; color: #4e9a06; margin: 0 }
+		h2         { color: #4e9a06; margin: 0 }
+		h3         { color: #4e9a06; margin: 0 }
+		h4         { color: #4e9a06; margin: 0 }
+		h5         { color: #4e9a06; margin: 0 }
+		p          { margin: 0 }
+		ul         { margin: 0 }
+		ol         { margin: 0 }
 		span.zim-tag {
 			color: #ce5c00;
 		}
@@ -100,78 +99,70 @@
 	<p>
 Created Friday 01 December 2023
 </p>
-
+<br>
 <p>
 I tried to install this using Debian, but just too difficult. No point re-inventing the wheel, so I'm<br>
 installing on a CentOS 8 system with 8G disk space and an encrypted root disk.
 </p>
-
+<br>
 <p>
 I did find an excellent doc on how to install an off-line CA on CentOS, but it's for CentOS 7. I will follow<br>
 it and see if it works with CentOS 8;
 </p>
-
+<br>
 <p>
 REF <a href="https://github.com/rharmonson/richtech/wiki/OSVDC-Series:-Root-Certificate-Authority-(PKI)-with-Dogtag-10.3-on-CentOS-7.3.1611" title="https://github.com/rharmonson/richtech/wiki/OSVDC-Series:-Root-Certificate-Authority-(PKI)-with-Dogtag-10.3-on-CentOS-7.3.1611" class="https">https://github.com/rharmonson/richtech/wiki/OSVDC-Series:-Root-Certificate-Authority-(PKI)-with-Dogtag-10.3-on-CentOS-7.3.1611</a>
 </p>
-
-<h2>install apache and php - NOT REQUIRED!<a id="install-apache-and-php---not-required" class="h_anchor"></a></h2>
-
 <br>
-
+<h2>install apache and php - NOT REQUIRED!<a id="install-apache-and-php---not-required" class="h_anchor"></a></h2>
+<br>
 <p>
 CentOS 8 uses tomcat. If these are installed, dogtag installation fails
 </p>
-
-<h2>Configure firewall<a id="configure-firewall" class="h_anchor"></a></h2>
-
 <br>
-
+<h2>Configure firewall<a id="configure-firewall" class="h_anchor"></a></h2>
+<br>
 <p>
 CentOS 8 used firewall-cmd
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 firewall-cmd --permanent --zone=public --add-port=8443/tcp<br>
 firewall-cmd --permanent --zone=public --remove-service=cockpit
 </div>
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 firewall-cmd --reload <br>
 firewall-cmd --list-all
 </div>
 </p>
-
-<h2>Entropy<a id="entropy" class="h_anchor"></a></h2>
-
 <br>
-
+<h2>Entropy<a id="entropy" class="h_anchor"></a></h2>
+<br>
 <p>
 make sure quemu-guest-client is installed. Also add VirtIO RNG to the guest hardware
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 yum install qemu-guest-agent
 </div>
 </p>
-
+<br>
 <p>
 Make sure you have the VirtIO RING added to vm's hardware and reboot
 </p>
-
-<h2>selinux<a id="selinux" class="h_anchor"></a></h2>
-
 <br>
-
+<h2>selinux<a id="selinux" class="h_anchor"></a></h2>
+<br>
 <p>
 need to set selinux to permissive to do the install, or probably not? I'm thinking that CentOS8 will<br>
 hopefullt set selinux up properly. yes they did.
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 # no need for this<br>
@@ -179,46 +170,42 @@ hopefullt set selinux up properly. yes they did.
 #sudo sed -i 's/^SELINUX=.*/SELINUX=permissive/g' /etc/selinux/config
 </div>
 </p>
-
-<h2>hosts file<a id="hosts-file" class="h_anchor"></a></h2>
-
 <br>
-
+<h2>hosts file<a id="hosts-file" class="h_anchor"></a></h2>
+<br>
 <p>
 make sure hosts ip address in in /etc/hosts file
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 &lt;ip address&gt; &lt;hostname.domain&gt; &lt;hostname&gt;
 </div>
 </p>
-
-<h2>389-ds-base pki-ca<a id="389-ds-base-pki-ca" class="h_anchor"></a></h2>
-
 <br>
-
+<h2>389-ds-base pki-ca<a id="389-ds-base-pki-ca" class="h_anchor"></a></h2>
+<br>
 <p>
 REF: <a href="https://www.techsupportpk.com/2020/04/how-to-set-up-389-directory-server-centos-rhel-8.html" title="https://www.techsupportpk.com/2020/04/how-to-set-up-389-directory-server-centos-rhel-8.html" class="https">https://www.techsupportpk.com/2020/04/how-to-set-up-389-directory-server-centos-rhel-8.html</a>
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 yum -y install <span class="zim-tag">@idm</span>:DL1<br>
 yum -y install 389-ds-base pki-ca
 </div>
 </p>
-
+<br>
 <p>
 unistall cockpit if you don't want to use it
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 dscreate interactive
 </div>
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 systemctl enable dirsrv.target<br>
@@ -230,48 +217,44 @@ systemctl status <a href="mailto:dirsrv@ca.service" title="dirsrv@ca.service" cl
 lsof -i -P -n | grep LISTEN
 </div>
 </p>
-
-<h2>dogtag theme<a id="dogtag-theme" class="h_anchor"></a></h2>
-
 <br>
-
+<h2>dogtag theme<a id="dogtag-theme" class="h_anchor"></a></h2>
+<br>
 <p>
 get the version ok pki that is installed
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 yum list installed  | grep pki-base.noarch
 </div>
 </p>
-
+<br>
 <p>
 during this install the version was 10.8.3 and this is the one that I found
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 yum install <a href="http://rpmfind.net/linux/fedora/linux/releases/32/Everything/x86_64/os/Packages/d/dogtag-pki-server-theme-10.8.3-1.fc32.noarch.rpm" title="http://rpmfind.net/linux/fedora/linux/releases/32/Everything/x86_64/os/Packages/d/dogtag-pki-server-theme-10.8.3-1.fc32.noarch.rpm" class="http">http://rpmfind.net/linux/fedora/linux/releases/32/Everything/x86_64/os/Packages/d/dogtag-pki-server-theme-10.8.3-1.fc32.noarch.rpm</a>
 </div>
 </p>
-
-<h2>Setup Dogtag CA<a id="setup-dogtag-ca" class="h_anchor"></a></h2>
-
 <br>
-
+<h2>Setup Dogtag CA<a id="setup-dogtag-ca" class="h_anchor"></a></h2>
+<br>
 <p>
 <div style='padding-left: 30pt'>
 pkispawn -s CA
 </div>
 </p>
-
+<br>
 <p>
 if it fails and you need to remove, use<br>
 <div style='padding-left: 30pt'>
 pkidestroy -s CA
 </div>
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 systemctl enable pki-tomcatd.target<br>
@@ -280,17 +263,17 @@ systemctl start pki-tomcatd.target<br>
 systemctl start pki-tomcatd@
 </div>
 </p>
-
+<br>
 <p>
 now access via
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 <a href="https://dogtag01.gli.lan:8443/ca" title="https://dogtag01.gli.lan:8443/ca" class="https">https://dogtag01.gli.lan:8443/ca</a>
 </div>
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 ==========================================================================
@@ -302,7 +285,7 @@ INSTALLATION SUMMARY
 ==========================================================================
 </div>
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 Administrator's username:             caadmin<br>
@@ -312,7 +295,7 @@ Administrator's PKCS #12 file:
 /root/.dogtag/pki-tomcat/ca_admin_cert.p12
 </div>
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 To check the status of the subsystem:
@@ -321,7 +304,7 @@ To check the status of the subsystem:
 systemctl status <a href="mailto:pki-tomcatd@pki-tomcat.service" title="pki-tomcatd@pki-tomcat.service" class="mailto">pki-tomcatd@pki-tomcat.service</a>
 </div>
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 To restart the subsystem:
@@ -330,7 +313,7 @@ To restart the subsystem:
 systemctl restart <a href="mailto:pki-tomcatd@pki-tomcat.service" title="pki-tomcatd@pki-tomcat.service" class="mailto">pki-tomcatd@pki-tomcat.service</a>
 </div>
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 The URL for the subsystem is:
@@ -339,33 +322,31 @@ The URL for the subsystem is:
 <a href="https://dogtag01.gli.lan:8443/ca" title="https://dogtag01.gli.lan:8443/ca" class="https">https://dogtag01.gli.lan:8443/ca</a>
 </div>
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 PKI instances will be enabled upon system boot
 </div>
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 ==========================================================================
 </div>
 </p>
-
-<h2>looks like I've somehow got it working to this point<a id="looks-like-ive-somehow-got-it-working-to-this-point" class="h_anchor"></a></h2>
-
 <br>
-
+<h2>looks like I've somehow got it working to this point<a id="looks-like-ive-somehow-got-it-working-to-this-point" class="h_anchor"></a></h2>
+<br>
 <p>
 This is a YouTube tutorial
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 <a href="https://www.youtube.com/watch?v=-Fak3EdUiOE" title="https://www.youtube.com/watch?v=-Fak3EdUiOE" class="https">https://www.youtube.com/watch?v=-Fak3EdUiOE</a>
 </div>
 </p>
-
+<br>
 <p>
 The instructions are a little dated, but they can be followed. I generated the signing request using openssl<br>
 then got dogtag to sign it.

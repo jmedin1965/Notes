@@ -3,24 +3,23 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>debian boot fix BIOS EFI</title>
-	<meta name='Generator' content='Zim 0.74.3'>
+	<meta name='Generator' content='Zim 0.75.2'>
 	<style type='text/css'>
-		a          { text-decoration: none      }
+		a          { text-decoration: none }
 		a:hover    { text-decoration: underline }
 		a:active   { text-decoration: underline }
-		strike     { color: grey                }
-		u          { text-decoration: none;
-					 background-color: yellow   }
-		tt         { color: #2e3436;            }
-		pre        { color: #2e3436;
-					 margin-left: 20px          }
-		h1         { text-decoration: underline;
-					 color: #4e9a06; margin-bottom: 0 }
-		h2         { color: #4e9a06; margin-bottom: 0 }
-		h3         { color: #4e9a06; margin-bottom: 0 }
-		h4         { color: #4e9a06; margin-bottom: 0 }
-		h5         { color: #4e9a06; margin-bottom: 0 }
-		p          { margin-top: 0              }
+		strike     { color: grey }
+		u          { text-decoration: none; background-color: yellow }
+		tt         { color: #2e3436; }
+		pre        { color: #2e3436; margin-left: 20px; margin-top: 0; margin-bottom: 0 }
+		h1         { text-decoration: underline; color: #4e9a06; margin: 0 }
+		h2         { color: #4e9a06; margin: 0 }
+		h3         { color: #4e9a06; margin: 0 }
+		h4         { color: #4e9a06; margin: 0 }
+		h5         { color: #4e9a06; margin: 0 }
+		p          { margin: 0 }
+		ul         { margin: 0 }
+		ol         { margin: 0 }
 		span.zim-tag {
 			color: #ce5c00;
 		}
@@ -51,7 +50,7 @@
 
 <!-- Header -->
 <div class='header'>
-	[ <a href='./CISCO_stuff/Archive_command_to_backup_config_changes.html'>Prev</a> ]
+	[ <a href='./CISCO_stuff.html'>Prev</a> ]
 
 	[ <a href='./index.html'>Index</a> ]
 
@@ -100,42 +99,36 @@
 	<p>
 Created Friday 20 October 2023
 </p>
-
+<br>
 <h2>EFI Shell Cheat Sheet<a id="efi-shell-cheat-sheet" class="h_anchor"></a></h2>
 
-
 <hr>
-
 <br>
-
 <p>
 <a href="https://mricher.fr/post/boot-from-an-efi-shell/" title="https://mricher.fr/post/boot-from-an-efi-shell/" class="https">https://mricher.fr/post/boot-from-an-efi-shell/</a>
 </p>
-
+<br>
 <h2>Debian swap BIOS to EFI boot how to<a id="debian-swap-bios-to-efi-boot-how-to" class="h_anchor"></a></h2>
 
-
 <hr>
-
 <br>
-
 <p>
 <a href="https://blog.getreu.net/projects/legacy-to-uefi-boot/" title="https://blog.getreu.net/projects/legacy-to-uefi-boot/" class="https">https://blog.getreu.net/projects/legacy-to-uefi-boot/</a>
 </p>
-
+<br>
 <p>
 don't forget to do the following;
 </p>
-
+<br>
 <p>
 mkdir <a href="file:///boot/efi/EFI/BOOT" title="/boot/efi/EFI/BOOT" class="file">/boot/efi/EFI/BOOT</a><br>
 cp /boot/efi/EFI/debian/grubx64.efi <a href="file:///boot/efi/EFI/BOOT/BOOTX64.EFI" title="/boot/efi/EFI/BOOT/BOOTX64.EFI" class="file">/boot/efi/EFI/BOOT/BOOTX64.EFI</a>
 </p>
-
+<br>
 <p>
 otherwise you will be driven crazy with not being able to boot
 </p>
-
+<br>
 
 	</div>
 

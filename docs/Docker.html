@@ -3,24 +3,23 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Docker</title>
-	<meta name='Generator' content='Zim 0.74.3'>
+	<meta name='Generator' content='Zim 0.75.2'>
 	<style type='text/css'>
-		a          { text-decoration: none      }
+		a          { text-decoration: none }
 		a:hover    { text-decoration: underline }
 		a:active   { text-decoration: underline }
-		strike     { color: grey                }
-		u          { text-decoration: none;
-					 background-color: yellow   }
-		tt         { color: #2e3436;            }
-		pre        { color: #2e3436;
-					 margin-left: 20px          }
-		h1         { text-decoration: underline;
-					 color: #4e9a06; margin-bottom: 0 }
-		h2         { color: #4e9a06; margin-bottom: 0 }
-		h3         { color: #4e9a06; margin-bottom: 0 }
-		h4         { color: #4e9a06; margin-bottom: 0 }
-		h5         { color: #4e9a06; margin-bottom: 0 }
-		p          { margin-top: 0              }
+		strike     { color: grey }
+		u          { text-decoration: none; background-color: yellow }
+		tt         { color: #2e3436; }
+		pre        { color: #2e3436; margin-left: 20px; margin-top: 0; margin-bottom: 0 }
+		h1         { text-decoration: underline; color: #4e9a06; margin: 0 }
+		h2         { color: #4e9a06; margin: 0 }
+		h3         { color: #4e9a06; margin: 0 }
+		h4         { color: #4e9a06; margin: 0 }
+		h5         { color: #4e9a06; margin: 0 }
+		p          { margin: 0 }
+		ul         { margin: 0 }
+		ol         { margin: 0 }
 		span.zim-tag {
 			color: #ce5c00;
 		}
@@ -100,16 +99,13 @@
 	<p>
 Created Thursday 30 January 2025
 </p>
-
-<h2>Home Assistant firefox-java-vnc-flash<a id="home-assistant-firefox-java-vnc-flash" class="h_anchor"></a></h2>
-
 <br>
-
+<h2>Home Assistant firefox-java-vnc-flash<a id="home-assistant-firefox-java-vnc-flash" class="h_anchor"></a></h2>
+<br>
 <p>
 This is my first, and an example on how to build a docker image. I had this working for along time on docker and am converting it into a Home Assistant addon. I use it to get a remote desktop session to a very old CISCO server that does not have HTML5, so it still uses Java and Flash.
 </p>
-
-<p>
+<br>
 <ol type="1" start="1">
 <li>Build a base image, with basic run.sh command</li>
 <li>Upload image to github Packages Docker repo
@@ -122,30 +118,24 @@ This is my first, and an example on how to build a docker image. I had this work
 <li>This example also shows how to use github actions to auto generate the image every time a git push is done on a repo</li>
 </ol></li>
 </ol>
-</p>
-
-<h2>Techno Tim : Build YOUR OWN Dockerfile, Image, and Container - Docker Tutorial<a id="techno-tim--build-your-own-dockerfile-image-and-container---docker-tutorial" class="h_anchor"></a></h2>
-
 <br>
-
+<h2>Techno Tim : Build YOUR OWN Dockerfile, Image, and Container - Docker Tutorial<a id="techno-tim--build-your-own-dockerfile-image-and-container---docker-tutorial" class="h_anchor"></a></h2>
+<br>
 <p>
 <a href="https://www.youtube.com/watch?v=SnSH8Ht3MIc" title="https://www.youtube.com/watch?v=SnSH8Ht3MIc" class="https">https://www.youtube.com/watch?v=SnSH8Ht3MIc</a>
 </p>
-
 <br>
-
+<br>
 <h2>Watchtower (Jason recomendation)<a id="watchtower-jason-recomendation" class="h_anchor"></a></h2>
-
 <br>
-
 <p>
 With watchtower you can update the running version of your containerized app simply by pushing a new image to the Docker Hub or your own image registry.
 </p>
-
+<br>
 <p>
 Watchtower will pull down your new image, gracefully shut down your existing container and restart it with the same options that were used when it was deployed initially. Run the watchtower container with the following command:
 </p>
-
+<br>
 
 	</div>
 

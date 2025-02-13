@@ -3,24 +3,23 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>VM Benchmark using Phoronix Test Suite</title>
-	<meta name='Generator' content='Zim 0.74.3'>
+	<meta name='Generator' content='Zim 0.75.2'>
 	<style type='text/css'>
-		a          { text-decoration: none      }
+		a          { text-decoration: none }
 		a:hover    { text-decoration: underline }
 		a:active   { text-decoration: underline }
-		strike     { color: grey                }
-		u          { text-decoration: none;
-					 background-color: yellow   }
-		tt         { color: #2e3436;            }
-		pre        { color: #2e3436;
-					 margin-left: 20px          }
-		h1         { text-decoration: underline;
-					 color: #4e9a06; margin-bottom: 0 }
-		h2         { color: #4e9a06; margin-bottom: 0 }
-		h3         { color: #4e9a06; margin-bottom: 0 }
-		h4         { color: #4e9a06; margin-bottom: 0 }
-		h5         { color: #4e9a06; margin-bottom: 0 }
-		p          { margin-top: 0              }
+		strike     { color: grey }
+		u          { text-decoration: none; background-color: yellow }
+		tt         { color: #2e3436; }
+		pre        { color: #2e3436; margin-left: 20px; margin-top: 0; margin-bottom: 0 }
+		h1         { text-decoration: underline; color: #4e9a06; margin: 0 }
+		h2         { color: #4e9a06; margin: 0 }
+		h3         { color: #4e9a06; margin: 0 }
+		h4         { color: #4e9a06; margin: 0 }
+		h5         { color: #4e9a06; margin: 0 }
+		p          { margin: 0 }
+		ul         { margin: 0 }
+		ol         { margin: 0 }
 		span.zim-tag {
 			color: #ce5c00;
 		}
@@ -51,7 +50,7 @@
 
 <!-- Header -->
 <div class='header'>
-	[ <a href='./Tasmota/Theme.html'>Prev</a> ]
+	[ <a href='./Tasmota.html'>Prev</a> ]
 
 	[ <a href='./index.html'>Index</a> ]
 
@@ -100,9 +99,8 @@
 	<p>
 Created Wednesday 01 May 2024
 </p>
-
+<br>
 <h3>How to benchmark Linux virtual machine performance<a id="how-to-benchmark-linux-virtual-machine-performance" class="h_anchor"></a></h3>
-
 <p>
 Last updated on July 6, 2020 by Dan Nanni<br>
 When you are comparing various hypervisors, you will want to compare the performance of virtual machines (VMs) running on different hypervisors. If you are comparing various IaaS cloud providers, you will also want to benchmark VMs, in this case, from different providers. Whatever the reason may be, it is important to know how to properly benchmark the performance of your VMs.<br>
@@ -113,16 +111,14 @@ First, download phoronix-test-suite, and install it (along with its dependent pa
 Install Phoronix Test Suite on Linux VM<br>
 For Ubuntu or Debian:
 </p>
-
+<br>
 <h3>To install phoronix-test-suite on Ubuntu or Debian:<a id="to-install-phoronix-test-suite-on-ubuntu-or-debian" class="h_anchor"></a></h3>
-
 <p>
 $ sudo apt-get install php5-cli curl php5-gd<br>
 $ sudo dpkg -i phoronix-test-suite_4.6.1_all.deb
 </p>
-
+<br>
 <h3>For CentOS, RHEL or Fedora:<a id="for-centos-rhel-or-fedora" class="h_anchor"></a></h3>
-
 <p>
 To install phoronix-test-suite on CentOS, RHEL or Fedora:<br>
 $ sudo yum install php-cli php-gd curl<br>
@@ -130,9 +126,8 @@ $ sudo tar xvfvz phoronix-test-suite-4.6.1.tar.gz<br>
 $ cd phoronix-test-suite<br>
 $ sudo <a href="./VM_Benchmark_using_Phoronix_Test_Suite/install-sh" title="./install-sh" class="file">./install-sh</a>
 </p>
-
+<br>
 <h3>Benchmark VM Performance with Phoronix Test Suite<a id="benchmark-vm-performance-with-phoronix-test-suite" class="h_anchor"></a></h3>
-
 <p>
 Phoronix Test Suite automatically downloads (over network) test profiles and test suites that you choose, and (optionally) uploads benchmark results to openbenchmarking.org. Thus, you need Internet access for one-time download of any needed test profiles/suites, and if your VM is behind a proxy, you need to do initial proxy configuration by entering:<br>
 $ phoronix-test-suite network-setup<br>
@@ -165,14 +160,13 @@ If you run a given test for the first time, phoronix-test-suites may ask you to 
 Once the requested test is completed successfully, the result will be saved locally, and optionally uploaded to openbenchmarking.org. In order to see the list of all saved benchmark results:<br>
 $ phoronix-test-suite list-results
 </p>
-
+<br>
 <p>
 From &lt;<a href="https://www.xmodulo.com/how-to-benchmark-virtual-machines.html>" title="https://www.xmodulo.com/how-to-benchmark-virtual-machines.html&gt;" class="https">https://www.xmodulo.com/how-to-benchmark-virtual-machines.html&gt;</a> 
 </p>
-
 <br>
 <br>
-
+<br>
 
 	</div>
 

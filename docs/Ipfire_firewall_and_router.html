@@ -3,24 +3,23 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Ipfire firewall and router</title>
-	<meta name='Generator' content='Zim 0.74.3'>
+	<meta name='Generator' content='Zim 0.75.2'>
 	<style type='text/css'>
-		a          { text-decoration: none      }
+		a          { text-decoration: none }
 		a:hover    { text-decoration: underline }
 		a:active   { text-decoration: underline }
-		strike     { color: grey                }
-		u          { text-decoration: none;
-					 background-color: yellow   }
-		tt         { color: #2e3436;            }
-		pre        { color: #2e3436;
-					 margin-left: 20px          }
-		h1         { text-decoration: underline;
-					 color: #4e9a06; margin-bottom: 0 }
-		h2         { color: #4e9a06; margin-bottom: 0 }
-		h3         { color: #4e9a06; margin-bottom: 0 }
-		h4         { color: #4e9a06; margin-bottom: 0 }
-		h5         { color: #4e9a06; margin-bottom: 0 }
-		p          { margin-top: 0              }
+		strike     { color: grey }
+		u          { text-decoration: none; background-color: yellow }
+		tt         { color: #2e3436; }
+		pre        { color: #2e3436; margin-left: 20px; margin-top: 0; margin-bottom: 0 }
+		h1         { text-decoration: underline; color: #4e9a06; margin: 0 }
+		h2         { color: #4e9a06; margin: 0 }
+		h3         { color: #4e9a06; margin: 0 }
+		h4         { color: #4e9a06; margin: 0 }
+		h5         { color: #4e9a06; margin: 0 }
+		p          { margin: 0 }
+		ul         { margin: 0 }
+		ol         { margin: 0 }
 		span.zim-tag {
 			color: #ce5c00;
 		}
@@ -100,39 +99,35 @@
 	<p>
 Created Friday 01 December 2023
 </p>
-
-<h2>my local packages<a id="my-local-packages" class="h_anchor"></a></h2>
-
 <br>
-
+<h2>my local packages<a id="my-local-packages" class="h_anchor"></a></h2>
+<br>
 <p>
 How do I inject my own package into ipfire so I can install and remove it easily?<br>
 I'm going to generate a pgp key, then create a package file and then enable this key to be recognised.<br>
 The package still needs to be coped manualy though. I'm thinking a pakfire-local wrapper for pakfire
 </p>
-
-<h3>generate gpg key<a id="generate-gpg-key" class="h_anchor"></a></h3>
-
 <br>
-
+<h3>generate gpg key<a id="generate-gpg-key" class="h_anchor"></a></h3>
+<br>
 <p>
 REF: <a href="https://www.golinuxcloud.com/tutorial-encrypt-decrypt-sign-file-gpg-key-linux/" title="https://www.golinuxcloud.com/tutorial-encrypt-decrypt-sign-file-gpg-key-linux/" class="https">https://www.golinuxcloud.com/tutorial-encrypt-decrypt-sign-file-gpg-key-linux/</a>
 </p>
-
+<br>
 <p>
 set the GPG home folder<br>
 <div style='padding-left: 30pt'>
 export GNUPGHOME=/opt/pakfire/etc/.gnupg
 </div>
 </p>
-
+<br>
 <p>
 generate the key<br>
 <div style='padding-left: 30pt'>
 gpg --gen-key
 </div>
 </p>
-
+<br>
 <p>
 export key and secure key to store in a safe place<br>
 <div style='padding-left: 30pt'>
@@ -141,14 +136,14 @@ gpg --export --armor --output public.asc &lt;fingerprint frim --list-keys above&
 gpg gpg --export-secret-keys --armor --output secret.asc &lt;fingerprint frim --list-keys above&gt;
 </div>
 </p>
-
+<br>
 <p>
 now we can sign a tar file package. have to use -r option to work with ipfire. This creates a .gpg file<br>
 <div style='padding-left: 30pt'>
 gpg -R --encrypt --sign -r "key name or fingerprint" &lt;package file&gt;
 </div>
 </p>
-
+<br>
 <p>
 then we can veryfy the .gpg file just like pakfire does and we can read the fingerprint, just after the<br>
 VALIDSIG statement<br>
@@ -156,32 +151,26 @@ VALIDSIG statement<br>
 gpg --verify --status-fd 1 &lt;package file&gt;
 </div>
 </p>
-
+<br>
 <h3>now to hack a wrapper for pakfile<a id="now-to-hack-a-wrapper-for-pakfile" class="h_anchor"></a></h3>
-
 <br>
 <br>
 <br>
 <br>
 <br>
-
 <h2>to do<a id="to-do" class="h_anchor"></a></h2>
-
 <br>
-
 <h3>ipfire /var/ipfire/failover/vrrp.notify.sh permissions<a id="ipfire-varipfirefailovervrrpnotifysh-permissions" class="h_anchor"></a></h3>
-
 <br>
-
 <p>
 keepalived complains about elevated rights for this script. Need to give it rights to create;
 </p>
-
+<br>
 <p>
 /var/ipfire/red/active<br>
 /var/run/keepalived.state
 </p>
-
+<br>
 <p>
 as the web user, which is nobody
 </p>

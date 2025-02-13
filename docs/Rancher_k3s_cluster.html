@@ -3,24 +3,23 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Rancher k3s cluster</title>
-	<meta name='Generator' content='Zim 0.74.3'>
+	<meta name='Generator' content='Zim 0.75.2'>
 	<style type='text/css'>
-		a          { text-decoration: none      }
+		a          { text-decoration: none }
 		a:hover    { text-decoration: underline }
 		a:active   { text-decoration: underline }
-		strike     { color: grey                }
-		u          { text-decoration: none;
-					 background-color: yellow   }
-		tt         { color: #2e3436;            }
-		pre        { color: #2e3436;
-					 margin-left: 20px          }
-		h1         { text-decoration: underline;
-					 color: #4e9a06; margin-bottom: 0 }
-		h2         { color: #4e9a06; margin-bottom: 0 }
-		h3         { color: #4e9a06; margin-bottom: 0 }
-		h4         { color: #4e9a06; margin-bottom: 0 }
-		h5         { color: #4e9a06; margin-bottom: 0 }
-		p          { margin-top: 0              }
+		strike     { color: grey }
+		u          { text-decoration: none; background-color: yellow }
+		tt         { color: #2e3436; }
+		pre        { color: #2e3436; margin-left: 20px; margin-top: 0; margin-bottom: 0 }
+		h1         { text-decoration: underline; color: #4e9a06; margin: 0 }
+		h2         { color: #4e9a06; margin: 0 }
+		h3         { color: #4e9a06; margin: 0 }
+		h4         { color: #4e9a06; margin: 0 }
+		h5         { color: #4e9a06; margin: 0 }
+		p          { margin: 0 }
+		ul         { margin: 0 }
+		ol         { margin: 0 }
 		span.zim-tag {
 			color: #ce5c00;
 		}
@@ -51,7 +50,7 @@
 
 <!-- Header -->
 <div class='header'>
-	[ <a href='./ProxMox/Tteck_repo_helper_scripts.html'>Prev</a> ]
+	[ <a href='./ProxMox.html'>Prev</a> ]
 
 	[ <a href='./index.html'>Index</a> ]
 
@@ -100,31 +99,29 @@
 	<p>
 Created Monday 26 August 2024
 </p>
-
+<br>
 <p>
 REF: <a href="https://github.com/diademiemi/homelab" title="https://github.com/diademiemi/homelab" class="https">https://github.com/diademiemi/homelab</a>
 </p>
-
+<br>
 <h2>Homelab Project<a id="homelab-project" class="h_anchor"></a></h2>
-
 <p>
 This is my homelab project. It is split across a NAS at home and a dedicated server rented at Hetzner. These run the applications I self-host.
 </p>
-
+<br>
 <p>
 The local NAS is used to store media and backups, and runs a Jellyfin instance to serve media. The dedicated server at Hetzner runs 4 VMs, each running a Rancher cluster. The Rancher cluster is completely deployed with Ansible and Terraform. The Rancher clusters are configured and standardised with Fleet. Workloads for the clusters are deployed with ArgoCD, Helm and Kustomize.
 </p>
-
+<br>
 <h2>Motivation<a id="motivation" class="h_anchor"></a></h2>
-
 <p>
 I have deployed this homelab to learn more about Kubernetes, Rancher, GitOps and general DevOps practices. I leaned into the Rancher ecosystem as it is a very easy to use Kubernetes distribution with a relatively low overhead for its featureset. I have tried to explore as many of the features of Rancher as possible, such as Fleet, ArgoCD, Longhorn, OPA Gatekeeper, CIS scans and more in preparation for exams and certifications related to these technologies, but also out of personal interest.
 </p>
-
+<br>
 <p>
 I have learnt a lot about Rancher and have an overall very positive experience with it, I feel confident to recommend it to others. I believe I have learnt a lot about Rancher, Kubernetes and DevOps practices in general during this project.
 </p>
-
+<br>
 <p>
 My goal was to have a homelab that is fully deployed with code, and can be deployed again with minimal effort. I believe I have achieved this goal, and I am very happy with the result. I have reset the cloud server dozens of times, and it is always back up and running within half an hour without me needing to do anything aside from running a single Ansible playbook.
 </p>

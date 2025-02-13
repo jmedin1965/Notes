@@ -3,24 +3,23 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Home Assistant</title>
-	<meta name='Generator' content='Zim 0.74.3'>
+	<meta name='Generator' content='Zim 0.75.2'>
 	<style type='text/css'>
-		a          { text-decoration: none      }
+		a          { text-decoration: none }
 		a:hover    { text-decoration: underline }
 		a:active   { text-decoration: underline }
-		strike     { color: grey                }
-		u          { text-decoration: none;
-					 background-color: yellow   }
-		tt         { color: #2e3436;            }
-		pre        { color: #2e3436;
-					 margin-left: 20px          }
-		h1         { text-decoration: underline;
-					 color: #4e9a06; margin-bottom: 0 }
-		h2         { color: #4e9a06; margin-bottom: 0 }
-		h3         { color: #4e9a06; margin-bottom: 0 }
-		h4         { color: #4e9a06; margin-bottom: 0 }
-		h5         { color: #4e9a06; margin-bottom: 0 }
-		p          { margin-top: 0              }
+		strike     { color: grey }
+		u          { text-decoration: none; background-color: yellow }
+		tt         { color: #2e3436; }
+		pre        { color: #2e3436; margin-left: 20px; margin-top: 0; margin-bottom: 0 }
+		h1         { text-decoration: underline; color: #4e9a06; margin: 0 }
+		h2         { color: #4e9a06; margin: 0 }
+		h3         { color: #4e9a06; margin: 0 }
+		h4         { color: #4e9a06; margin: 0 }
+		h5         { color: #4e9a06; margin: 0 }
+		p          { margin: 0 }
+		ul         { margin: 0 }
+		ol         { margin: 0 }
 		span.zim-tag {
 			color: #ce5c00;
 		}
@@ -55,7 +54,7 @@
 
 	[ <a href='./index.html'>Index</a> ]
 
-	[ <a href='./Home_Assistant/General_Info.html'>Next</a> ]
+	[ <a href='./Home_Assistant/Air_Con.html'>Next</a> ]
 </div>
 
 <hr />
@@ -71,13 +70,8 @@
 <li><a href="./FreeIPA_with_off-line_CA.html" title="FreeIPA with off-line CA" class="page">FreeIPA with off-line CA</a></li>
 <li><b>Home Assistant</b>
 <ul>
-<li><a href="./Home_Assistant/General_Info.html" title="General Info" class="page">General Info</a></li>
-<li><a href="./Home_Assistant/HACS_Config_Template_Card.html" title="HACS Config Template Card" class="page">HACS Config Template Card</a></li>
-<li><a href="./Home_Assistant/HAProxy_test_inline_file.html" title="HAProxy test inline file" class="page">HAProxy test inline file</a></li>
-<li><a href="./Home_Assistant/Python_Scripts.html" title="Python Scripts" class="page">Python Scripts</a></li>
-<li><a href="./Home_Assistant/zigbee2mqtt.html" title="zigbee2mqtt" class="page">zigbee2mqtt</a></li>
-</ul>
-</li>
+<li><a href="./Home_Assistant/Air_Con.html" title="Air Con" class="page">Air Con</a></li>
+</ul></li>
 <li><a href="./Immich_picture_and_video_server.html" title="Immich picture and video server" class="page">Immich picture and video server</a></li>
 <li><a href="./Ipfire_firewall_and_router.html" title="Ipfire firewall and router" class="page">Ipfire firewall and router</a></li>
 <li><a href="./jmedin1965.html" title="jmedin1965" class="page">jmedin1965</a></li>
@@ -108,45 +102,40 @@
 	<p>
 Created Tuesday 20 August 2024
 </p>
-
-<h2>Change Reolink IP camera IP address<a id="change-reolink-ip-camera-ip-address" class="h_anchor"></a></h2>
-
 <br>
-
+<h2>Change Reolink IP camera IP address<a id="change-reolink-ip-camera-ip-address" class="h_anchor"></a></h2>
+<br>
 <p>
 Yet again, I have changed the IP address of the Realink IP camera. The IP address needs to be changed in two places on the following file:
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 <a href="file:///root/config/.storage/core.device_registry" title="/root/config/.storage/core.device_registry" class="file">/root/config/.storage/core.device_registry</a><br>
 <a href="file:///root/config/.storage/core.device_registry" title="/root/config/.storage/" class="file">/root/config/.storage/</a>core.device_registry
 </div>
 </p>
-
+<br>
 <p>
 config is a symbolic link to <a href="file:///homeassistant" title="/homeassistant" class="file">/homeassistant</a>
 </p>
-
+<br>
 <p>
 you will have to look for the old IP address or the mac address.
 </p>
-
+<br>
 <p>
 Once changed you need to reload HA from settings&gt;&gt;system, then on this page there is a power icon top right of screen. Click it and choose "Restart Home Assistant"
 </p>
-
-<h2>Change IP of sonoffs<a id="change-ip-of-sonoffs" class="h_anchor"></a></h2>
-
 <br>
-
+<h2>Change IP of sonoffs<a id="change-ip-of-sonoffs" class="h_anchor"></a></h2>
+<br>
 <p>
 Looks like this requires no work if you have firewall opened to MQTT server
 </p>
-
 <br>
 <br>
-
+<br>
 
 	</div>
 

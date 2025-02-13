@@ -3,24 +3,23 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>FreeIPA with off-line CA</title>
-	<meta name='Generator' content='Zim 0.74.3'>
+	<meta name='Generator' content='Zim 0.75.2'>
 	<style type='text/css'>
-		a          { text-decoration: none      }
+		a          { text-decoration: none }
 		a:hover    { text-decoration: underline }
 		a:active   { text-decoration: underline }
-		strike     { color: grey                }
-		u          { text-decoration: none;
-					 background-color: yellow   }
-		tt         { color: #2e3436;            }
-		pre        { color: #2e3436;
-					 margin-left: 20px          }
-		h1         { text-decoration: underline;
-					 color: #4e9a06; margin-bottom: 0 }
-		h2         { color: #4e9a06; margin-bottom: 0 }
-		h3         { color: #4e9a06; margin-bottom: 0 }
-		h4         { color: #4e9a06; margin-bottom: 0 }
-		h5         { color: #4e9a06; margin-bottom: 0 }
-		p          { margin-top: 0              }
+		strike     { color: grey }
+		u          { text-decoration: none; background-color: yellow }
+		tt         { color: #2e3436; }
+		pre        { color: #2e3436; margin-left: 20px; margin-top: 0; margin-bottom: 0 }
+		h1         { text-decoration: underline; color: #4e9a06; margin: 0 }
+		h2         { color: #4e9a06; margin: 0 }
+		h3         { color: #4e9a06; margin: 0 }
+		h4         { color: #4e9a06; margin: 0 }
+		h5         { color: #4e9a06; margin: 0 }
+		p          { margin: 0 }
+		ul         { margin: 0 }
+		ol         { margin: 0 }
 		span.zim-tag {
 			color: #ce5c00;
 		}
@@ -100,38 +99,36 @@
 	<p>
 Created Friday 01 December 2023
 </p>
-
+<br>
 <p>
 I've installed a standaline dogtag server to use an an off-line CA
 </p>
-
+<br>
 <p>
 I'm going to install FreeIPA on a proxmox LXC container and sign it's certificate with the dogtag CA<br>
 server. The lxc container will be unpriviliged.
 </p>
-
+<br>
 <p>
 After a CentOS 8 install from template, I had to install some extra packages;
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 yum install sudo
 </div>
 </p>
-
+<br>
 <p>
 REF <a href="https://floblanc.wordpress.com/2016/09/02/using-a-dogtag-instance-as-external-ca-for-free-ipa-installation/" title="https://floblanc.wordpress.com/2016/09/02/using-a-dogtag-instance-as-external-ca-for-free-ipa-installation/" class="https">https://floblanc.wordpress.com/2016/09/02/using-a-dogtag-instance-as-external-ca-for-free-ipa-installation/</a>
 </p>
-
-<h2>Install part 1<a id="install-part-1" class="h_anchor"></a></h2>
-
 <br>
-
+<h2>Install part 1<a id="install-part-1" class="h_anchor"></a></h2>
+<br>
 <p>
 replace the following below with your stuff;
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 --hostname=<br>
@@ -141,11 +138,11 @@ replace the following below with your stuff;
 -a a super secret password
 </div>
 </p>
-
+<br>
 <p>
 no need for --forwarder if you have /etc/resolve.conf, as this is filled with these values
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 ipa-server-install \
@@ -163,89 +160,87 @@ ipa-server-install \
 --external-ca
 </div>
 </p>
-
-<h2>Install part 2<a id="install-part-2" class="h_anchor"></a></h2>
-
 <br>
-
+<h2>Install part 2<a id="install-part-2" class="h_anchor"></a></h2>
+<br>
 <p>
 now cat /root/ipa.csr and copy
 </p>
-
+<br>
 <p>
 got to dogtag web, SSL End Users Services, Manual Certificate Manager Signing Certificate Enrollment.
 </p>
-
+<br>
 <p>
 Configure firewallste copied certificate and fill in your information
 </p>
-
+<br>
 <p>
 take note of request number
 </p>
-
+<br>
 <p>
 go back to, Agent Services, List Requests
 </p>
-
+<br>
 <p>
 find the certificate request and click it, and approve it
 </p>
-
+<br>
 <p>
 now go back and click list certificates and find it, as the approval page does not have the complete certificate
 </p>
-
+<br>
 <p>
 copy the base64 encoded part to /root/ipa.cert
 </p>
-
+<br>
 <p>
 go back to list certificates and click on the CA, which would be certificate 1
 </p>
-
+<br>
 <p>
 copy the base64 encoding part tp /root/dogtagca.cert
 </p>
-
+<br>
 <p>
 now run part 2
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 /sbin/ipa-server-install --external-cert-file=/root/ipa.cert --external-cert-file=/root/dogtagca.cert
 </div>
 </p>
-
+<br>
 <p>
 enter your super secret password
 </p>
-
-<h2>sucess message<a id="sucess-message" class="h_anchor"></a></h2>
-
 <br>
-
+<h2>sucess message<a id="sucess-message" class="h_anchor"></a></h2>
+<br>
 <p>
 <div style='padding-left: 30pt'>
 The ipa-client-install command was successful
 </div>
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 ==============================================================================<br>
 Setup complete
 </div>
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 Next steps:
 </div>
+</p>
 <ol style='padding-left: 60pt' type="1" start="1">
 <li>You must make sure these network ports are open:</li>
 </ol>
+<p>
 <div style='padding-left: 120pt'>
 TCP Ports:<br>
   * 80, 443: HTTP/HTTPS<br>
@@ -257,23 +252,25 @@ UDP Ports:<br>
   * 53: bind
 </div>
 </p>
-
-<p>
+<br>
 <ol style='padding-left: 60pt' type="1" start="2">
 <li>You can now obtain a kerberos ticket using the command: 'kinit admin'</li>
 </ol>
+<p>
 <div style='padding-left: 60pt'>
    This ticket will allow you to use the IPA tools (e.g., ipa user-add)<br>
    and the web user interface.
 </div>
+</p>
 <ol style='padding-left: 60pt' type="1" start="3">
 <li>Kerberos requires time synchronization between clients</li>
 </ol>
+<p>
 <div style='padding-left: 60pt'>
    and servers for correct operation. You should consider enabling chronyd.
 </div>
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 Be sure to back up the CA certificates stored in /root/cacert.p12<br>

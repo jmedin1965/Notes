@@ -3,24 +3,23 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Postfix configuration for a host/server</title>
-	<meta name='Generator' content='Zim 0.74.3'>
+	<meta name='Generator' content='Zim 0.75.2'>
 	<style type='text/css'>
-		a          { text-decoration: none      }
+		a          { text-decoration: none }
 		a:hover    { text-decoration: underline }
 		a:active   { text-decoration: underline }
-		strike     { color: grey                }
-		u          { text-decoration: none;
-					 background-color: yellow   }
-		tt         { color: #2e3436;            }
-		pre        { color: #2e3436;
-					 margin-left: 20px          }
-		h1         { text-decoration: underline;
-					 color: #4e9a06; margin-bottom: 0 }
-		h2         { color: #4e9a06; margin-bottom: 0 }
-		h3         { color: #4e9a06; margin-bottom: 0 }
-		h4         { color: #4e9a06; margin-bottom: 0 }
-		h5         { color: #4e9a06; margin-bottom: 0 }
-		p          { margin-top: 0              }
+		strike     { color: grey }
+		u          { text-decoration: none; background-color: yellow }
+		tt         { color: #2e3436; }
+		pre        { color: #2e3436; margin-left: 20px; margin-top: 0; margin-bottom: 0 }
+		h1         { text-decoration: underline; color: #4e9a06; margin: 0 }
+		h2         { color: #4e9a06; margin: 0 }
+		h3         { color: #4e9a06; margin: 0 }
+		h4         { color: #4e9a06; margin: 0 }
+		h5         { color: #4e9a06; margin: 0 }
+		p          { margin: 0 }
+		ul         { margin: 0 }
+		ol         { margin: 0 }
 		span.zim-tag {
 			color: #ce5c00;
 		}
@@ -51,7 +50,7 @@
 
 <!-- Header -->
 <div class='header'>
-	[ <a href='./PFSense/vim.html'>Prev</a> ]
+	[ <a href='./PFSense.html'>Prev</a> ]
 
 	[ <a href='./index.html'>Index</a> ]
 
@@ -100,37 +99,35 @@
 	<p>
 Created Friday 01 December 2023
 </p>
-
+<br>
 <p>
 I'm using Postfix to send out emails from all the vm's that need to send emails out. It's pre-installed most of the time. If not just do an
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 apt install postfix
 </div>
 </p>
-
+<br>
 <p>
 To send out emails, if the hosts domain is not real, then you need to change myorigin to a valid domain and also use the bse-mailx package instead of mailutils. If you do use mail from mailutils, then use the -r option. If you don't, the from field of your outgoing messages will be invalid, which will cause the message to be rejected.
 </p>
-
-<h2>send options<a id="send-options" class="h_anchor"></a></h2>
-
 <br>
-
+<h2>send options<a id="send-options" class="h_anchor"></a></h2>
+<br>
 <p>
 <div style='padding-left: 30pt'>
 mydomain = servers domain
 </div>
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 myhostname = fully qualified name
 </div>
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 myorigin = This is important if your domain 
@@ -140,7 +137,7 @@ is not a real domain because outgoing get stamped using<br>
 this as the from address. By default on ubuntu, this is set to a file
 </div>
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 mydestination = a list of command separated fully qualifies server names. All
@@ -150,36 +147,31 @@ of these are considered to be localy handled by this server, and are delivered<b
 localy.
 </div>
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 relayhost = This is the host that will reay outgoing mail for us.
 </div>
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 mynetworks = space separated list of local networks
 </div>
 </p>
-
 <br>
 <br>
 <br>
 <br>
-
+<br>
 <p>
 Install as a standard CT template in Proxmox. No need for a valid external domain, can just use fake internal domain.
 </p>
-
+<br>
 <h2>Configure<a id="configure" class="h_anchor"></a></h2>
-
 <br>
-
 <h3>Relaying<a id="relaying" class="h_anchor"></a></h3>
-
 <br>
-
 <p>
 <div style='padding-left: 30pt'>
 Configuration&gt;&gt;Mail Proxy&gt;&gt; Ports<br>
@@ -189,15 +181,15 @@ Disable MX lookup (SMTP): yes - we don't want to look up MX records, just use th
 Smarthost: smtp.dodo.com.au:25 - our external relay
 </div>
 </p>
-
+<br>
 <p>
 REF: <a href="https://electrictoolbox.com/configure-postfix-external-connections/" title="https://electrictoolbox.com/configure-postfix-external-connections/" class="https">https://electrictoolbox.com/configure-postfix-external-connections/</a>
 </p>
-
+<br>
 <p>
 to get foreman.jmsh-home.dtdns.net to accept email requites;
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 inet_interfaces = all<br>
@@ -205,15 +197,15 @@ or<br>
 inet_interfaces = locahost ip_address
 </div>
 </p>
-
+<br>
 <p>
 in /etc/postfix/main.cf
 </p>
-
+<br>
 <p>
 but this did not work. I also had to change /etc/postfix/master.cf
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 127.0.0.1:smtp inet n - - - - smtpd<br>
@@ -221,31 +213,26 @@ to<br>
 smtp inet n - - - - smtpd
 </div>
 </p>
-
 <br>
-
+<br>
 <h3>Relay Domains<a id="relay-domains" class="h_anchor"></a></h3>
-
 <br>
-
 <p>
 <div style='padding-left: 30pt'>
 Configuration&gt;&gt;Mail Proxy&gt;&gt; Ports
 </div>
 </p>
-
+<br>
 <p>
 A list of all domains tha we will receive and forward from external. Everything else will be rejected.
 </p>
-
-<h3>Ports<a id="ports" class="h_anchor"></a></h3>
-
 <br>
-
+<h3>Ports<a id="ports" class="h_anchor"></a></h3>
+<br>
 <p>
 I ended up swapping input and output ports. By default, port 25 is the external port, and 26 is the internal. Since I'm forwarding from the firewall, I created a rule to forward external port 25 to port 26 on the GW.
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 Configuration&gt;&gt;Mail Proxy&gt;&gt; Ports<br>
@@ -253,60 +240,46 @@ External SMTP Port 26<br>
 External SMTP Port 25
 </div>
 </p>
-
-<h3>Networks<a id="networks" class="h_anchor"></a></h3>
-
 <br>
-
+<h3>Networks<a id="networks" class="h_anchor"></a></h3>
+<br>
 <p>
 A list of networks that are considered local. We will relal from everyone on this list
 </p>
-
+<br>
 <h4>Mail Filter<a id="mail-filter" class="h_anchor"></a></h4>
-
 <br>
-
 <h4>Added Action - Has Been Scanned Notice<a id="added-action---has-been-scanned-notice" class="h_anchor"></a></h4>
-
 <br>
-
 <p>
 Just adds a message to outgoing mail. More as a test and to make sure incoming mail gets tagged.
 </p>
-
+<br>
 <p>
 <div style='padding-left: 30pt'>
 This e-mail has been processed and <br>
 scanned by Proxmox Mail Gateway
 </div>
 </p>
-
-<h4>created filter - Add Disclaimer<a id="created-filter---add-disclaimer" class="h_anchor"></a></h4>
-
 <br>
-
+<h4>created filter - Add Disclaimer<a id="created-filter---add-disclaimer" class="h_anchor"></a></h4>
+<br>
 <p>
 Enabled disclaimer on outgoing mail Priority 60
 </p>
-
-<h4>created filter - Add Scanned Notice<a id="created-filter---add-scanned-notice" class="h_anchor"></a></h4>
-
 <br>
-
+<h4>created filter - Add Scanned Notice<a id="created-filter---add-scanned-notice" class="h_anchor"></a></h4>
+<br>
 <p>
 Add Scanned Notice on incoming mail, Priority 60
 </p>
-
-<h1>to do<a id="to-do" class="h_anchor"></a></h1>
-
 <br>
-
-<p>
+<h1>to do<a id="to-do" class="h_anchor"></a></h1>
+<br>
 <ul>
 <li class="unchecked-box">Add Postfix settings to Ansible, make sure we exclude the Proxmox mail gateway and make different settings for our internal mail receiver</li>
 </ul>
-</p>
-
+<br>
 
 	</div>
 
