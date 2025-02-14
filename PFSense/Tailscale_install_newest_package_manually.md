@@ -1,0 +1,12 @@
+# Tailscale install newest package manually
+Created Friday 14 February 2025
+
+REF: <https://forum.netgate.com/topic/174525/how-to-update-to-the-latest-tailscale-version/85?lang=en-x-pirate>
+
+pkg add -f <https://pkg.freebsd.org/FreeBSD:14:amd64/latest/All/tailscale-1.78.1.pkg>
+
+pkg add -f <https://pkg.freebsd.org/FreeBSD:14:amd64/latest/All/tailscale-1.80.2.pkg>
+
+So long as I can get the direct package location, I should be able to install amy package and possibly create my own which is even more interesting.
+
+

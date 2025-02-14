@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Air Con</title>
+	<title>HAProxy keep alive for ssh</title>
 	<meta name='Generator' content='Zim 0.75.2'>
 	<style type='text/css'>
 		a          { text-decoration: none }
@@ -50,11 +50,11 @@
 
 <!-- Header -->
 <div class='header'>
-	[ <a href='../Home_Assistant.html'>Prev</a> ]
+	[ <a href='./Format_disk_drive_as_MSDosFS.html'>Prev</a> ]
 
 	[ <a href='../index.html'>Index</a> ]
 
-	[ <a href='./General_Info.html'>Next</a> ]
+	[ <a href='./install_and_use_bind_instead_of_Unbound.html'>Next</a> ]
 </div>
 
 <hr />
@@ -68,20 +68,31 @@
 <li><a href="../Docker.html" title="Docker" class="page">Docker</a></li>
 <li><a href="../Dogtag_-_internal_off-line_CA.html" title="Dogtag - internal off-line CA" class="page">Dogtag - internal off-line CA</a></li>
 <li><a href="../FreeIPA_with_off-line_CA.html" title="FreeIPA with off-line CA" class="page">FreeIPA with off-line CA</a></li>
-<li><a href="../Home_Assistant.html" title="Home Assistant" class="page">Home Assistant</a>
-<ul>
-<li><b>Air Con</b></li>
-<li><a href="./General_Info.html" title="General Info" class="page">General Info</a></li>
-<li><a href="./HACS_Config_Template_Card.html" title="HACS Config Template Card" class="page">HACS Config Template Card</a></li>
-<li><a href="./HAProxy_test_inline_file.html" title="HAProxy test inline file" class="page">HAProxy test inline file</a></li>
-<li><a href="./Python_Scripts.html" title="Python Scripts" class="page">Python Scripts</a></li>
-<li><a href="./zigbee2mqtt.html" title="zigbee2mqtt" class="page">zigbee2mqtt</a></li>
-</ul></li>
+<li><a href="../Home_Assistant.html" title="Home Assistant" class="page">Home Assistant</a></li>
 <li><a href="../Immich_picture_and_video_server.html" title="Immich picture and video server" class="page">Immich picture and video server</a></li>
 <li><a href="../Ipfire_firewall_and_router.html" title="Ipfire firewall and router" class="page">Ipfire firewall and router</a></li>
 <li><a href="../jmedin1965.html" title="jmedin1965" class="page">jmedin1965</a></li>
 <li><a href="../Password_Vault_selfhosting.html" title="Password Vault selfhosting" class="page">Password Vault selfhosting</a></li>
-<li><a href="../PFSense.html" title="PFSense" class="page">PFSense</a></li>
+<li><a href="../PFSense.html" title="PFSense" class="page">PFSense</a>
+<ul>
+<li><a href="./Available_Packages_not_showing_any_packages.html" title="Available Packages not showing any packages" class="page">Available Packages not showing any packages</a></li>
+<li><a href="./command_line_mail.html" title="command line mail" class="page">command line mail</a></li>
+<li><a href="./DHCP_lease_screen_not_loading.html" title="DHCP lease screen not loading" class="page">DHCP lease screen not loading</a></li>
+<li><a href="./file_locations.html" title="file locations" class="page">file locations</a></li>
+<li><a href="./Firewall_aliases_explained.html" title="Firewall aliases explained" class="page">Firewall aliases explained</a></li>
+<li><a href="./Format_disk_drive_as_MSDosFS.html" title="Format disk drive as MSDosFS" class="page">Format disk drive as MSDosFS</a></li>
+<li><b>HAProxy keep alive for ssh</b></li>
+<li><a href="./install_and_use_bind_instead_of_Unbound.html" title="install and use bind instead of Unbound" class="page">install and use bind instead of Unbound</a></li>
+<li><a href="./Install_qemu-guest-agent.html" title="Install qemu-guest-agent" class="page">Install qemu-guest-agent</a></li>
+<li><a href="./Log_rotation_vi_newsyslog.conf.html" title="Log rotation vi newsyslog.conf" class="page">Log rotation vi newsyslog.conf</a></li>
+<li><a href="./ls.html" title="ls" class="page">ls</a></li>
+<li><a href="./PFSense_shutdown_scripts.html" title="PFSense shutdown scripts" class="page">PFSense shutdown scripts</a></li>
+<li><a href="./readme.html" title="readme" class="page">readme</a></li>
+<li><a href="./Tailscale_install_newest_package_manually.html" title="Tailscale install newest package manually" class="page">Tailscale install newest package manually</a></li>
+<li><a href="./USB_Pendrive_on_ProxMox_VM.html" title="USB Pendrive on ProxMox VM" class="page">USB Pendrive on ProxMox VM</a></li>
+<li><a href="./Using_Software_from_FreeBSD.html" title="Using Software from FreeBSD" class="page">Using Software from FreeBSD</a></li>
+<li><a href="./vim.html" title="vim" class="page">vim</a></li>
+</ul></li>
 <li><a href="../Postfix_configuration_for_a_host_or_server.html" title="Postfix configuration for a host or server" class="page">Postfix configuration for a host or server</a></li>
 <li><a href="../ProxMox.html" title="ProxMox" class="page">ProxMox</a></li>
 <li><a href="../Rancher_k3s_cluster.html" title="Rancher k3s cluster" class="page">Rancher k3s cluster</a></li>
@@ -100,24 +111,64 @@
 
 <div class='pages'>
 	<div class='heading'>
-	<h1>Air Con <a name='Home Assistant:Air Con'></a></h1>
+	<h1>HAProxy keep alive for ssh <a name='PFSense:HAProxy keep alive for ssh'></a></h1>
 	</div>
 
 	<div class='content'>
 	<p>
-Created Thursday 13 February 2025
+Created Wednesday 11 October 2023
 </p>
 <br>
 <p>
-There is an ESP module to control Air Con
+-  timeout client 50000ms<br>
+-  timeout server 50000ms<br>
+-  retries 50<br>
++  timeout client 3000ms<br>
++  timeout server 3000ms<br>
++  retries 1
 </p>
 <br>
 <p>
-<a href="https://github.com/revk/ESP32-Faikin" title="https://github.com/revk/ESP32-Faikin" class="https">https://github.com/revk/ESP32-Faikin</a>
+After rolling it back it started to work perfectly again, but we still weren’t 100% sure why. Using the shorter timeout, the channel was reconnecting every 3 seconds and some requests failed to receive the response, but why it wasn’t the case for the 50 seconds timeout?
 </p>
 <br>
 <p>
-<a href="https://community.home-assistant.io/t/daikin-a-c-integration/838547" title="https://community.home-assistant.io/t/daikin-a-c-integration/838547" class="https">https://community.home-assistant.io/t/daikin-a-c-integration/838547</a>
+Cause<br>
+In order to keep the WebSocket connection alive, Phoenix Socket library sends a heartbeat message which happens every 30 seconds by default. With 50 seconds timeout for the client/server everything worked fine, reducing the timeout to merely 3 seconds made WebSocket connection to timeout, so that when request took any longer, the frontend was unable to receive the response on time.
+</p>
+<br>
+<p>
+Solution<br>
+Obvious one was to reduce the heartbeat interval to something less than 3 seconds to make sure we keep the connection alive even with the migration config, but it wasn’t really appealing to spam the server such often.
+</p>
+<br>
+<p>
+After some googling we figured out there was another HAProxy timeout setting which is responsible for a tunnel connections:
+</p>
+<br>
+<p>
+The tunnel timeout applies when a bidirectional connection is established<br>
+between a client and a server, and the connection remains inactive in both<br>
+directions<br>
+<a href="https://cbonte.github.io/haproxy-dconv/1.7/configuration.html#4-timeout%20tunnel" title="https://cbonte.github.io/haproxy-dconv/1.7/configuration.html#4-timeout%20tunnel" class="https">https://cbonte.github.io/haproxy-dconv/1.7/configuration.html#4-timeout%20tunnel</a>
+</p>
+<br>
+<p>
+When connection becomes a tunnel (as it happens for WebSockets) this timeout setting supersedes both the client and server timeouts.
+</p>
+<br>
+<p>
+Here’s how it looks in the config:
+</p>
+<br>
+<p>
+timeout client 3000ms<br>
+timeout server 3000ms<br>
+timeout tunnel 50000ms
+</p>
+<br>
+<p>
+REF: <a href="https://lucjan.medium.com/investigating-websocket-haproxy-reconnecting-and-timeouts-6d19cc0002a1" title="https://lucjan.medium.com/investigating-websocket-haproxy-reconnecting-and-timeouts-6d19cc0002a1" class="https">https://lucjan.medium.com/investigating-websocket-haproxy-reconnecting-and-timeouts-6d19cc0002a1</a>
 </p>
 
 	</div>
