@@ -16,6 +16,7 @@ GitHub code is
 
 * [3D printer](./3D_printer.md)
 * [Android](./Android.md)
+* [Bareos Backup](./Bareos_Backup.md)
 * [CISCO stuff](./CISCO_stuff.md)
 * [debian boot fix BIOS EFI](./debian_boot_fix_BIOS_EFI.md)
 * [Docker](./Docker.md)
@@ -36,6 +37,7 @@ GitHub code is
 	* [Available Packages not showing any packages](./PFSense/Available_Packages_not_showing_any_packages.md)
 	* [command line mail](./PFSense/command_line_mail.md)
 	* [DHCP lease screen not loading](./PFSense/DHCP_lease_screen_not_loading.md)
+	* [fail2ban and pfBlockerNG](./PFSense/fail2ban_and_pfBlockerNG.md)
 	* [file locations](./PFSense/file_locations.md)
 	* [Firewall aliases explained](./PFSense/Firewall_aliases_explained.md)
 	* [Format disk drive as MSDosFS](./PFSense/Format_disk_drive_as_MSDosFS.md)

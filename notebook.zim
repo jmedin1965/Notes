@@ -14,7 +14,7 @@ default_file_extension=.txt
 notebook_layout=files
 
 [SpellPlugin]
-language=
+language=AU
 
 [TaskListPlugin]
 all_checkboxes=True
