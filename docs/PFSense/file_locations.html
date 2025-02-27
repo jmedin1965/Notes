@@ -121,16 +121,16 @@
 Created Tuesday 27 August 2024
 </p>
 <br>
-<h2>DHCP server<a id="dhcp-server" class="h_anchor"></a></h2>
-<br>
-<br>
 <h2>BIND DNS<a id="bind-dns" class="h_anchor"></a></h2>
 <br>
 <p>
 /usr/local/pkg/bind.xml
 </p>
 <br>
-<h2>Services auto source<a id="services-auto-source" class="h_anchor"></a></h2>
+<h2>DHCP server<a id="dhcp-server" class="h_anchor"></a></h2>
+<br>
+<br>
+<h1>Services auto source<a id="services-auto-source" class="h_anchor"></a></h1>
 <br>
 <p>
 Looks like all services as they load source these files or folders
@@ -140,6 +140,12 @@ Looks like all services as they load source these files or folders
 <a href="file:///etc/rc.conf" title="/etc/rc.conf" class="file">/etc/rc.conf</a>         ←  yes this one does get sourced contrary to what is in this file, however on an update, it will probably get cleared back to defailt<br>
 <a href="file:///etc/rc.conf.local" title="/etc/rc.conf.local" class="file">/etc/rc.conf.local</a> ← put local changes to all services here<br>
 <a href="file:///usr/local/etc/rc.conf.d/service-name" title="/usr/local/etc/rc.conf.d/service-name" class="file">/usr/local/etc/rc.conf.d/service-name</a> ← This can be a file or a dir. If a dir, all files are sourced in it. this file is sorced by the service only
+</p>
+<br>
+<h1>Web root<a id="web-root" class="h_anchor"></a></h1>
+<br>
+<p>
+/usr/local/www/
 </p>
 
 	</div>
