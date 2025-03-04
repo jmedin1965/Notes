@@ -169,6 +169,35 @@ virtual_alias_maps = hash:/etc/postfix/virtual
 
 @ubeaut.work [ubeaut58@gmail.com](mailto:ubeaut58@gmail.com)
 
+on proxmox mail gateway
+=======================
+
+mkdir [/etc/pmg/templates](file:///etc/pmg/templates)
+cp /var/lib/pmg/templates/main.cf.in [/etc/pmg/templates/](file:///etc/pmg/templates)
+vi [/etc/pmg/templates/main.cf.in](file:///etc/pmg/templates/main.cf.in)
+
+# REF: greg stuff for catch-all virtual alias maps. mail is accepted for all domains and
+#      then forwarded to one external
+virtual_alias_maps = hash:/etc/postfix/virtual
+
+# REF: <https://www.postfix.org/ADDRESS_REWRITING_README.html>
+#      email from [root@server.jmsh-home.com](mailto:root@server.jmsh-home.com) is changed to come from [server@jmsh-home.com](mailto:server@jmsh-home.com)
+masquerade_domains = jmsh-home.com
+canonical_maps = regexp:/etc/postfix/canonical
+
+cat [/etc/postfix/virtual](file:///etc/postfix/virtual)
+@jmsh-home.com [jmedin1965@gmail.com](mailto:jmedin1965@gmail.com)
+
+cat [/etc/postfix/canonical](file:///etc/postfix/canonical)
+/^root@(.*)\.jmsh-home\.com$/ ${1}@jmsh-home.com
+
+postmap [/etc/postfix/virtual](file:///etc/postfix/virtual)
+postmap [/etc/postfix/canonical](file:///etc/postfix/canonical)
+pmgconfig sync --restart 1
+
+
+
+
 to do
 =====
 
