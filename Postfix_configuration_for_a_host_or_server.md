@@ -196,7 +196,18 @@ postmap [/etc/postfix/canonical](file:///etc/postfix/canonical)
 pmgconfig sync --restart 1
 
 
+SPF DKIM DMARC Settings
+=======================
 
+This is not easy to understand. Following i a record checker with may help
+
+This checker is much better
+
+<https://www.kitterman.com/spf/validate.html>
+
+<https://dmarcly.com/tools/>
+
+Looks like SPF records only take ip addresses, not domain names
 
 to do
 =====
