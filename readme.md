@@ -52,6 +52,7 @@ GitHub code is
 	* [USB Pendrive on ProxMox VM](./PFSense/USB_Pendrive_on_ProxMox_VM.md)
 	* [Using Software from FreeBSD](./PFSense/Using_Software_from_FreeBSD.md)
 	* [vim](./PFSense/vim.md)
+* [PMG Proxmox Mail Gateway](./PMG_Proxmox_Mail_Gateway.md)
 * [Postfix configuration for a host or server](./Postfix_configuration_for_a_host_or_server.md)
 * [ProxMox](./ProxMox.md)
 * [Rancher k3s cluster](./Rancher_k3s_cluster.md)
