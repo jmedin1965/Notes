@@ -346,46 +346,7 @@ virtual_alias_maps = hash:/etc/postfix/virtual
 </div>
 </p>
 <br>
-<h1>on proxmox mail gateway<a id="on-proxmox-mail-gateway" class="h_anchor"></a></h1>
-<br>
 <p>
-<div style='padding-left: 30pt'>
-mkdir <a href="file:///etc/pmg/templates" title="/etc/pmg/templates" class="file">/etc/pmg/templates</a><br>
-cp /var/lib/pmg/templates/main.cf.in <a href="file:///etc/pmg/templates" title="/etc/pmg/templates/" class="file">/etc/pmg/templates/</a><br>
-vi <a href="file:///etc/pmg/templates/main.cf.in" title="/etc/pmg/templates/main.cf.in" class="file">/etc/pmg/templates/main.cf.in</a>
-</div>
-</p>
-<br>
-<p>
-<div style='padding-left: 30pt'>
-# REF: greg stuff for catch-all virtual alias maps. mail is accepted for all domains and<br>
-#      then forwarded to one external<br>
-virtual_alias_maps = hash:/etc/postfix/virtual
-</div>
-</p>
-<br>
-<p>
-<div style='padding-left: 30pt'>
-# REF: <a href="https://www.postfix.org/ADDRESS_REWRITING_README.html" title="https://www.postfix.org/ADDRESS_REWRITING_README.html" class="https">https://www.postfix.org/ADDRESS_REWRITING_README.html</a><br>
-#      email from <a href="mailto:root@server.jmsh-home.com" title="root@server.jmsh-home.com" class="mailto">root@server.jmsh-home.com</a> is changed to come from <a href="mailto:server@jmsh-home.com" title="server@jmsh-home.com" class="mailto">server@jmsh-home.com</a><br>
-masquerade_domains = jmsh-home.com<br>
-canonical_maps = regexp:/etc/postfix/canonical
-</div>
-</p>
-<br>
-<p>
-cat <a href="file:///etc/postfix/virtual" title="/etc/postfix/virtual" class="file">/etc/postfix/virtual</a><br>
-<span class="zim-tag">@jmsh</span>-home.com <a href="mailto:jmedin1965@gmail.com" title="jmedin1965@gmail.com" class="mailto">jmedin1965@gmail.com</a>
-</p>
-<br>
-<p>
-cat <a href="file:///etc/postfix/canonical" title="/etc/postfix/canonical" class="file">/etc/postfix/canonical</a><br>
-/^root@(.*)\.jmsh-home\.com$/ ${1}@jmsh-home.com
-</p>
-<br>
-<p>
-postmap <a href="file:///etc/postfix/virtual" title="/etc/postfix/virtual" class="file">/etc/postfix/virtual</a><br>
-postmap <a href="file:///etc/postfix/canonical" title="/etc/postfix/canonical" class="file">/etc/postfix/canonical</a><br>
 pmgconfig sync --restart 1
 </p>
 <br>
