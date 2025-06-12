@@ -16,6 +16,7 @@ GitHub code is
 
 * [3D printer](./3D_printer.md)
 * [Android](./Android.md)
+* [APC UPS](./APC_UPS.md)
 * [Bareos Backup](./Bareos_Backup.md)
 * [CISCO stuff](./CISCO_stuff.md)
 * [debian boot fix BIOS EFI](./debian_boot_fix_BIOS_EFI.md)
@@ -62,6 +63,7 @@ GitHub code is
 * [Tasmota](./Tasmota.md)
 * [VM Benchmark using Phoronix Test Suite](./VM_Benchmark_using_Phoronix_Test_Suite.md)
 * [wsl](./wsl.md)
+* [YouTube](./YouTube.md)
 * [ZFS](./ZFS.md)
 
 

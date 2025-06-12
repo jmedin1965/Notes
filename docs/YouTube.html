@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Ipfire firewall and router</title>
+	<title>YouTube</title>
 	<meta name='Generator' content='Zim 0.75.2'>
 	<style type='text/css'>
 		a          { text-decoration: none }
@@ -50,11 +50,11 @@
 
 <!-- Header -->
 <div class='header'>
-	[ <a href='./Immich_picture_and_video_server.html'>Prev</a> ]
+	[ <a href='./wsl.html'>Prev</a> ]
 
 	[ <a href='./index.html'>Index</a> ]
 
-	[ <a href='./jmedin1965.html'>Next</a> ]
+	[ <a href='./ZFS.html'>Next</a> ]
 </div>
 
 <hr />
@@ -72,7 +72,7 @@
 <li><a href="./FreeIPA_with_off-line_CA.html" title="FreeIPA with off-line CA" class="page">FreeIPA with off-line CA</a></li>
 <li><a href="./Home_Assistant.html" title="Home Assistant" class="page">Home Assistant</a></li>
 <li><a href="./Immich_picture_and_video_server.html" title="Immich picture and video server" class="page">Immich picture and video server</a></li>
-<li><b>Ipfire firewall and router</b></li>
+<li><a href="./Ipfire_firewall_and_router.html" title="Ipfire firewall and router" class="page">Ipfire firewall and router</a></li>
 <li><a href="./jmedin1965.html" title="jmedin1965" class="page">jmedin1965</a></li>
 <li><a href="./Password_Vault_selfhosting.html" title="Password Vault selfhosting" class="page">Password Vault selfhosting</a></li>
 <li><a href="./PFSense.html" title="PFSense" class="page">PFSense</a></li>
@@ -86,7 +86,7 @@
 <li><a href="./Tasmota.html" title="Tasmota" class="page">Tasmota</a></li>
 <li><a href="./VM_Benchmark_using_Phoronix_Test_Suite.html" title="VM Benchmark using Phoronix Test Suite" class="page">VM Benchmark using Phoronix Test Suite</a></li>
 <li><a href="./wsl.html" title="wsl" class="page">wsl</a></li>
-<li><a href="./YouTube.html" title="YouTube" class="page">YouTube</a></li>
+<li><b>YouTube</b></li>
 <li><a href="./ZFS.html" title="ZFS" class="page">ZFS</a></li>
 </ul>
 
@@ -96,94 +96,21 @@
 
 <div class='pages'>
 	<div class='heading'>
-	<h1>Ipfire firewall and router <a name='Ipfire firewall and router'></a></h1>
+	<h1>YouTube <a name='YouTube'></a></h1>
 	</div>
 
 	<div class='content'>
-	<p>
-Created Friday 01 December 2023
-</p>
-<br>
-<h2>my local packages<a id="my-local-packages" class="h_anchor"></a></h2>
-<br>
-<p>
-How do I inject my own package into ipfire so I can install and remove it easily?<br>
-I'm going to generate a pgp key, then create a package file and then enable this key to be recognised.<br>
-The package still needs to be coped manualy though. I'm thinking a pakfire-local wrapper for pakfire
-</p>
-<br>
-<h3>generate gpg key<a id="generate-gpg-key" class="h_anchor"></a></h3>
-<br>
-<p>
-REF: <a href="https://www.golinuxcloud.com/tutorial-encrypt-decrypt-sign-file-gpg-key-linux/" title="https://www.golinuxcloud.com/tutorial-encrypt-decrypt-sign-file-gpg-key-linux/" class="https">https://www.golinuxcloud.com/tutorial-encrypt-decrypt-sign-file-gpg-key-linux/</a>
-</p>
-<br>
-<p>
-set the GPG home folder<br>
-<div style='padding-left: 30pt'>
-export GNUPGHOME=/opt/pakfire/etc/.gnupg
-</div>
-</p>
-<br>
-<p>
-generate the key<br>
-<div style='padding-left: 30pt'>
-gpg --gen-key
-</div>
-</p>
-<br>
-<p>
-export key and secure key to store in a safe place<br>
-<div style='padding-left: 30pt'>
-gpg --list-keys<br>
-gpg --export --armor --output public.asc &lt;fingerprint frim --list-keys above&gt;<br>
-gpg gpg --export-secret-keys --armor --output secret.asc &lt;fingerprint frim --list-keys above&gt;
-</div>
-</p>
-<br>
-<p>
-now we can sign a tar file package. have to use -r option to work with ipfire. This creates a .gpg file<br>
-<div style='padding-left: 30pt'>
-gpg -R --encrypt --sign -r "key name or fingerprint" &lt;package file&gt;
-</div>
-</p>
-<br>
-<p>
-then we can veryfy the .gpg file just like pakfire does and we can read the fingerprint, just after the<br>
-VALIDSIG statement<br>
-<div style='padding-left: 30pt'>
-gpg --verify --status-fd 1 &lt;package file&gt;
-</div>
-</p>
-<br>
-<h3>now to hack a wrapper for pakfile<a id="now-to-hack-a-wrapper-for-pakfile" class="h_anchor"></a></h3>
-<br>
-<br>
-<br>
-<br>
-<br>
-<h2>to do<a id="to-do" class="h_anchor"></a></h2>
-<br>
-<h3>ipfire /var/ipfire/failover/vrrp.notify.sh permissions<a id="ipfire-varipfirefailovervrrpnotifysh-permissions" class="h_anchor"></a></h3>
-<br>
-<p>
-keepalived complains about elevated rights for this script. Need to give it rights to create;
-</p>
-<br>
-<p>
-/var/ipfire/red/active<br>
-/var/run/keepalived.state
-</p>
-<br>
-<p>
-as the web user, which is nobody
-</p>
-
+	
 	</div>
 
 	<br />
 
 	<div class='page-footer'>
+		<b>Backlinks:</b>
+
+		<a href='./APC_UPS.html'>APC UPS</a>
+
+		<br /><br />
 
 	</div>
 

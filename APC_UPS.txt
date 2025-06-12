@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-06-12T17:42:54+10:00
+
+====== APC UPS ======
+Created Thursday 12 June 2025
+
+===== Relay faulty on APC UPS =====
+
+Greg had problems with his UPS and he fixed it by replacing the relay. Instructions are contained in this [[YouTube]] video
+
+https://www.youtube.com/watch?v=AW2ZKtzr0rc
+
+
